@@ -1,103 +1,89 @@
-import Image from "next/image";
+import { H1, PrimaryButton } from "@/app/ui/components";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    return (
+        <main className={"relative overflow-hidden"}>
+          {/*Left gradient*/}
+          <div className="-z-1 absolute w-[500px] h-[1800px] bg-gradient-to-br from-[#B08951] to-[#000000] opacity-30 rounded-full blur-3xl -top-20 -left-90  animate-pulse [animation-duration:5s]"/>
+          {/*Top gradient*/}
+          <div className="-z-1 absolute w-[1250px] h-[500px] bg-gradient-to-br from-[#B08951] to-[#000000] opacity-30 rounded-full blur-3xl -top-70 -right-150 animate-pulse [animation-duration:5s]"/>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+          <header className={"fixed top-0 right-0 left-0"}>
+              <div className={"w-full flex items-center justify-between mx-8 my-4"}>
+            <div>
+              <img src="/logo.svg" alt="Tobacco & cigarettes trading logo" />
+            </div>
+
+            <div>
+              <nav className={"text-white uppercase"}>
+                <ul className={"flex gap-4"}>
+                  <li>
+                    About us
+                  </li>
+                  <li>
+                    Brands
+                  </li>
+                  <li>
+                    Contacts
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+            <div className={"flex gap-4"}>
+              <a>
+                <img src="/icons/whatsapp.svg" alt="Whatsapp icon"/>
+              </a>
+              <a>
+                <img src="/icons/mail.svg" alt="Email icon"/>
+              </a>
+              <a>
+                <img src="/icons/phone.svg" alt="Phone icon"/>
+              </a>
+              <a>
+                <img src="/icons/chat.svg" alt="Chat icon"/>
+              </a>
+            </div>
+</div>
+          </header>
+          <section className="w-[100dvw] h-[80dvh] grid grid-cols-12 place-items-center bg-[url(/images/earth.png)] bg-center bg-contain bg-no-repeat">
+            <div className="grid col-start-2 col-span-3 gap-10 m-4">
+              <div className="max-w-[450px]">
+                <H1 text={"Certificated in Europe, Asia & Africa"}/>
+              </div>
+              <PrimaryButton text="Welcome to our business" />
+            </div>
+          </section>
+          <section className="grid grid-cols-12 gap-4 place-items-center px-4">
+            <div className="col-start-4 col-span-6 flex justify-center">
+              <H1 text={"About us"} />
+            </div>
+
+            {/*TODO: make reusable*/}
+            <div className="col-start-3 col-span-8 flex justify-center">
+              <p className="text-white text-justify max-w-3xl">
+                “VK Tobacco” procures, manufactures and distributes its own brands namely TITO, BACIO, PASSAGE and PULL, UT, URTA, BRUT. Our manufacturing facility is located in UAE with state of the art machinery. We are ISO certificated and produce world class products that cater to various consumers with different style and taste preferences. Authenticity is our core philosophy and we believe in developing genuine products which are passed on to generations to continue our formidable legacy.
+              </p>
+            </div>
+
+            <div className="col-start-3 col-span-8 flex justify-center mb-200">
+
+              <div className={"border-r-2 border-b-2 border-[#B08951] px-4 py-2 hover:bg-gradient-to-tl from-[#B08951] to-[#000000] hover:cursor-pointer"}>
+                <H1 text={"~$100 billion"}/>
+                <p className={"text-white text-justify"}>
+                  cumulative trading
+                  volume to date
+                </p>
+              </div>
+
+            </div>
+
+
+          </section>
+
+        </main>
+    );
 }
+
+
+// export const Heading
