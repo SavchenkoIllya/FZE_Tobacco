@@ -9,12 +9,13 @@ interface TextareaProps {
 }
 
 export const Textarea = ({
-                           variant = "white",
-                           onChange,
-                           placeholder = "Enter text...",
-                           icon,
-                         }: TextareaProps) => {
-  const baseStyles = "flex items-start w-full border rounded-2xl px-4 py-2 gap-2"; // use items-start for textarea
+  variant = "white",
+  onChange,
+  placeholder = "Enter text...",
+  icon,
+}: TextareaProps) => {
+  const baseStyles =
+    "flex items-start w-full border rounded-2xl px-4 py-2 gap-2"; // use items-start for textarea
   const variantStyles =
     variant === "black"
       ? "bg-black text-white border-white placeholder-white"
@@ -30,7 +31,7 @@ export const Textarea = ({
         placeholder={placeholder}
         onChange={handleTextareaChange}
         className="bg-transparent outline-none flex-1 resize-none"
-        rows={4} // you can adjust default rows
+        rows={4}
       />
       {icon}
     </div>

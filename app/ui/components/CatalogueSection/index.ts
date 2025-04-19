@@ -1,2 +1,2 @@
-export * from "./Search"
-export * from "./CatalogueSection"
+export * from "./CatalogueSection";
+export * from "./Search";

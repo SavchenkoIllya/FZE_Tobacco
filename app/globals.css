@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
-@theme{
-    --color-accent: #B08951
+@theme {
+  --color-accent: #b08951;
 }
 
-html{
-    background-color: #000
+html {
+  background-color: #000;
 }
 
 .h1 {
-    @apply text-white font-bold text-6xl tracking-wider leading-[4.5rem];
+  @apply text-white font-bold text-6xl tracking-wider leading-[4.5rem];
 }
 
 .h2 {
-    @apply text-accent font-bold text-4xl tracking-wider leading-[4.5rem];
+  @apply text-accent font-bold text-4xl tracking-wider leading-[4.5rem];
 }
 
-.button{
-    @apply font-semibold px-6 py-3 rounded-4xl w-fit hover:scale-105 hover:bg-gray-100 transition-all duration-300 ease-in-out uppercase tracking-wider leading-[24px]
+.button {
+  @apply font-semibold px-6 py-3 rounded-4xl w-fit hover:scale-105 hover:bg-gray-100 transition-all duration-300 ease-in-out uppercase tracking-wider leading-[24px];
 }

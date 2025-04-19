@@ -1,7 +1,7 @@
-"use client"
-import { Search } from "@/app/ui/components/CatalogueSection/Search/Search";
-import { Menu } from "@/app/ui/components/CatalogueSection/Menu";
+"use client";
 import { ProductCard } from "@/app/ui/components/CatalogueSection/Card";
+import { Menu } from "@/app/ui/components/CatalogueSection/Menu";
+import { Search } from "@/app/ui/components/CatalogueSection/Search/Search";
 
 export const CatalogueSection = () => {
   return (
@@ -11,12 +11,12 @@ export const CatalogueSection = () => {
       </div>
 
       <div>
-        <Menu/>
+        <Menu />
       </div>
 
       <div>
         <div className={"p-8"}>
-          <ProductCard/>
+          <ProductCard />
         </div>
       </div>
     </section>
