@@ -1,4 +1,4 @@
-import { GroupDropdown } from "@/app/ui/components/CatalogueSection/Menu/GroupDropdown";
+import { GroupDropdown } from "@/app/ui/components/Menu/GroupDropdown";
 
 export const Menu = () => {
   return (

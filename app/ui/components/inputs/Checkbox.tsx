@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/app/ui";
 import { ChangeEvent, ReactNode } from "react";
 
 interface CheckboxProps {
@@ -15,16 +16,19 @@ export const Checkbox = ({ checked, onChange, label, icon }: CheckboxProps) => {
 
   return (
     <label className="flex items-center gap-2 cursor-pointer select-none">
-      <div className="relative">
+      <div className="relative w-5 h-5">
         <input
           type="checkbox"
           checked={checked}
           onChange={handleCheckboxChange}
-          className="peer hidden"
+          className="peer absolute inset-0 opacity-0 cursor-pointer"
         />
-        <div className="w-5 h-5 border-2 border-white rounded-sm flex items-center justify-center peer-checked:bg-black peer-checked:border-white transition">
+        <div className="w-full h-full border-2 border-white rounded-sm flex items-center justify-center transition">
           <svg
-            className="w-3 h-3 text-accent opacity-0 peer-checked:opacity-100 transition"
+            className={cn(
+              "w-3 h-3 text-accent transition-all",
+              checked ? "opacity-100" : "opacity-0",
+            )}
             fill="none"
             stroke="currentColor"
             strokeWidth="3"

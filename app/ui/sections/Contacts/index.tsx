@@ -1,8 +1,20 @@
 "use client";
-import { Checkbox, ContactsList, Input, Textarea } from "@/app/ui/components";
-import BackgroundImage from "@/app/ui/components/BackgroundImage";
+import {
+  BackgroundImage,
+  Checkbox,
+  ContactsList,
+  Input,
+  Textarea,
+} from "@/app/ui";
+import { useState } from "react";
 
 export const ContactsSection = () => {
+  const [checked, setChecked] = useState(false);
+
+  const handleCheck = () => {
+    setChecked(!checked);
+  };
+
   return (
     <section className={"relative flex flex-col justify-center items-center"}>
       <BackgroundImage
@@ -26,8 +38,8 @@ export const ContactsSection = () => {
           <Input variant={"black"} onChange={() => {}} />
           <Textarea variant={"black"} onChange={() => {}} />
           <Checkbox
-            checked={true}
-            onChange={() => {}}
+            checked={checked}
+            onChange={handleCheck}
             label={
               "Spuntando questa casella ci autorizzi al trattamento dei tuoi dati personali, ne avremo cura."
             }
