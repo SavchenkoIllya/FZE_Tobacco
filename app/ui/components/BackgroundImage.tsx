@@ -12,11 +12,11 @@ interface BackgroundImageProps {
   };
 }
 
-export default function BackgroundImage({
+export const BackgroundImage = ({
   imageUrl,
   position = {},
   size = {},
-}: BackgroundImageProps) {
+}: BackgroundImageProps) => {
   return (
     <div
       className="absolute -z-10 bg-cover bg-center"
@@ -31,4 +31,4 @@ export default function BackgroundImage({
       }}
     />
   );
-}
+};

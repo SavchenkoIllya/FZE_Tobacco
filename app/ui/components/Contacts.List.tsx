@@ -1,14 +1,18 @@
-import { ContactIcon } from "@/app/ui/components/Contact.Icon";
+import { cn, Contact } from "@/app/ui";
 
-export const ContactsList = () => {
+export const ContactsList = ({
+  wrapperClasses = "flex gap-4",
+}: {
+  wrapperClasses?: string;
+}) => {
   return (
-    <div className={"flex gap-4"}>
-      <ContactIcon
+    <div className={cn(wrapperClasses)}>
+      <Contact
         imgProps={{ src: "/icons/whatsapp.svg", alt: "Whatsapp icon" }}
       />
-      <ContactIcon imgProps={{ src: "/icons/mail.svg", alt: "Email icon" }} />
-      <ContactIcon imgProps={{ src: "/icons/phone.svg", alt: "Phone icon" }} />
-      <ContactIcon imgProps={{ src: "/icons/chat.svg", alt: "Chat icon" }} />
+      <Contact imgProps={{ src: "/icons/mail.svg", alt: "Email icon" }} />
+      <Contact imgProps={{ src: "/icons/phone.svg", alt: "Phone icon" }} />
+      <Contact imgProps={{ src: "/icons/chat.svg", alt: "Chat icon" }} />
     </div>
   );
 };

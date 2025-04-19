@@ -1,9 +1,10 @@
+export * from "./icons";
+export * from "./inputs";
+
 export * from "./BackgroundImage";
-export * from "./Checkbox";
+export * from "./Card";
 export * from "./Contacts.List";
-export * from "./H1";
 export * from "./Header";
-export * from "./Input";
 export * from "./InfoCard";
+export * from "./Menu";
 export * from "./PrimaryButton";
-export * from "./TextArea";

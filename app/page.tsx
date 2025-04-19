@@ -1,7 +1,10 @@
-import { InfoCard } from "@/app/ui/components";
-import { CatalogueSection } from "@/app/ui/components/CatalogueSection";
-import { ContactsSection } from "@/app/ui/components/ContactsSection";
-import { Header } from "@/app/ui/components/Header";
+import {
+  CatalogueSection,
+  ContactsSection,
+  Header,
+  Hero,
+  InfoCard,
+} from "@/app/ui";
 
 export default function Home() {
   return (
@@ -13,16 +16,7 @@ export default function Home() {
 
       <Header />
 
-      <section className="w-[100dvw] h-[80dvh] grid grid-cols-12 place-items-center bg-[url(/images/earth.png)] bg-center bg-contain bg-no-repeat">
-        <div className="grid col-start-2 col-span-3 gap-10 m-4">
-          <div className="max-w-[450px]">
-            <h1 className={"h1"}>Certificated in Europe, Asia & Africa</h1>
-          </div>
-          <button className={"button !bg-white"}>
-            Welcome to our business
-          </button>
-        </div>
-      </section>
+      <Hero />
 
       <section className="grid grid-cols-12 gap-4 place-items-center px-4">
         <div className="col-start-4 col-span-6 flex justify-center">

@@ -1,7 +1,5 @@
 "use client";
-import { ProductCard } from "@/app/ui/components/CatalogueSection/Card";
-import { Menu } from "@/app/ui/components/CatalogueSection/Menu";
-import { Search } from "@/app/ui/components/CatalogueSection/Search/Search";
+import { Menu, ProductCard, Search } from "@/app/ui";
 
 export const CatalogueSection = () => {
   return (
