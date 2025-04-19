@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+@theme{
+    --color-accent: #B08951
+}
+
 html{
     background-color: #000
+}
+
+.h1 {
+    @apply text-white font-bold text-6xl tracking-wider leading-[4.5rem];
+}
+
+.h2 {
+    @apply text-accent font-bold text-4xl tracking-wider leading-[4.5rem];
 }
