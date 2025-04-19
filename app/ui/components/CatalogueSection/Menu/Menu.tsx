@@ -1,11 +1,15 @@
+import { GroupDropdown } from "@/app/ui/components/CatalogueSection/Menu/GroupDropdown";
+
 export const Menu = () => {
-  return <div>
+  return <div className={"border-r-3 border-accent"}>
       <div className={"flex gap-2"}>
         <img src={"/icons/filter.svg"}/>
         <h3 className={"h2 !text-3xl"}>Filters</h3>
       </div>
-      <div>
-        <button>Type</button>
+      <div className={"flex flex-col gap-2"}>
+        <GroupDropdown/>
+        <GroupDropdown/>
+        <GroupDropdown/>
       </div>
     </div>
 }
