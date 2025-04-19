@@ -1,2 +1,2 @@
-export * from "./Search"
-export * from "./LookupIcon"
+export * from "./LookupIcon";
+export * from "./Search";

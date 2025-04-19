@@ -1,2 +1,2 @@
-export * from "./Menu"
-export * from "./GroupDropdown"
+export * from "./GroupDropdown";
+export * from "./Menu";

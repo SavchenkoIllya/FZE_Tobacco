@@ -12,7 +12,11 @@ interface BackgroundImageProps {
   };
 }
 
-export default function BackgroundImage({ imageUrl, position = {}, size = {} }: BackgroundImageProps) {
+export default function BackgroundImage({
+  imageUrl,
+  position = {},
+  size = {},
+}: BackgroundImageProps) {
   return (
     <div
       className="absolute -z-10 bg-cover bg-center"
@@ -22,8 +26,8 @@ export default function BackgroundImage({ imageUrl, position = {}, size = {} }: 
         right: position.right,
         top: position.top,
         bottom: position.bottom,
-        width: size.width || '500px',
-        height: size.height || '1800px',
+        width: size.width || "500px",
+        height: size.height || "1800px",
       }}
     />
   );
