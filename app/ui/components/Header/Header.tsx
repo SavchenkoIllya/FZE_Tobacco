@@ -1,11 +1,15 @@
-import { ContactsList, Navigation, SliderMenu } from "@/app/ui/components";
+import {
+  ContactsList,
+  Navigation,
+  SliderNavigation,
+} from "@/app/ui/components";
 
 export const Header = () => {
   return (
     <header className={"fixed top-0 w-[100dvw]"}>
       <div className={"container m-auto"}>
         <div className={"flex items-center justify-between mx-8 my-4"}>
-          <SliderMenu />
+          <SliderNavigation />
           <div>
             <img src="/logo.svg" alt="Tobacco & cigarettes trading logo" />
           </div>
