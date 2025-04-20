@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/app/ui";
 import { ChangeEvent, ReactNode } from "react";
 
 interface SearchInputProps {
@@ -14,8 +15,6 @@ export const Input = ({
   placeholder = "Search...",
   icon,
 }: SearchInputProps) => {
-  const baseStyles =
-    "flex items-center w-full border rounded-full px-4 py-2 gap-2";
   const variantStyles =
     variant === "black"
       ? "bg-black text-white border-white placeholder-white"
@@ -26,7 +25,12 @@ export const Input = ({
   };
 
   return (
-    <div className={`${baseStyles} ${variantStyles}`}>
+    <div
+      className={cn(
+        "border rounded-full flex px-4 py-2 gap-2 w-full",
+        variantStyles,
+      )}
+    >
       <input
         type="text"
         placeholder={placeholder}
