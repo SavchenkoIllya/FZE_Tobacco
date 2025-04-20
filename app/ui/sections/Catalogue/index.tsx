@@ -3,18 +3,24 @@ import { Menu, ProductCard, Search } from "@/app/ui";
 
 export const CatalogueSection = () => {
   return (
-    <section className="mt-20 grid grid-cols-4 bg-white py-8 h-[50dvh]">
-      <div className="col-start-3 col-span-2 flex justify-center">
-        <Search />
-      </div>
+    <section id={"catalogue"} className="py-10 w-full bg-white">
+      <div className="container mx-auto h-[60dvh]">
+        <div className="justify-center md:justify-normal grid grid-cols-4 grid-rows-[auto_1fr] h-full">
+          <div className="col-span-4 mx-4 md:col-start-3 md:col-span-2 mb-6">
+            <Search />
+          </div>
 
-      <div>
-        <Menu />
-      </div>
+          <div className="h-full hidden md:block">
+            <Menu />
+          </div>
 
-      <div>
-        <div className={"p-8"}>
-          <ProductCard />
+          <div className={"col-span-4 md:col-span-3 overflow-y-scroll"}>
+            <div className="p-8 flex flex-wrap gap-8 justify-center">
+              {Array.from(Array(10).keys()).map((_, i) => (
+                <ProductCard key={i} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

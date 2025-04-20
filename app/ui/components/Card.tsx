@@ -2,11 +2,15 @@ export const ProductCard = () => {
   return (
     <article className={"flex flex-col"}>
       <div className={"border-b-2 border-accent"}>
-        <img src={"/delete/Pull.png"} />
-        <h4 className={"h2 !text-black !text-xl"}>Pull De Luxe Nano Gold</h4>
+        <div className={"flex justify-center items-center p-4"}>
+          <img src={"/delete/Pull.png"} width={200} height={250} />
+        </div>
+        <h4 className={"h2 !text-black !text-xl !leading-6 truncate"}>
+          Pull De Luxe Nano Gold
+        </h4>
         <p>Nano Slim</p>
       </div>
-      <div>
+      <div className={"mt-4"}>
         <div className={"flex gap-2"}>
           <img src={"/icons/products/leaf.svg"} />
           <p>American blend</p>

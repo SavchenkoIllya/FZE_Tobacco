@@ -29,26 +29,43 @@ export const ContactsSection = () => {
       />
       <div className="-z-1 absolute w-[1250px] h-[500px] bg-gradient-to-b from-accent to-black opacity-30 rounded-full blur-3xl -bottom-[440px] animate-pulse [animation-duration:5s]" />
       <h1 className={"h1 mt-8"}>Contacts</h1>
+
       <div className={"flex gap-2"}>
-        <div className={"p-8 space-y-4 border-accent border-r-2"}>
-          <div className={"flex items-center gap-2"}>
+        <div className={"border-accent border-r-2"}>
+          <form
+            className={"space-y-4 p-8"}
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <div className={"flex items-center gap-2"}>
+              <Input variant={"black"} onChange={() => {}} />
+              <Input variant={"black"} onChange={() => {}} />
+            </div>
             <Input variant={"black"} onChange={() => {}} />
-            <Input variant={"black"} onChange={() => {}} />
-          </div>
-          <Input variant={"black"} onChange={() => {}} />
-          <Textarea variant={"black"} onChange={() => {}} />
-          <Checkbox
-            checked={checked}
-            onChange={handleCheck}
-            label={
-              "Spuntando questa casella ci autorizzi al trattamento dei tuoi dati personali, ne avremo cura."
-            }
-          />
+            <Textarea variant={"black"} onChange={() => {}} />
+            <Checkbox
+              checked={checked}
+              onChange={handleCheck}
+              label={
+                "Spuntando questa casella ci autorizzi al trattamento dei tuoi dati personali, ne avremo cura."
+              }
+            />
+            <button
+              type={"submit"}
+              className={"button !w-full !bg-white !text-black"}
+            >
+              Contact us
+            </button>
+          </form>
         </div>
         <div>Map is here</div>
       </div>
-      <div className={"my-16"}>
+      <div className={"my-8"}>
         <ContactsList />
+      </div>
+      <div className={"mb-8"}>
+        <h5 className={"h1 uppercase !text-sm"}>
+          Copyright © 24 All rights reserved - VK Tobacco
+        </h5>
       </div>
     </section>
   );
