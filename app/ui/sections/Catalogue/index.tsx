@@ -1,5 +1,6 @@
 "use client";
 import { Menu, ProductCard, Search } from "@/app/ui";
+import { SliderMenu } from "@/app/ui/sections/Catalogue/components";
 
 export const CatalogueSection = () => {
   return (
@@ -7,10 +8,13 @@ export const CatalogueSection = () => {
       <div className="container mx-auto h-[60dvh]">
         <div className="justify-center md:justify-normal grid grid-cols-4 grid-rows-[auto_1fr] h-full">
           <div className="col-span-4 mx-4 md:col-start-3 md:col-span-2 mb-6">
-            <Search />
+            <div className={"flex gap-2"}>
+              <SliderMenu />
+              <Search />
+            </div>
           </div>
 
-          <div className="h-full hidden md:block">
+          <div className="hidden md:block overflow-hidden">
             <Menu />
           </div>
 

@@ -1,3 +1,4 @@
+export * from "./buttons";
 export * from "./icons";
 export * from "./inputs";
 
@@ -7,3 +8,4 @@ export * from "./Contacts.List";
 export * from "./Header";
 export * from "./InfoCard";
 export * from "./Menu";
+export * from "./Slider";

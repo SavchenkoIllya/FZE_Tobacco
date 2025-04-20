@@ -1,4 +1,4 @@
-import { GroupDropdown } from "@/app/ui/components/Menu/GroupDropdown";
+import { GroupDropdown } from "@/app/ui";
 
 export const Menu = () => {
   return (
@@ -7,7 +7,17 @@ export const Menu = () => {
         <img src={"/icons/filter.svg"} />
         <h3 className={"h2 !text-3xl !text-black"}>Filters</h3>
       </div>
-      <div className={"flex flex-col gap-2"}>
+      <div
+        className={
+          "flex flex-col p-8 pb-30 gap-2 overflow-y-scroll h-full scrollbar-hide"
+        }
+      >
+        <GroupDropdown />
+        <GroupDropdown />
+        <GroupDropdown />
+        <GroupDropdown />
+        <GroupDropdown />
+        <GroupDropdown />
         <GroupDropdown />
         <GroupDropdown />
         <GroupDropdown />
