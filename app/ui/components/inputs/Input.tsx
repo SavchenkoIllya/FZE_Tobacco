@@ -7,6 +7,7 @@ interface SearchInputProps {
   onChange: (value: string) => void;
   placeholder?: string;
   icon?: ReactNode;
+  defaultValue?: string;
 }
 
 export const Input = ({
@@ -14,6 +15,7 @@ export const Input = ({
   onChange,
   placeholder = "Search...",
   icon,
+  defaultValue,
 }: SearchInputProps) => {
   const variantStyles =
     variant === "black"
@@ -36,6 +38,7 @@ export const Input = ({
         placeholder={placeholder}
         onChange={handleInputChange}
         className="bg-transparent outline-none flex-1"
+        defaultValue={defaultValue}
       />
       {icon}
     </div>

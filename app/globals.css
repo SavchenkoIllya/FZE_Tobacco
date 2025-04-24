@@ -26,8 +26,12 @@ html {
 }
 
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* Для IE */
-  scrollbar-width: none;  /* Для Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.dashboard_bg{
+  @apply bg-white  min-h-[100dvh] min-w-[100dvw]
 }
 
 .dashboard_input {

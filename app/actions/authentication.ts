@@ -2,31 +2,41 @@
 import { db } from "@/app/db";
 import { usersTable } from "@/app/db/schema";
 import { User } from "@/app/db/types";
-import { ERROR_MESSAGE } from "@/app/lib";
+import { COOKIES_NAMES, ERROR_MESSAGE } from "@/app/lib";
 import bcrypt from "bcryptjs";
 import { eq } from "drizzle-orm";
+import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 async function authUser(
   email: User["select"]["email"],
   password: User["select"]["password"],
 ) {
-  const user = await db
+  const users = await db
     .select()
     .from(usersTable)
     .where(eq(usersTable.email, email));
 
-  if (!user.length) {
+  const user = users[0];
+
+  if (!user) {
     return { error: ERROR_MESSAGE.USER_NOT_FOUND };
   }
 
-  const passwordMatch = await bcrypt.compare(password, user[0].password);
+  const passwordMatch = await bcrypt.compare(password, user.password);
 
   if (!passwordMatch) {
     return { error: ERROR_MESSAGE.PASSWORD_NOT_MATCH };
   }
 
-  //   TODO: add token logic
+  const token = jwt.sign(
+    { userId: user.id, email: user.email },
+    process.env.JWT_SECRET!,
+    { expiresIn: "7d" },
+  );
+
+  return { token };
 }
 
 export async function login(prevState: string | undefined, formData: FormData) {
@@ -35,7 +45,7 @@ export async function login(prevState: string | undefined, formData: FormData) {
   const redirectTo = formData.get("redirectTo") as string;
 
   if (!email || !password) {
-    return { error: ERROR_MESSAGE.INVALID_CREDENTIALS };
+    return ERROR_MESSAGE.INVALID_CREDENTIALS;
   }
 
   const result = await authUser(email, password);
@@ -44,5 +54,24 @@ export async function login(prevState: string | undefined, formData: FormData) {
     return result.error;
   }
 
+  if (result.token) {
+    const cookieStore = await cookies();
+
+    cookieStore.set({
+      name: COOKIES_NAMES.AUTH_TOKEN,
+      value: result.token,
+      httpOnly: true,
+      secure: true,
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7,
+    });
+  }
+
   redirect(redirectTo);
+}
+
+export async function logout() {
+  const cookieStore = await cookies();
+
+  cookieStore.delete(COOKIES_NAMES.AUTH_TOKEN);
 }

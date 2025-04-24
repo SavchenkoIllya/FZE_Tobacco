@@ -11,7 +11,7 @@ export const LoginForm = () => {
     undefined,
   );
 
-  const handleToogleVisibility = (): void => {
+  const handleToggleVisibility = (): void => {
     setIsVisible(!isVisible);
   };
 
@@ -41,7 +41,7 @@ export const LoginForm = () => {
         <button
           type={"button"}
           className={"text-sm cursor-pointer"}
-          onClick={handleToogleVisibility}
+          onClick={handleToggleVisibility}
         >
           {isVisible ? "Hide" : "Show"} password
         </button>
