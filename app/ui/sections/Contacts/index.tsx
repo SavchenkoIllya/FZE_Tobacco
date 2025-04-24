@@ -30,17 +30,29 @@ export const ContactsSection = () => {
       <div className="-z-1 absolute w-[1250px] h-[500px] bg-gradient-to-b from-accent to-black opacity-30 rounded-full blur-3xl -bottom-[440px] animate-pulse [animation-duration:5s]" />
       <h1 className={"h1 mt-8"}>Contacts</h1>
 
-      <div className={"flex gap-2"}>
-        <div className={"border-accent border-r-2"}>
+      <div className={"flex flex-wrap gap-2"}>
+        <div className={"border-accent border-b-2 md:border-r-2 md:border-b-0"}>
           <form
             className={"space-y-4 p-8"}
             onSubmit={(e) => e.preventDefault()}
           >
-            <div className={"flex items-center gap-2"}>
-              <Input variant={"black"} onChange={() => {}} />
-              <Input variant={"black"} onChange={() => {}} />
+            <div className={"flex flex-col md:flex-row items-center gap-2"}>
+              <Input
+                placeholder={"Email"}
+                variant={"black"}
+                onChange={() => {}}
+              />
+              <Input
+                placeholder={"Phone"}
+                variant={"black"}
+                onChange={() => {}}
+              />
             </div>
-            <Input variant={"black"} onChange={() => {}} />
+            <Input
+              placeholder={"phone"}
+              variant={"black"}
+              onChange={() => {}}
+            />
             <Textarea variant={"black"} onChange={() => {}} />
             <Checkbox
               checked={checked}

@@ -19,7 +19,7 @@ export const BackgroundImage = ({
 }: BackgroundImageProps) => {
   return (
     <div
-      className="absolute -z-10 bg-cover bg-center"
+      className="hidden md:block absolute -z-10 bg-cover bg-center"
       style={{
         backgroundImage: `url(${imageUrl})`,
         left: position.left,

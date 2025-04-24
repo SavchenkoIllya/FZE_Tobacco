@@ -1,4 +1,4 @@
-import { InfoCard } from "@/app/ui";
+import { InfoGrid } from "@/app/ui/sections/About/components/InfoGrid";
 
 export const About = () => (
   <section className="grid grid-cols-12 gap-4 place-items-center md:px-4 mb-20">
@@ -17,12 +17,10 @@ export const About = () => (
         are passed on to generations to continue our formidable legacy.
       </p>
     </div>
-
-    <div className="col-start-3 col-span-8 flex justify-center mt-20">
-      <InfoCard />
-      <InfoCard />
-      <InfoCard />
-      <InfoCard />
+    <div
+      className={"col-start-3 col-span-8 flex flex-col justify-center mt-20"}
+    >
+      <InfoGrid cardsCount={8} />
     </div>
   </section>
 );
