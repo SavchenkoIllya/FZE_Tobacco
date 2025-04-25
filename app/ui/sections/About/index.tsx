@@ -1,7 +1,11 @@
+import { LandingSections } from "@/app/lib";
 import { InfoGrid } from "@/app/ui/sections/About/components/InfoGrid";
 
 export const About = () => (
-  <section className="grid grid-cols-12 gap-4 place-items-center md:px-4 mb-20">
+  <section
+    id={LandingSections.ABOUT}
+    className="grid grid-cols-12 gap-4 place-items-center md:px-4 mb-20"
+  >
     <div className="col-start-4 col-span-6 flex justify-center">
       <h2 className={"h1"}>About us</h2>
     </div>

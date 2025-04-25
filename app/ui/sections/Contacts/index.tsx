@@ -1,4 +1,5 @@
 "use client";
+import { LandingSections } from "@/app/lib";
 import {
   BackgroundImage,
   Checkbox,
@@ -16,7 +17,10 @@ export const ContactsSection = () => {
   };
 
   return (
-    <section className={"relative flex flex-col justify-center items-center"}>
+    <section
+      id={LandingSections.CONTACTS}
+      className={"relative flex flex-col justify-center items-center"}
+    >
       <BackgroundImage
         imageUrl={"/images/Pattern_left.png"}
         size={{ width: "500px", height: "3600px" }}
