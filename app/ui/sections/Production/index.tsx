@@ -1,6 +1,8 @@
+import { LandingSections } from "@/app/lib";
+
 export const Production = () => {
   return (
-    <section className="bg-white w-full py-10">
+    <section id={LandingSections.PRODUCTION} className="bg-white w-full py-10">
       <div className={"container mx-auto"}>
         <div className={"grid grid-cols-1 md:grid-cols-3 items-center"}>
           <div className={"hidden md:block"}>

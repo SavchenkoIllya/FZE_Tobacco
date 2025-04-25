@@ -29,4 +29,7 @@ export const productTranslationsTable = pgTable("product_translations", {
   title: varchar({ length: 255 }).notNull(),
   subtitle: varchar({ length: 255 }).notNull(),
   description: text(),
+
+  // TODO:
+  // blend: varchar({ length: 255 }),
 });
