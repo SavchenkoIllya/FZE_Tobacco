@@ -1,6 +1,7 @@
 "use client";
 
 import { LandingSections } from "@/app/lib";
+import { safeScroll } from "@/app/ui";
 
 export const ScrollButton = () => {
   return (
@@ -8,15 +9,7 @@ export const ScrollButton = () => {
       type="button"
       className="button !bg-white"
       onClick={() => {
-        const el = document.getElementById(LandingSections.CATALOGUE);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          const scrollTop = window.scrollY + rect.top;
-          window.scrollTo({
-            top: scrollTop,
-            behavior: "smooth",
-          });
-        }
+        safeScroll(LandingSections.CATALOGUE);
       }}
     >
       Welcome to our business
