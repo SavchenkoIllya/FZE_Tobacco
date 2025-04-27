@@ -94,7 +94,7 @@ export default function ScrollIndicator() {
   }, [active]);
 
   return (
-    <div className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col items-center">
+    <div className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col items-center">
       <div className="relative w-4 h-80 flex flex-col justify-between items-center">
         {/* Линия с дырками */}
         <svg

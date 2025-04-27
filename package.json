@@ -11,6 +11,7 @@
     "seed": "npx tsx app/db/scripts/seed.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.797.0",
     "@types/jsonwebtoken": "^9.0.9",
     "bcryptjs": "^3.0.2",
     "clsx": "^2.1.1",
