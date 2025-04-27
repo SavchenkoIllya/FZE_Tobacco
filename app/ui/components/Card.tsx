@@ -33,7 +33,11 @@ export const ProductCard = () => {
       >
         <div className={"border-b-2 border-accent"}>
           <div className={"flex justify-center items-center p-4"}>
-            <img src={"/delete/Pull.png"} width={200} height={250} />
+            <img
+              src={`http://localhost:9000/products-images/Pull.png`}
+              width={200}
+              height={250}
+            />
           </div>
           <h4 className={"h2 !text-black !text-xl !leading-6 truncate"}>
             Pull De Luxe Nano Gold
