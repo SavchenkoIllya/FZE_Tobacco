@@ -11,6 +11,7 @@ export const productsTable = pgTable("products", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   category: varchar({ length: 255 }).notNull(),
   cigarette_length: varchar({ length: 255 }),
+  brand: varchar({ length: 255 }).notNull(),
   tobacco_part_length: varchar({ length: 255 }),
   filter_length: varchar({ length: 255 }),
   diameter: varchar({ length: 255 }),

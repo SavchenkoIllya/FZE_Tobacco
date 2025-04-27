@@ -1,9 +1,12 @@
-export const products = [
+import { Product, ProductTranslation } from "@/app/db/types";
+
+export const products: Product["insert"][] = [
   {
     category: "Cigarettes",
     cigarette_length: "85mm",
     tobacco_part_length: "70mm",
     filter_length: "15mm",
+    brand: "Pull",
     diameter: "8mm",
     nicotine: "1.1mg",
     tar: "10mg",
@@ -15,6 +18,7 @@ export const products = [
     cigarette_length: "100mm",
     tobacco_part_length: "80mm",
     filter_length: "20mm",
+    brand: "Pull",
     diameter: "9mm",
     nicotine: "1.3mg",
     tar: "12mg",
@@ -25,6 +29,7 @@ export const products = [
     category: "Cigars",
     cigarette_length: "120mm",
     tobacco_part_length: "100mm",
+    brand: "Bacio",
     filter_length: "20mm",
     diameter: "11mm",
     nicotine: "2.5mg",
@@ -38,6 +43,7 @@ export const products = [
     tobacco_part_length: "120mm",
     filter_length: "30mm",
     diameter: "12mm",
+    brand: "Bacio",
     nicotine: "2.8mg",
     tar: "18mg",
     filter_parameters: "Luxury filter",
@@ -45,7 +51,7 @@ export const products = [
   },
 ];
 
-export const productTranslations = [
+export const productTranslations: ProductTranslation["insert"][] = [
   {
     product_id: 1, // ID продукта 1
     locale: "en", // Английский язык

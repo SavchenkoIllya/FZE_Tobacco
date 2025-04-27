@@ -8,7 +8,7 @@ import {
 } from "@/app/ui";
 import ScrollIndicator from "@/app/ui/components/ScrollIndicator/ScrollIndicator";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className={"overflow-hidden"}>
       <ScrollIndicator />
