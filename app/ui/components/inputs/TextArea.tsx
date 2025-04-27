@@ -18,8 +18,8 @@ export const Textarea = ({
     "flex items-start w-full border rounded-2xl px-4 py-2 gap-2"; // use items-start for textarea
   const variantStyles =
     variant === "black"
-      ? "bg-black text-white border-white placeholder-white"
-      : "bg-white text-black border-black placeholder-black";
+      ? "bg-secondary text-primary border-primary placeholder-primary"
+      : "bg-primary text-secondary border-secondary placeholder-secondary";
 
   const handleTextareaChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     onChange(e.target.value);

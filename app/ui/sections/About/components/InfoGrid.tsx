@@ -10,7 +10,7 @@ export const InfoGrid = ({ cardsCount }: InfoGridProps) => {
       <div
         key={index}
         className={`
-        border-[#B08951] border-b-2 border-r-2
+        border-accent border-b-2 border-r-2
         sm:[&:not(:nth-child(4n))]:border-r-2
         sm:[&:nth-child(4n)]:border-r-0
         sm:[&:not(:nth-child(4n+1))]:border-l-2
@@ -25,7 +25,7 @@ export const InfoGrid = ({ cardsCount }: InfoGridProps) => {
   });
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-[#B08951] mt-20">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-accent mt-20">
       {cards}
     </div>
   );

@@ -18,19 +18,19 @@ export const Burger = ({ open, onClick }: BurgerProps) => {
           >
             <div
               className={cn(
-                "bg-white h-[2px] w-7 transform transition-all duration-300 origin-left delay-150",
+                "bg-primary h-[2px] w-7 transform transition-all duration-300 origin-left delay-150",
                 open && "rotate-[42deg] w-2/3",
               )}
             />
             <div
               className={cn(
-                "bg-white h-[2px] w-7 rounded transform transition-all duration-300",
+                "bg-primary h-[2px] w-7 rounded transform transition-all duration-300",
                 open && "translate-x-10",
               )}
             />
             <div
               className={cn(
-                "bg-white h-[2px] w-7 transform transition-all duration-300 origin-left delay-150",
+                "bg-primary h-[2px] w-7 transform transition-all duration-300 origin-left delay-150",
                 open && "-rotate-[42deg] w-2/3",
               )}
             />

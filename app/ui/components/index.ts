@@ -2,6 +2,7 @@ export * from "./buttons";
 export * from "./icons";
 export * from "./inputs";
 
+export * from "./AgeModal";
 export * from "./BackgroundImage";
 export * from "./Card";
 export * from "./Contacts.List";

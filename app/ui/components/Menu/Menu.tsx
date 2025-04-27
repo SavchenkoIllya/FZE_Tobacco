@@ -1,13 +1,23 @@
 import { MenuFilterKeys } from "@/app/lib";
-import { GroupDropdown } from "@/app/ui";
-import { MenuFiltersProps } from "@/app/ui/sections/Catalogue/components";
+import { cn, GroupDropdown, MenuFilterProps, VariantProp } from "@/app/ui";
 
-export function Menu({ menuFilters }: Readonly<MenuFiltersProps>) {
+export function Menu({
+  menuFilters,
+  variant = "dark",
+}: MenuFilterProps & Partial<VariantProp>) {
+  console.log(variant);
   return (
     <div className={"border-r-3 border-accent h-full"}>
       <div className={"flex gap-2"}>
         <img src={"/icons/filter.svg"} />
-        <h3 className={"h2 !text-3xl !text-black"}>Filters</h3>
+        <h3
+          className={cn(
+            "h2 !text-3xl",
+            variant === "light" ? "!text-primary" : "!text-secondary",
+          )}
+        >
+          Filters
+        </h3>
       </div>
       <div
         className={
@@ -19,6 +29,7 @@ export function Menu({ menuFilters }: Readonly<MenuFiltersProps>) {
             key={key}
             title={key}
             values={menuFilters[key as MenuFilterKeys]}
+            variant={variant}
           />
         ))}
       </div>

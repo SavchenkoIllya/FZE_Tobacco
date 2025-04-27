@@ -21,7 +21,7 @@ export function Header() {
       className={cn(
         "fixed top-0 w-[100dvw] z-20 transition-all duration-300",
         isScrolled
-          ? "bg-gradient-to-b from-black/70 to-transparent"
+          ? "bg-gradient-to-b from-secondary/70 to-transparent"
           : "bg-transparent",
       )}
     >

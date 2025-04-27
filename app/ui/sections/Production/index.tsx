@@ -2,7 +2,10 @@ import { LandingSections } from "@/app/lib";
 
 export const Production = () => {
   return (
-    <section id={LandingSections.PRODUCTION} className="bg-white w-full py-10">
+    <section
+      id={LandingSections.PRODUCTION}
+      className="bg-primary w-full py-10"
+    >
       <div className={"container mx-auto"}>
         <div className={"grid grid-cols-1 md:grid-cols-3 items-center"}>
           <div className={"hidden md:block"}>
@@ -14,7 +17,7 @@ export const Production = () => {
           </div>
 
           <div className="flex flex-col items-center justify-center text-center p-8">
-            <h1 className="h1 !text-black">Let&#39;s grow up together!</h1>
+            <h1 className="h1 !text-secondary">Let&#39;s grow up together!</h1>
             <p className="text-lg mb-6">
               We are ISO certificaed and produce world class products that cater
               to various consumers with different style and taste preferences.
@@ -22,7 +25,9 @@ export const Production = () => {
               genuine products which are passed on to generations to continue
               our formidable legacy.
             </p>
-            <button className={"button !bg-black !text-white"}>Click me</button>
+            <button className={"button !bg-secondary !text-primary"}>
+              Click me
+            </button>
           </div>
 
           <div className={"hidden md:block"}>

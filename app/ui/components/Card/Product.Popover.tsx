@@ -33,13 +33,17 @@ export const ProductPopover = ({ open, onClose }: ProductPopoverProps) => {
   return (
     <div
       className={cn(
-        "fixed inset-0 w-full h-full z-60 bg-black-70 backdrop-blur-2xl transition-all duration-500",
+        "fixed inset-0 w-full h-full z-100 bg-black-70 backdrop-blur-2xl transition-all duration-500",
         open
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none",
       )}
     >
-      <div className={"w-full h-full flex justify-center items-center"}>
+      <div
+        className={
+          "w-full h-full flex flex-col md:flex-row justify-center items-center"
+        }
+      >
         <div>
           <ProductImage
             image_url={product?.product.image_url ?? undefined}
