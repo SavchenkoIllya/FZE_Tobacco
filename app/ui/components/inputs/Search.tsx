@@ -1,22 +1,13 @@
 "use client";
-import { Input, Lookup } from "@/app/ui";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useDebouncedCallback } from "use-debounce";
+import { Input, Lookup, useUrlParams } from "@/app/ui";
 
 export const Search = () => {
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
+  const { setParamDebounced, getParam } = useUrlParams(500);
+  const searchValue = getParam("query") || "";
 
-  const handleSearch = useDebouncedCallback((term) => {
-    const params = new URLSearchParams(searchParams);
-    if (term) {
-      params.set("query", term);
-    } else {
-      params.delete("query");
-    }
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
-  }, 300);
+  const handleSearch = (term: string) => {
+    setParamDebounced("query", term);
+  };
 
   return (
     <Input
@@ -25,7 +16,7 @@ export const Search = () => {
       }}
       variant={"white"}
       icon={<Lookup />}
-      defaultValue={searchParams.get("query")?.toString()}
+      defaultValue={searchValue}
     />
   );
 };

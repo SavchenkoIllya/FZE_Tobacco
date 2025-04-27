@@ -1,10 +1,21 @@
 "use client";
-import { cn } from "@/app/ui";
+import { cn, useUrlParams } from "@/app/ui";
 import Image from "next/image";
 import { useState } from "react";
 
-export const GroupDropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export const GroupDropdown = ({
+  title,
+  values,
+}: {
+  title: string;
+  values: string[];
+}) => {
+  const { getParam, setParam } = useUrlParams(0);
+  const param = getParam(title);
+
+  const [isOpen, setIsOpen] = useState(
+    values.some((el) => el.toLowerCase() === param),
+  );
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -16,7 +27,7 @@ export const GroupDropdown = () => {
         onClick={toggleDropdown}
         className="w-full text-black text-left font-semibold py-2 pr-6 rounded-md flex justify-between"
       >
-        <p>Открыть список</p>
+        <p className={"capitalize"}>{title}</p>
         <Image
           width={10}
           height={10}
@@ -32,9 +43,23 @@ export const GroupDropdown = () => {
             : "max-h-0 opacity-0 scale-95 pointer-events-none",
         )}
       >
-        <button className="w-full text-left px-4 text-black hover:text-accent focus:outline-none transition-all duration-200">
-          Кнопка 1
-        </button>
+        {values.map((item, idx) => {
+          const handleSelectParam = () => {
+            setParam(title, item);
+          };
+          return (
+            <button
+              key={idx + item}
+              className={cn(
+                "w-full text-left px-4 text-black hover:text-accent focus:outline-none transition-all duration-200 cursor-pointer",
+                item.toLowerCase() === param?.toLowerCase() && "text-accent",
+              )}
+              onClick={handleSelectParam}
+            >
+              {item}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

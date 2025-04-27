@@ -1,29 +1,32 @@
 "use client";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { cn, useUrlParams } from "@/app/ui";
 
 export const ProductCard = () => {
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
-  const params = new URLSearchParams(searchParams);
-  const open = Boolean(params.get("modal"));
+  const { setParam, getParam, removeParam } = useUrlParams(0);
+  const open = !!getParam("modal") || false;
 
   const handleOpen = () => {
-    params.set("modal", "true");
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
+    setParam("modal", "true");
   };
 
-  // TODO: pass into modal
   const handleClose = () => {
-    params.set("modal", "false");
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
+    removeParam("modal");
   };
 
   return (
     <>
-      {open && (
-        <div className={"fixed inset-0 w-full h-full z-20 bg-red-400"}>123</div>
-      )}
+      <div
+        className={cn(
+          "fixed inset-0 w-full h-full z-60 bg-black-50 backdrop-blur-2xl transition-all duration-500",
+          open
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none",
+        )}
+      >
+        <button className={"text-white"} onClick={handleClose}>
+          Click me
+        </button>
+      </div>
       <button
         className={
           "text-left flex flex-col cursor-pointer hover:bg-zinc-50 p-8 rounded-2xl transition-all"

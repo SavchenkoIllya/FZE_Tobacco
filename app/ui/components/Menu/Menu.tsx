@@ -1,6 +1,10 @@
 import { GroupDropdown } from "@/app/ui";
+import {
+  MenuFilterKeys,
+  MenuFiltersProps,
+} from "@/app/ui/sections/Catalogue/components";
 
-export const Menu = () => {
+export function Menu({ menuFilters }: MenuFiltersProps) {
   return (
     <div className={"border-r-3 border-accent h-full"}>
       <div className={"flex gap-2"}>
@@ -12,16 +16,14 @@ export const Menu = () => {
           "flex flex-col p-8 pb-30 gap-2 overflow-y-scroll h-full scrollbar-hide"
         }
       >
-        <GroupDropdown />
-        <GroupDropdown />
-        <GroupDropdown />
-        <GroupDropdown />
-        <GroupDropdown />
-        <GroupDropdown />
-        <GroupDropdown />
-        <GroupDropdown />
-        <GroupDropdown />
+        {Object.keys(menuFilters).map((key) => (
+          <GroupDropdown
+            key={key}
+            title={key}
+            values={menuFilters[key as MenuFilterKeys]}
+          />
+        ))}
       </div>
     </div>
   );
-};
+}
