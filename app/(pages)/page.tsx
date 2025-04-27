@@ -6,7 +6,7 @@ import {
   Hero,
   Production,
 } from "@/app/ui";
-import ScrollIndicator from "@/app/ui/components/ScrollIndicator";
+import ScrollIndicator from "@/app/ui/components/ScrollIndicator/ScrollIndicator";
 
 export default function Home() {
   return (
