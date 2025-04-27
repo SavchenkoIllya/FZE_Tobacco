@@ -1,10 +1,8 @@
+import { MenuFilterKeys } from "@/app/lib";
 import { GroupDropdown } from "@/app/ui";
-import {
-  MenuFilterKeys,
-  MenuFiltersProps,
-} from "@/app/ui/sections/Catalogue/components";
+import { MenuFiltersProps } from "@/app/ui/sections/Catalogue/components";
 
-export function Menu({ menuFilters }: MenuFiltersProps) {
+export function Menu({ menuFilters }: Readonly<MenuFiltersProps>) {
   return (
     <div className={"border-r-3 border-accent h-full"}>
       <div className={"flex gap-2"}>

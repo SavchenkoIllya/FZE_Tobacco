@@ -8,6 +8,7 @@ export * from "./Contacts.List";
 export * from "./Header";
 export * from "./InfoCard";
 export * from "./labels";
+export * from "./Loader";
 export * from "./Menu";
 export * from "./ScrollIndicator";
 export * from "./Slider";

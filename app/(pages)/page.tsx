@@ -1,3 +1,4 @@
+import { MenuFilterKeys, SearchParamsNames } from "@/app/lib";
 import {
   About,
   CatalogueSection,
@@ -5,10 +6,18 @@ import {
   Header,
   Hero,
   Production,
+  ScrollIndicator,
 } from "@/app/ui";
-import ScrollIndicator from "@/app/ui/components/ScrollIndicator/ScrollIndicator";
 
-export default async function Home() {
+export type HomePageSearchParams = Partial<
+  Record<SearchParamsNames | MenuFilterKeys, string | undefined>
+>;
+
+export type HomePageProps = Readonly<{
+  searchParams?: Promise<HomePageSearchParams>;
+}>;
+
+export default function Home(props: HomePageProps) {
   return (
     <main className={"overflow-hidden"}>
       <ScrollIndicator />
@@ -21,7 +30,7 @@ export default async function Home() {
         <Header />
         <Hero />
         <About />
-        <CatalogueSection />
+        <CatalogueSection searchParams={props.searchParams} />
         <Production />
         <ContactsSection />
       </div>

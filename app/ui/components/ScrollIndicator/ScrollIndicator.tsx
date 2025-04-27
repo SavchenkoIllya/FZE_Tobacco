@@ -6,7 +6,7 @@ import {
 } from "@/app/ui/components/ScrollIndicator";
 import { useEffect, useRef, useState } from "react";
 
-export default function ScrollIndicator() {
+export function ScrollIndicator() {
   const [active, setActive] = useState<string | null>(null);
   const [tooltipVisible, setTooltipVisible] = useState<number | null>(null);
   const activeTimeoutRef = useRef<NodeJS.Timeout | null>(null);

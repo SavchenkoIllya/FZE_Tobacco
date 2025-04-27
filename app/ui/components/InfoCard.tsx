@@ -1,28 +1,7 @@
-interface InfoCardProps {
-  showBorderTop?: boolean;
-  showBorderRight?: boolean;
-  showBorderBottom?: boolean;
-  showBorderLeft?: boolean;
-}
-
-export const InfoCard = ({
-  showBorderTop = false,
-  showBorderRight = true,
-  showBorderBottom = true,
-  showBorderLeft = false,
-}: InfoCardProps) => {
-  const borderClasses = [
-    showBorderTop ? "border-t-2" : "",
-    showBorderRight ? "border-r-2" : "",
-    showBorderBottom ? "border-b-2" : "",
-    showBorderLeft ? "border-l-2" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
-
+export const InfoCard = () => {
   return (
     <div
-      className={`relative overflow-hidden flex flex-col items-center justify-center px-4 py-4 group cursor-pointer`}
+      className={`relative overflow-hidden flex flex-col items-center justify-center px-4 py-4 group`}
     >
       <div className="absolute inset-0 bg-gradient-to-tl from-[#B08951] to-[#000000] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"></div>
 
