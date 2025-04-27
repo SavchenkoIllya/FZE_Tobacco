@@ -1,15 +1,16 @@
 "use client";
-import { cn, useUrlParams } from "@/app/ui";
+import { cn, useUrlParams, VariantProp } from "@/app/ui";
 import Image from "next/image";
 import { useState } from "react";
 
 export const GroupDropdown = ({
   title,
   values,
+  variant = "dark",
 }: {
   title: string;
   values: string[];
-}) => {
+} & Partial<VariantProp>) => {
   const { getParam, setParam } = useUrlParams(0);
   const param = getParam(title);
 
@@ -25,7 +26,10 @@ export const GroupDropdown = ({
     <div className="text-left">
       <button
         onClick={toggleDropdown}
-        className="w-full text-black text-left font-semibold py-2 pr-6 rounded-md flex justify-between"
+        className={cn(
+          "w-full text-left font-semibold py-2 pr-6 rounded-md flex justify-between",
+          variant === "dark" ? "text-secondary" : "text-primary",
+        )}
       >
         <p className={"capitalize"}>{title}</p>
         <Image
@@ -33,6 +37,7 @@ export const GroupDropdown = ({
           height={10}
           src={"/icons/chevron.svg"}
           alt={"chevron icon"}
+          className={cn(variant === "light" && "invert")}
         />
       </button>
       <div
@@ -51,7 +56,8 @@ export const GroupDropdown = ({
             <button
               key={idx + item}
               className={cn(
-                "w-full text-left px-4 text-black hover:text-accent focus:outline-none transition-all duration-200 cursor-pointer",
+                "w-full text-left px-4 hover:text-accent focus:outline-none transition-all duration-200 cursor-pointer",
+                variant === "dark" ? "text-secondary" : "text-primary",
                 item.toLowerCase() === param?.toLowerCase() && "text-accent",
               )}
               onClick={handleSelectParam}

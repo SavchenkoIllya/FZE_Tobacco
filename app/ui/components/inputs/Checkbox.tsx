@@ -23,7 +23,7 @@ export const Checkbox = ({ checked, onChange, label, icon }: CheckboxProps) => {
           onChange={handleCheckboxChange}
           className="peer absolute inset-0 opacity-0 cursor-pointer"
         />
-        <div className="w-full h-full border-2 border-white rounded-sm flex items-center justify-center transition">
+        <div className="w-full h-full border-2 border-primary rounded-sm flex items-center justify-center transition">
           <svg
             className={cn(
               "w-3 h-3 text-accent transition-all",
@@ -39,7 +39,7 @@ export const Checkbox = ({ checked, onChange, label, icon }: CheckboxProps) => {
         </div>
       </div>
       {icon}
-      <span className="text-white">{label}</span>
+      <span className="text-primary">{label}</span>
     </label>
   );
 };

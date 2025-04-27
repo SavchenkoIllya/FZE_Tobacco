@@ -8,6 +8,7 @@ interface SearchInputProps {
   placeholder?: string;
   icon?: ReactNode;
   defaultValue?: string;
+  type?: HTMLInputElement["type"];
 }
 
 export const Input = ({
@@ -16,11 +17,12 @@ export const Input = ({
   placeholder = "Search...",
   icon,
   defaultValue,
+  ...props
 }: SearchInputProps) => {
   const variantStyles =
     variant === "black"
-      ? "bg-black text-white border-white placeholder-white"
-      : "bg-white text-black border-black placeholder-black";
+      ? "bg-secondary text-primary border-primary placeholder-primary"
+      : "bg-primary text-secondary border-secondary placeholder-secondary";
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
@@ -39,6 +41,7 @@ export const Input = ({
         onChange={handleInputChange}
         className="bg-transparent outline-none flex-1"
         defaultValue={defaultValue}
+        {...props}
       />
       {icon}
     </div>

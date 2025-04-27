@@ -2,15 +2,17 @@
 
 @theme {
   --color-accent: #b08951;
+  --color-primary: #ffffff;
+  --color-secondary: #232323
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #000;
+  background-color: #232323;
 }
 
 .h1 {
-  @apply text-white font-bold text-5xl tracking-wider leading-[4.5rem];
+  @apply text-primary font-bold text-5xl tracking-wider leading-[4.5rem];
 }
 
 .h2 {

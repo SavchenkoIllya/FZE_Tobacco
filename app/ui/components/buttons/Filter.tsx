@@ -9,7 +9,7 @@ interface FilterProps {
 export const Filter = ({ onClick }: FilterProps) => {
   return (
     <button
-      className="block md:hidden rounded-full p-2 bg-black flex justify-center items-center cursor-pointer"
+      className="block md:hidden rounded-full p-2 bg-secondary flex justify-center items-center cursor-pointer"
       onClick={onClick}
     >
       <img

@@ -39,7 +39,7 @@ export async function CatalogueSection(props: HomePageProps) {
         <div className="justify-center md:justify-normal grid grid-cols-4 grid-rows-[auto_1fr] h-full">
           <div className="col-span-4 mx-4 md:col-start-3 md:col-span-2 mb-6">
             <div className={"flex gap-2"}>
-              <SliderMenu />
+              <SliderMenu menuFilters={menuFilters} />
               <Search />
             </div>
           </div>

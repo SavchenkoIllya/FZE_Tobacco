@@ -31,7 +31,7 @@ export const ContactsSection = () => {
         size={{ width: "500px", height: "1800px" }}
         position={{ right: "0", bottom: "0" }}
       />
-      <div className="-z-1 absolute w-[1250px] h-[500px] bg-gradient-to-b from-accent to-black opacity-30 rounded-full blur-3xl -bottom-[440px] animate-pulse [animation-duration:5s]" />
+      <div className="-z-1 absolute w-[1250px] h-[500px] bg-gradient-to-b from-accent to-secondary opacity-30 rounded-full blur-3xl -bottom-[440px] animate-pulse [animation-duration:5s]" />
       <h1 className={"h1 mt-8"}>Contacts</h1>
 
       <div className={"flex flex-wrap gap-2"}>
@@ -42,18 +42,21 @@ export const ContactsSection = () => {
           >
             <div className={"flex flex-col md:flex-row items-center gap-2"}>
               <Input
-                placeholder={"Email"}
+                placeholder={"Name"}
                 variant={"black"}
                 onChange={() => {}}
+                type={"text"}
               />
               <Input
                 placeholder={"Phone"}
                 variant={"black"}
+                type={"phone"}
                 onChange={() => {}}
               />
             </div>
             <Input
-              placeholder={"phone"}
+              placeholder={"Email"}
+              type={"email"}
               variant={"black"}
               onChange={() => {}}
             />
@@ -67,7 +70,7 @@ export const ContactsSection = () => {
             />
             <button
               type={"submit"}
-              className={"button !w-full !bg-white !text-black"}
+              className={"button !w-full !bg-primary !text-secondary"}
             >
               Contact us
             </button>

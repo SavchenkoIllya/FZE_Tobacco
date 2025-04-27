@@ -1,0 +1,59 @@
+"use client";
+import { cn } from "@/app/ui";
+import { useEffect, useState } from "react";
+
+export const AgeModal = () => {
+  const [open, setOpen] = useState(true);
+
+  useEffect(() => {
+    open
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "");
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div
+      className={cn(
+        "absolute inset-0 backdrop-blur-3xl z-200",
+        open
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none",
+      )}
+    >
+      <div className={"flex h-full w-full justify-center items-center"}>
+        <div className={"p-16 bg-primary rounded-3xl max-w-2xl"}>
+          <h1 className={"h1 !text-accent"}>Hello dear Visitor</h1>
+          <p>
+            You are about to visit site regarding tobacco and smoking content,
+            by clicking you are going to otsosat moyu valinu
+          </p>
+          <div className={"mt-4 flex justify-between"}>
+            <button
+              onClick={handleClose}
+              className={
+                "button !bg-secondary !text-primary !hover:bg-secondary !w-full"
+              }
+            >
+              Go
+            </button>
+            <button
+              onClick={() => {
+                window.close();
+              }}
+              className={"cursor-pointer hover:underline w-full"}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
