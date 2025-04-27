@@ -14,3 +14,10 @@ export type ProductTranslation = {
   select: typeof tables.productTranslationsTable.$inferSelect;
   insert: typeof tables.productTranslationsTable.$inferInsert;
 };
+
+export type ProductsWithLocales = {
+  select: {
+    product: Product["select"];
+    locales?: ProductTranslation["select"][];
+  };
+};

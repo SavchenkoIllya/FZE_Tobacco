@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/app/ui";
 import { ContactsList, SliderNavigation } from "@/app/ui/components";
 import { useEffect, useState } from "react";
 
@@ -17,9 +18,12 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 w-[100dvw] z-20 transition-colors duration-300 ${
-        isScrolled ? "bg-gradient-to-b from-black/70 to-transparent" : ""
-      }`}
+      className={cn(
+        "fixed top-0 w-[100dvw] z-20 transition-all duration-300",
+        isScrolled
+          ? "bg-gradient-to-b from-black/70 to-transparent"
+          : "bg-transparent",
+      )}
     >
       <div className="container m-auto">
         <div className="flex items-center justify-between mx-8 my-4">

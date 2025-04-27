@@ -1,3 +1,2 @@
-export * from "./Catalogue.Section.View";
-export * from "./Catalogue.Section.Wrapper";
+export * from "./Products.List";
 export * from "./Slider.Menu";
