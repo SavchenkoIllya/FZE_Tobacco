@@ -7,6 +7,7 @@ import {
   Input,
   Textarea,
 } from "@/app/ui";
+import { Map } from "@/app/ui/components/Map";
 import { useState } from "react";
 
 export const ContactsSection = () => {
@@ -76,7 +77,9 @@ export const ContactsSection = () => {
             </button>
           </form>
         </div>
-        <div>Map is here</div>
+        <div>
+          <Map />
+        </div>
       </div>
       <div className={"my-8"}>
         <ContactsList />
