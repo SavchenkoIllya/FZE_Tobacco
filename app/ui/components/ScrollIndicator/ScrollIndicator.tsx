@@ -8,7 +8,6 @@ import { useEffect, useRef, useState } from "react";
 
 export function ScrollIndicator() {
   const [active, setActive] = useState<string | null>(null);
-  const [tooltipVisible, setTooltipVisible] = useState<number | null>(null);
   const activeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -133,37 +132,39 @@ export function ScrollIndicator() {
 
         {/* Кружки поверх */}
         {sections.map((section, idx) => (
-          <button
+          <ScrollIndicatorTooltip
+            label={section.label}
+            placement={"left"}
             key={section.id}
-            className="relative z-10"
-            onMouseEnter={() => setTooltipVisible(idx)}
-            onMouseLeave={() => setTooltipVisible(null)}
-            onClick={() => safeScroll(section.id)}
-            style={{
-              position: "absolute",
-              top: `${(100 / (sections.length - 1)) * idx}%`,
-              transform: "translate(-50%, -50%)",
-              left: "50%",
-            }}
           >
-            <div
-              className={cn(
-                "w-3 h-3 rounded-full border cursor-pointer transition-all duration-300",
-                active === section.id
-                  ? "bg-accent border-accent"
-                  : "border-accent bg-transparent",
-              )}
+            <button
+              className="relative z-10"
+              onClick={() => safeScroll(section.id)}
               style={{
-                boxShadow:
-                  active === section.id ? "0 0 8px 2px var(--accent)" : "none",
-                transition: "box-shadow 0.3s ease, background-color 0.3s ease",
+                position: "absolute",
+                top: `${(100 / (sections.length - 1)) * idx}%`,
+                transform: "translate(-50%, -50%)",
+                left: "50%",
               }}
-            />
-
-            {tooltipVisible === idx && (
-              <ScrollIndicatorTooltip label={section.label} />
-            )}
-          </button>
+            >
+              <div
+                className={cn(
+                  "w-3 h-3 rounded-full border cursor-pointer transition-all duration-300",
+                  active === section.id
+                    ? "bg-accent border-accent"
+                    : "border-accent bg-transparent",
+                )}
+                style={{
+                  boxShadow:
+                    active === section.id
+                      ? "0 0 8px 2px var(--accent)"
+                      : "none",
+                  transition:
+                    "box-shadow 0.3s ease, background-color 0.3s ease",
+                }}
+              />
+            </button>
+          </ScrollIndicatorTooltip>
         ))}
       </div>
     </div>

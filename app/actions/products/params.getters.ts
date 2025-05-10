@@ -1,7 +1,7 @@
 "use server";
 import { db } from "@/app/db";
 import { productsTable, productTranslationsTable } from "@/app/db/schema";
-import { eq, sql } from "drizzle-orm";
+import { eq, getTableName, sql } from "drizzle-orm";
 
 export const getCategories = async () => {
   const categories = await db
@@ -32,4 +32,12 @@ export const getBlends = async () => {
     .where(eq(productTranslationsTable.locale, "en"));
 
   return blends.map((blend) => blend.blend as string);
+};
+
+export const getProductFields = async () => {
+  const fields = await db.execute(
+    sql`SELECT column_name FROM information_schema.columns WHERE table_name = ${getTableName(productsTable)};`,
+  );
+
+  console.log(fields);
 };
