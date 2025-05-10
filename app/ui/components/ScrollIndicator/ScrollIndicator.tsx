@@ -13,7 +13,6 @@ export function ScrollIndicator() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Находим все секции и их позиции
       const sectionElements = sections
         .map((section) => {
           const element = document.getElementById(section.id);

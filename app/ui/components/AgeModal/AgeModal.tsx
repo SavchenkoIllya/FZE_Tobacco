@@ -6,9 +6,11 @@ export const AgeModal = () => {
   const [open, setOpen] = useState(true);
 
   useEffect(() => {
-    open
-      ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow = "");
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
     return () => {
       document.body.style.overflow = "";
     };
@@ -21,7 +23,7 @@ export const AgeModal = () => {
   return (
     <div
       className={cn(
-        "absolute inset-0 backdrop-blur-3xl z-200",
+        "fixed inset-0 backdrop-blur-3xl z-200",
         open
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none",
