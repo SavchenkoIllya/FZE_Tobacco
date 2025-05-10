@@ -1,7 +1,11 @@
-export default function MainAdmin() {
+import { getProductFields } from "@/app/actions";
+
+export default async function MainAdmin() {
+  await getProductFields();
+
   return (
-    <main className={"dashboard_bg"}>
+    <div>
       <div>123</div>
-    </main>
+    </div>
   );
 }
