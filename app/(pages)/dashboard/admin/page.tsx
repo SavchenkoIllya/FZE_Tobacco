@@ -1,11 +1,9 @@
-import { getProductFields } from "@/app/actions";
+import { Dashboard } from "@/app/ui/admin";
 
-export default async function MainAdmin() {
-  await getProductFields();
-
+export default async function MainAdminPage() {
   return (
     <div>
-      <div>123</div>
+      <Dashboard />
     </div>
   );
 }
