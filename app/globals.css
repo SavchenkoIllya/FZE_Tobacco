@@ -33,7 +33,7 @@ html {
 }
 
 .dashboard_bg{
-  @apply bg-white  min-h-[100dvh] min-w-[100dvw]
+  @apply bg-zinc-50  min-h-[100dvh] min-w-[100dvw]
 }
 
 .dashboard_input {

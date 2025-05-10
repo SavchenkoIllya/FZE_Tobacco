@@ -2,7 +2,7 @@
 import { db } from "@/app/db";
 import { productsTable, productTranslationsTable } from "@/app/db/schema";
 import { Product, ProductTranslation } from "@/app/db/types";
-import { and, eq, ilike, or, sql, SQL } from "drizzle-orm";
+import { and, count, eq, ilike, or, sql, SQL } from "drizzle-orm";
 
 export type ProductFilters = Partial<{
   category: string;
@@ -122,4 +122,13 @@ export async function getProductById(id: number) {
   if (!result) return [];
 
   return formatProductsWithLocales(result)[0];
+}
+
+export async function getProductsCount() {
+  const result = await db.select({ count: count() }).from(productsTable);
+
+  // TODO: error message
+  if (!result) return;
+
+  return result[0].count;
 }

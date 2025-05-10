@@ -1,8 +1,9 @@
-import { COOKIES_NAMES } from "@/app/lib";
-import { Breadcrumbs, Navbar, NAVBAR_WIDTH } from "@/app/ui/admin";
+import { COOKIES_NAMES, NAVBAR_WIDTH } from "@/app/lib";
+import { Breadcrumbs } from "@/app/ui/admin";
+import Navbar from "@/app/ui/admin/components/Navbar/Navbar";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { ReactNode } from "react";
+import { Fragment, ReactNode } from "react";
 
 export default async function AdminDashboardLayout({
   children,
@@ -17,12 +18,14 @@ export default async function AdminDashboardLayout({
   }
 
   return (
-    <>
+    <Fragment>
       <Navbar />
       <div style={{ marginLeft: NAVBAR_WIDTH }} className={"p-8"}>
-        <Breadcrumbs />
+        <div className={"mb-8"}>
+          <Breadcrumbs />
+        </div>
         {children}
       </div>
-    </>
+    </Fragment>
   );
 }
