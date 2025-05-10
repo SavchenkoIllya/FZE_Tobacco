@@ -1,22 +1,9 @@
 "use client";
 import { LandingSections } from "@/app/lib";
-import {
-  BackgroundImage,
-  Checkbox,
-  ContactsList,
-  Input,
-  Textarea,
-} from "@/app/ui";
-import { Map } from "@/app/ui/components/Map";
-import { useState } from "react";
+import { BackgroundImage, ContactsList, Input, Textarea } from "@/app/ui";
+import { MapComponent } from "@/app/ui/components/Map";
 
 export const ContactsSection = () => {
-  const [checked, setChecked] = useState(false);
-
-  const handleCheck = () => {
-    setChecked(!checked);
-  };
-
   return (
     <section
       id={LandingSections.CONTACTS}
@@ -62,13 +49,6 @@ export const ContactsSection = () => {
               onChange={() => {}}
             />
             <Textarea variant={"black"} onChange={() => {}} />
-            <Checkbox
-              checked={checked}
-              onChange={handleCheck}
-              label={
-                "Spuntando questa casella ci autorizzi al trattamento dei tuoi dati personali, ne avremo cura."
-              }
-            />
             <button
               type={"submit"}
               className={"button !w-full !bg-primary !text-secondary"}
@@ -77,8 +57,8 @@ export const ContactsSection = () => {
             </button>
           </form>
         </div>
-        <div>
-          <Map />
+        <div className={"md:ml-6"}>
+          <MapComponent />
         </div>
       </div>
       <div className={"my-8"}>
