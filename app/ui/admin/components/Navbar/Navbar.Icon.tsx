@@ -15,7 +15,7 @@ export const NavbarIcon = () => {
         className={
           "block p-3 bg-indigo-100 rounded-full relative cursor-pointer hover:bg-indigo-200 transition duration-200 ease-in-out"
         }
-        href={"/dashboard/admin/products"}
+        href={"/fze-trading/app/dashboard/admin/products"}
       >
         <CustomSvg
           iconName={"CigaretteIcon"}

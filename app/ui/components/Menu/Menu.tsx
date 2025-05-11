@@ -5,7 +5,6 @@ export function Menu({
   menuFilters,
   variant = "dark",
 }: MenuFilterProps & Partial<VariantProp>) {
-  console.log(variant);
   return (
     <div className={"border-r-3 border-accent h-full"}>
       <div className={"flex gap-2"}>

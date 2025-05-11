@@ -1,5 +1,5 @@
 "use server";
-import { HomePageProps } from "@/app/(pages)/page";
+import { HomePageProps } from "@/app/[lang]/page";
 import {
   getBlends,
   getBrands,
@@ -12,7 +12,11 @@ import { ProductsList } from "@/app/ui/sections/Catalogue/components";
 import { SliderMenu } from "@/app/ui/sections/Catalogue/components/Slider.Menu";
 import { Suspense } from "react";
 
-export async function CatalogueSection(props: HomePageProps) {
+export async function CatalogueSection(
+  props: Readonly<{
+    searchParams: HomePageProps["searchParams"];
+  }>,
+) {
   const searchParams = await props.searchParams;
 
   const filters: ProductFilters = {

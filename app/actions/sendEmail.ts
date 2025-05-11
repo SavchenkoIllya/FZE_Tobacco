@@ -1,5 +1,5 @@
 import { IncomingMessage } from "@/app/emailTeamplates";
-import { resend } from "@/app/lib";
+import { resend } from "@/app/lib/resendClient";
 
 export async function sendEmail(email: string): Promise<void> {
   try {

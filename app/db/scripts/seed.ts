@@ -9,7 +9,8 @@ import {
   productTranslations,
 } from "@/app/db/scripts/mocked.Products";
 import { User } from "@/app/db/types";
-import { s3Client, SUCCESS_MESSAGES } from "@/app/lib";
+import { SUCCESS_MESSAGES } from "@/app/lib";
+import { s3Client } from "@/app/lib/s3Client";
 import { hashPassword } from "@/app/utils";
 import { CreateBucketCommand, HeadBucketCommand } from "@aws-sdk/client-s3";
 import { sql } from "drizzle-orm";

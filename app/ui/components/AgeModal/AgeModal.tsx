@@ -30,29 +30,39 @@ export const AgeModal = () => {
       )}
     >
       <div className={"flex h-full w-full justify-center items-center"}>
-        <div className={"p-16 bg-primary rounded-3xl max-w-2xl"}>
-          <h1 className={"h1 !text-accent"}>Hello dear Visitor</h1>
-          <p>
-            You are about to visit site regarding tobacco and smoking content,
-            by clicking you are going to otsosat moyu valinu
-          </p>
-          <div className={"mt-4 flex justify-between"}>
-            <button
-              onClick={handleClose}
-              className={
-                "button !bg-secondary !text-primary !hover:bg-secondary !w-full"
-              }
-            >
-              Go
-            </button>
-            <button
-              onClick={() => {
-                window.close();
-              }}
-              className={"cursor-pointer hover:underline w-full"}
-            >
-              Cancel
-            </button>
+        <div
+          className={cn(
+            "w-full h-full flex flex-col md:flex-row justify-center items-center gap-8",
+            "bg-primary/70",
+            "w-fit h-fit p-20 rounded-4xl",
+            "from-0% to-60%",
+            "shadow-secondary/50 shadow-2xl",
+          )}
+        >
+          <div className={"max-w-2xl"}>
+            <h1 className={"h1 !text-accent"}>Hello dear Visitor</h1>
+            <p>
+              You are about to visit site regarding tobacco and smoking content,
+              by clicking you are going to otsosat moyu valinu
+            </p>
+            <div className={"mt-4 flex justify-between"}>
+              <button
+                onClick={handleClose}
+                className={
+                  "button !bg-secondary !text-primary !hover:bg-secondary !w-full"
+                }
+              >
+                Go
+              </button>
+              <button
+                onClick={() => {
+                  window.close();
+                }}
+                className={"cursor-pointer hover:underline w-full"}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       </div>
