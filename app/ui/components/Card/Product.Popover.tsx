@@ -32,17 +32,28 @@ export const ProductPopover = ({ open, onClose }: ProductPopoverProps) => {
 
   return (
     <div
+      onClick={handleClose}
+      role={"button"}
       className={cn(
         "fixed inset-0 w-full h-full z-100 bg-black-70 backdrop-blur-2xl transition-all duration-500",
+        "flex justify-center items-center",
         open
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none",
       )}
     >
       <div
-        className={
-          "w-full h-full flex flex-col md:flex-row justify-center items-center"
-        }
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+        role={"button"}
+        className={cn(
+          "w-full h-full flex flex-col md:flex-row justify-center items-center gap-8",
+          "bg-primary/40",
+          "w-fit h-fit p-20 rounded-4xl",
+          "from-0% to-60%",
+          "shadow-secondary/50 shadow-2xl",
+        )}
       >
         <div>
           <ProductImage
