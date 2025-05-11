@@ -8,6 +8,8 @@ import {
 } from "@/app/db/types";
 import { and, count, eq, ilike, or, sql, SQL } from "drizzle-orm";
 
+// FIXME error types
+
 export type ProductFilters = Partial<{
   category: string;
   blend: string;

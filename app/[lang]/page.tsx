@@ -12,6 +12,7 @@ import {
 
 export type HomePageProps = Readonly<{
   searchParams?: Promise<HomePageSearchParams>;
+  params: { lang: string };
 }>;
 
 export default function Home(props: HomePageProps) {
