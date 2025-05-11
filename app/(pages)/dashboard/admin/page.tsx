@@ -1,9 +1,9 @@
-import { Dashboard } from "@/app/ui/admin";
+import { AdminDashboard } from "@/app/ui/admin";
 
 export default async function MainAdminPage() {
   return (
     <div>
-      <Dashboard />
+      <AdminDashboard />
     </div>
   );
 }

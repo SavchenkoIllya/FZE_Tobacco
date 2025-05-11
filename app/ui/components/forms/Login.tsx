@@ -1,10 +1,11 @@
 "use client";
 import { login } from "@/app/actions";
+import { FRONTEND_ADMIN_PATHS } from "@/app/lib";
 import { useActionState, useState } from "react";
 
 export const LoginForm = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const callbackUrl = "/dashboard/admin";
+  const callbackUrl = FRONTEND_ADMIN_PATHS.HOME;
 
   const [errorMessage, formAction, isPending] = useActionState(
     login,
@@ -45,9 +46,9 @@ export const LoginForm = () => {
         >
           {isVisible ? "Hide" : "Show"} password
         </button>
-        <a className={"text-blue-600 hover:underline cursor-pointer"}>
-          Create account
-        </a>
+        {/*<a className={"text-blue-600 hover:underline cursor-pointer"}>*/}
+        {/*  Create account*/}
+        {/*</a>*/}
 
         <button
           type={"submit"}

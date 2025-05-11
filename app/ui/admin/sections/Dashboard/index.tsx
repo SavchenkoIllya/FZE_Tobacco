@@ -1,7 +1,7 @@
 import { getProductsCount } from "@/app/actions";
 import { DashboardInfoCard } from "./components";
 
-export async function Dashboard() {
+export async function AdminDashboard() {
   const productsCount = await getProductsCount();
 
   return (
