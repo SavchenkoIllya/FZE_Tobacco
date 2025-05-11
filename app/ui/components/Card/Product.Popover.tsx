@@ -57,7 +57,7 @@ export const ProductPopover = ({ open, onClose }: ProductPopoverProps) => {
       >
         <div>
           <ProductImage
-            image_url={product?.product.image_url ?? undefined}
+            image_url={product?.image_url ?? undefined}
             title={product?.locales?.[0].title}
             width={400}
             height={400}
@@ -68,34 +68,31 @@ export const ProductPopover = ({ open, onClose }: ProductPopoverProps) => {
             <h4 className={"h2 !text-black !text-xl !leading-6 truncate"}>
               {product?.locales?.[0].title}
             </h4>
-            <p>{product?.product.category}</p>
+            <p>{product?.category}</p>
           </div>
           <ProductProperty
             text={product?.locales?.[0].blend ?? undefined}
             icon={"leaf"}
           />
           <ProductProperty
-            text={product?.product.nicotine ?? undefined}
+            text={product?.nicotine ?? undefined}
             icon={"nicotine"}
           />
+          <ProductProperty text={product?.tar ?? undefined} icon={"tar"} />
           <ProductProperty
-            text={product?.product.tar ?? undefined}
-            icon={"tar"}
-          />
-          <ProductProperty
-            text={product?.product.cigarette_length ?? undefined}
+            text={product?.cigarette_length ?? undefined}
             icon={"cigarette_length"}
           />
           <ProductProperty
-            text={product?.product.tobacco_part_length ?? undefined}
+            text={product?.tobacco_part_length ?? undefined}
             icon={"tobacco_length"}
           />
           <ProductProperty
-            text={product?.product.filter_parameters ?? undefined}
+            text={product?.filter_parameters ?? undefined}
             icon={"filter_length"}
           />
           <ProductProperty
-            text={product?.product.filter_length ?? undefined}
+            text={product?.filter_length ?? undefined}
             icon={"filter_length"}
           />
           <button

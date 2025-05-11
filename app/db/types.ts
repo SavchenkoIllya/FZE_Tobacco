@@ -16,8 +16,7 @@ export type ProductTranslation = {
 };
 
 export type ProductsWithLocales = {
-  select: {
-    product: Product["select"];
+  select: Product["select"] & {
     locales?: ProductTranslation["select"][];
   };
 };

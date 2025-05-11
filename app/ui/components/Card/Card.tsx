@@ -14,7 +14,6 @@ export const ProductCard = ({
   product: ProductsWithLocales["select"];
 }) => {
   const translation = product.locales?.length ? product.locales[0] : undefined;
-  const productData = product.product;
 
   const { setMultipleParams, getParam } = useUrlParams(0);
   const open = !!getParam(SearchParamsNames.MODAL) || false;
@@ -22,7 +21,7 @@ export const ProductCard = ({
   const handleOpen = () => {
     setMultipleParams({
       [SearchParamsNames.MODAL]: "true",
-      [SearchParamsNames.PRODUCT_ID]: String(productData.id),
+      [SearchParamsNames.PRODUCT_ID]: String(product.id),
     });
   };
 
@@ -46,14 +45,14 @@ export const ProductCard = ({
         <div className={"border-b-2 border-accent"}>
           <div className={"flex justify-center items-center p-4"}>
             <ProductImage
-              image_url={productData.image_url ?? undefined}
+              image_url={product.image_url ?? undefined}
               title={translation?.title}
             />
           </div>
           <h4 className={"h2 !text-black !text-xl !leading-6 truncate"}>
             {translation?.title}
           </h4>
-          <p>{productData.category}</p>
+          <p>{product.category}</p>
         </div>
         <div className={"mt-4"}>
           <ProductProperty
@@ -61,10 +60,10 @@ export const ProductCard = ({
             icon={"leaf"}
           />
           <ProductProperty
-            text={productData.nicotine ?? undefined}
+            text={product.nicotine ?? undefined}
             icon={"nicotine"}
           />
-          <ProductProperty text={productData.tar ?? undefined} icon={"tar"} />
+          <ProductProperty text={product.tar ?? undefined} icon={"tar"} />
         </div>
       </button>
     </>
