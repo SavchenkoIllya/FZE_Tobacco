@@ -64,7 +64,7 @@ async function createProductsAndTranslations() {
 export async function main() {
   await checkTablesExists();
   await createAdminUser();
-  await ensureBucketExists(process.env.IMAGE_BUCKET_NAME!);
+  await ensureBucketExists(process.env.NEXT_PUBLIC_IMAGE_BUCKET_NAME!);
   await createProductsAndTranslations();
 }
 
