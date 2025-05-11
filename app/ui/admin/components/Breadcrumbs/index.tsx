@@ -31,7 +31,10 @@ export const Breadcrumbs = ({
     <nav className="text-sm text-gray-600" aria-label="Breadcrumb">
       <ol className="flex items-center space-x-1">
         <li>
-          <Link href={crumbs[0].href} className="hover:underline text-blue-600">
+          <Link
+            href={crumbs[0].href}
+            className="hover:underline text-blue-600 capitalize"
+          >
             Home
           </Link>
         </li>
@@ -40,7 +43,7 @@ export const Breadcrumbs = ({
             <li className="mx-1">{separator}</li>
             <li>
               {index === crumbs.length - 2 ? (
-                <span className="text-gray-500">{crumb.label}</span>
+                <span className="text-gray-500 capitalize">{crumb.label}</span>
               ) : (
                 <Link
                   href={crumb.href}

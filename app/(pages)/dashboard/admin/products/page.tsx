@@ -1,3 +1,5 @@
+import { AdminProducts } from "@/app/ui/admin/sections/Products";
+
 export default async function ProductsPage() {
-  return <>123</>;
+  return <AdminProducts />;
 }

@@ -9,10 +9,7 @@ export async function ProductsList({
 }: Readonly<{
   filters: ProductFilters;
 }>) {
-  const [products] = await Promise.all([
-    getFilteredProductsWithTranslations(filters),
-    new Promise((resolve) => setTimeout(resolve, 300)),
-  ]);
+  const products = await getFilteredProductsWithTranslations(filters);
 
   return (
     <div className="p-8 flex flex-wrap gap-8 justify-center">
