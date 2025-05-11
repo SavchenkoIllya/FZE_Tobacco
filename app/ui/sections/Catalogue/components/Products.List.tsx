@@ -16,7 +16,7 @@ export async function ProductsList({
       <FilterLabelContainer />
       {!products.length && <p>Nothing to show</p>}
       {products.map((product) => (
-        <ProductCard key={product.product.id} product={product} />
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );

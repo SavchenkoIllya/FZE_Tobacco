@@ -1,7 +1,11 @@
 "use server";
 import { db } from "@/app/db";
 import { productsTable, productTranslationsTable } from "@/app/db/schema";
-import { Product, ProductTranslation } from "@/app/db/types";
+import {
+  Product,
+  ProductsWithLocales,
+  ProductTranslation,
+} from "@/app/db/types";
 import { and, count, eq, ilike, or, sql, SQL } from "drizzle-orm";
 
 export type ProductFilters = Partial<{
@@ -55,7 +59,7 @@ const formatFilterQuery = (filters?: ProductFilters) => {
 
 const formatProductsWithLocales = (
   productsWithTranslations: ProductsWithTranslations[],
-) => {
+): ProductsWithLocales["select"][] => {
   if (!productsWithTranslations.length) return [];
 
   const productMap = new Map();
@@ -65,7 +69,7 @@ const formatProductsWithLocales = (
 
     if (!productMap.has(productId)) {
       productMap.set(productId, {
-        product: item.product,
+        ...item.product,
         locales: [],
       });
     }
