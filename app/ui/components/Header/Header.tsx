@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/app/ui";
+import { cn, LanguageSwitch } from "@/app/ui";
 import { ContactsList, SliderNavigation } from "@/app/ui/components";
 import { useEffect, useState } from "react";
 
@@ -31,7 +31,10 @@ export function Header() {
           <div>
             <img src="/logo.svg" alt="Tobacco & cigarettes trading logo" />
           </div>
-          <ContactsList wrapperClasses="hidden md:flex gap-4" />
+          <div className={"flex gap-4"}>
+            <ContactsList wrapperClasses="hidden md:flex gap-4" />
+            <LanguageSwitch />
+          </div>
         </div>
       </div>
     </header>
