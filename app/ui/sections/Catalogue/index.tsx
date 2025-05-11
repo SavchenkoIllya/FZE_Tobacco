@@ -12,19 +12,16 @@ import { ProductsList } from "@/app/ui/sections/Catalogue/components";
 import { SliderMenu } from "@/app/ui/sections/Catalogue/components/Slider.Menu";
 import { Suspense } from "react";
 
-export async function CatalogueSection(
-  props: Readonly<{
-    searchParams: HomePageProps["searchParams"];
-  }>,
-) {
+export async function CatalogueSection(props: HomePageProps) {
   const searchParams = await props.searchParams;
+  const locale = await props.params.lang;
 
   const filters: ProductFilters = {
     category: searchParams?.categories || "",
     blend: searchParams?.blends || "",
     brand: searchParams?.brands || "",
     query: searchParams?.query || "",
-    locale: "en",
+    locale: locale ?? "en",
   };
 
   const categories = await getCategories();

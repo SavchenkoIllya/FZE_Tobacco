@@ -29,7 +29,10 @@ export default function Home(props: HomePageProps) {
         <Header />
         <Hero />
         <About />
-        <CatalogueSection searchParams={props.searchParams} />
+        <CatalogueSection
+          searchParams={props.searchParams}
+          params={props.params}
+        />
         <Production />
         <ContactsSection />
       </div>
