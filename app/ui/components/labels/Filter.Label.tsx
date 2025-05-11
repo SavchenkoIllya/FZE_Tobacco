@@ -10,16 +10,24 @@ export const FilterLabel = ({
 }) => {
   const { removeParam } = useUrlParams(0);
 
-  const handleClick = () => {
+  const handleRemove = () => {
     removeParam(title);
   };
 
   return (
-    <button
-      className="flex items-center gap-1 rounded-full bg-black px-4 py-1 text-white text-sm font-medium hover:opacity-80 transition cursor-pointer capitalize"
-      onClick={handleClick}
-    >
-      {title}: {value}
-    </button>
+    <div className="flex items-center gap-2 rounded-full bg-black px-4 py-1 text-white text-sm font-medium capitalize">
+      <span>
+        {title}: {value}
+      </span>
+      <button
+        onClick={handleRemove}
+        className={
+          "hover:opacity-80 transition py-0.5 px-1 bg-primary/20 hover:bg-primary/40 rounded-full cursor-pointer"
+        }
+        aria-label={`Remove ${title}`}
+      >
+        X
+      </button>
+    </div>
   );
 };

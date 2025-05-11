@@ -15,9 +15,13 @@ export async function ProductsList({
     <div className="p-8 flex flex-wrap gap-8 justify-center">
       <FilterLabelContainer />
       {!products.length && <p>Nothing to show</p>}
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+      <div
+        className={" flex flex-wrap justify-center md:justify-between gap-4"}
+      >
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
     </div>
   );
 }

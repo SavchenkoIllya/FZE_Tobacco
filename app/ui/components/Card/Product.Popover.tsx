@@ -35,7 +35,7 @@ export const ProductPopover = ({ open, onClose }: ProductPopoverProps) => {
       onClick={handleClose}
       role={"button"}
       className={cn(
-        "fixed inset-0 w-full h-full z-100 bg-black-70 backdrop-blur-2xl transition-all duration-500",
+        "fixed inset-0 w-full h-full z-100 bg-black-70 backdrop-blur-2xl transition-all duration-200",
         "flex justify-center items-center",
         open
           ? "opacity-100 pointer-events-auto"
