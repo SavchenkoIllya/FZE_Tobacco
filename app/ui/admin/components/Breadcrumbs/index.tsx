@@ -47,7 +47,7 @@ export const Breadcrumbs = ({
               ) : (
                 <Link
                   href={crumb.href}
-                  className="hover:underline text-blue-600"
+                  className="hover:underline text-blue-600 capitalize"
                 >
                   {crumb.label}
                 </Link>

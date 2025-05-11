@@ -13,7 +13,7 @@ export const ProductImage = ({
 }: ProductImageProps) => (
   <img
     alt={title}
-    src={`http://localhost:9000/products-images/${image_url}`}
+    src={`http://localhost:9000/${process.env.NEXT_PUBLIC_IMAGE_BUCKET_NAME!}/${image_url}`}
     width={width}
     height={height}
   />
