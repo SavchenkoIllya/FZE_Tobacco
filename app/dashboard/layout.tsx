@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <html lang={"en"}>
-      <body className={`${robotoSans.variable} antialiased`}>
+      <body className={`${robotoSans.variable} antialiased overflow-hidden`}>
         <main className={"dashboard_bg"}>{children}</main>;
       </body>
     </html>

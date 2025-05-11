@@ -1,9 +1,28 @@
 "use client";
-import { cn } from "@/app/ui";
-import { useEffect, useState } from "react";
+import { LocalStorageNames } from "@/app/lib";
+import { cn, EXPIRATION_DAYS } from "@/app/ui";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 export const AgeModal = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
+
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const confirmDate = localStorage.getItem(
+      LocalStorageNames.AGE_CONFIRMED_AT,
+    );
+    if (confirmDate) {
+      const date = new Date(confirmDate);
+      const now = new Date();
+      const diffDays = (now.getTime() - date.getTime()) / (1000 * 3600 * 24);
+      if (diffDays < EXPIRATION_DAYS) {
+        setOpen(false);
+      }
+    } else {
+      setOpen(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (open) {
@@ -17,6 +36,8 @@ export const AgeModal = () => {
   }, [open]);
 
   const handleClose = () => {
+    const now = new Date();
+    localStorage.setItem(LocalStorageNames.AGE_CONFIRMED_AT, now.toISOString());
     setOpen(false);
   };
 
