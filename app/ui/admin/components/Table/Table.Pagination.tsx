@@ -1,5 +1,5 @@
 "use client";
-import { PaginationProps } from "@/app/ui/admin";
+import { PaginationProps } from "./types";
 
 export const TablePagination = ({
   currentPage,

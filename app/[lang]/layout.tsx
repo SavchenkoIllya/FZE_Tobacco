@@ -14,15 +14,8 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params,
 }: Readonly<{
   children: ReactNode;
-  params: { lang: string };
 }>) {
-  const { lang } = await params;
-  return (
-    <html lang={lang}>
-      <body className={`${robotoSans.variable} antialiased`}>{children}</body>
-    </html>
-  );
+  return <div className={`${robotoSans.variable} antialiased`}>{children}</div>;
 }

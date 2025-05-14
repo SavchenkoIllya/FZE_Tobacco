@@ -1,7 +1,6 @@
 "use client";
 import { FRONTEND_ADMIN_PATHS } from "@/app/lib";
-import { cn } from "@/app/ui";
-import { CustomSvg, IconName } from "@/app/ui/admin/components/Icons";
+import { cn, CustomSvg, IconName } from "@/app/ui";
 import { useRouter } from "next/navigation";
 
 interface DashboardInfoCardProps {
