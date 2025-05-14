@@ -1,5 +1,5 @@
 import { COOKIES_NAMES } from "@/app/lib";
-import { LoginForm } from "@/app/ui/components/forms/Login";
+import { LoginForm } from "@/app/ui/landing/components/forms/Login";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 

@@ -3,8 +3,16 @@ import "./globals.css";
 
 export default async function GlobalLayout({
   children,
+  params,
 }: Readonly<{
   children: ReactNode;
+  params: { lang: string };
 }>) {
-  return children;
+  const { lang } = await params;
+
+  return (
+    <html lang={lang ?? "en"}>
+      <body>{children}</body>
+    </html>
+  );
 }

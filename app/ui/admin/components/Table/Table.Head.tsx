@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/app/ui";
-import { SORT_ICONS } from "@/app/ui/admin";
+import { SORT_ICONS } from "./consts";
 import { DataWithId, TableHeadProps } from "./types";
 
 export const TableHead = <T extends DataWithId>({

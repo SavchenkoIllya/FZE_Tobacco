@@ -5,7 +5,7 @@ import {
   TableDefaultToolbar,
   TableHead,
   TablePagination,
-} from "@/app/ui/admin";
+} from "./index";
 import { DataGridProps, DataWithId } from "./types";
 
 export function Table<T extends DataWithId>({

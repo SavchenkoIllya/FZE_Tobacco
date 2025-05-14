@@ -1,4 +1,4 @@
-import { DefaultToolbarProps } from "@/app/ui/admin";
+import { DefaultToolbarProps } from "./types";
 
 export const TableDefaultToolbar = ({
   enableGlobalSearch,

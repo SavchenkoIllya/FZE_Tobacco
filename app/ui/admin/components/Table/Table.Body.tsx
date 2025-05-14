@@ -1,4 +1,4 @@
-import { DataWithId, TableBodyProps } from "@/app/ui/admin";
+import { DataWithId, TableBodyProps } from "./types";
 
 export const TableBody = <T extends DataWithId>({
   columns,
