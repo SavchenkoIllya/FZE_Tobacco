@@ -1,3 +1,3 @@
 export * from "./Burger";
-export * from "./Contact";
+export * from "./ContactIcon";
 export * from "./Lookup";

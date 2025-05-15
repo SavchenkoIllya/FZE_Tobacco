@@ -207,6 +207,11 @@ export const MapComponent = () => {
         }}
       >
         <Marker
+          onClick={() => {
+            const destination = `${center.lat},${center.lng}`;
+            const url = `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
+            window.open(url, "_blank");
+          }}
           position={center}
           icon={{
             url: "http://maps.google.com/mapfiles/ms/icons/orange-dot.png",

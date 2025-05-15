@@ -13,11 +13,13 @@ export const SliderNavigation = () => {
     <div className={"block md:hidden"}>
       <Burger open={open} onClick={handleClick} />
       <Slider open={open}>
-        <Burger open={open} onClick={handleClick} />
-        <div className="flex p-4">
-          <Navigation variant="flex-col" />
+        <div className={"p-8"}>
+          <Burger open={open} onClick={handleClick} />
+          <div className="flex flex-col p-4 gap-20">
+            <Navigation onNavigate={handleClick} variant="flex-col" />
+            <ContactsList wrapperClasses={"flex flex-col gap-4"} />
+          </div>
         </div>
-        <ContactsList wrapperClasses={"flex gap-4"} />
       </Slider>
     </div>
   );
