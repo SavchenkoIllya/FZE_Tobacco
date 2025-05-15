@@ -9,6 +9,7 @@ export async function ProductsList({
 }: Readonly<{
   filters: ProductFilters;
 }>) {
+  console.log(filters);
   const products = await getFilteredProductsWithTranslations(filters);
 
   return (

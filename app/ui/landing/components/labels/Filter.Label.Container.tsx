@@ -5,7 +5,7 @@ import { FilterLabel } from "@/app/ui/landing/components/labels/Filter.Label";
 
 export const FilterLabelContainer = () => {
   const { getAllParams } = useUrlParams(0);
-  const { brands, categories, blends, query } = getAllParams();
+  const { brands, categories, blends, query, filter_params } = getAllParams();
 
   return (
     <div className={"w-full flex flex-wrap gap-2"}>
@@ -14,7 +14,9 @@ export const FilterLabelContainer = () => {
       {categories && (
         <FilterLabel title={MenuFilterKeys.CATEGORIES} value={categories} />
       )}
-      {blends && <FilterLabel title={MenuFilterKeys.BLENDS} value={blends} />}
+      {filter_params && (
+        <FilterLabel title={MenuFilterKeys.FILTER_PARAMS} value={blends} />
+      )}
     </div>
   );
 };

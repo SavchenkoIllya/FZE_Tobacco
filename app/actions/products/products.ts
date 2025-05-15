@@ -12,7 +12,7 @@ import { and, count, eq, ilike, or, sql, SQL } from "drizzle-orm";
 
 export type ProductFilters = Partial<{
   category: string;
-  blend: string;
+  filter_parameters: string;
   brand: string;
   query: string;
   locale: string;
@@ -32,8 +32,10 @@ const formatFilterQuery = (filters?: ProductFilters) => {
     conditions.push(ilike(productsTable.category, filters.category));
   }
 
-  if (filters.blend) {
-    conditions.push(ilike(productTranslationsTable.blend, filters.blend));
+  if (filters.filter_parameters) {
+    conditions.push(
+      ilike(productsTable.filter_parameters, filters.filter_parameters),
+    );
   }
 
   if (filters.brand) {

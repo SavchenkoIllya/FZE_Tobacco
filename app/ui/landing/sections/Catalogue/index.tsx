@@ -4,6 +4,7 @@ import {
   getBlends,
   getBrands,
   getCategories,
+  getFilterTypes,
   ProductFilters,
 } from "@/app/actions";
 import { LandingSections } from "@/app/lib";
@@ -18,7 +19,7 @@ export async function CatalogueSection(props: HomePageProps) {
 
   const filters: ProductFilters = {
     category: searchParams?.categories ?? "",
-    blend: searchParams?.blends ?? "",
+    filter_parameters: searchParams?.filter_parameters ?? "",
     brand: searchParams?.brands ?? "",
     query: searchParams?.query ?? "",
     locale: locale ?? "en",
@@ -27,11 +28,13 @@ export async function CatalogueSection(props: HomePageProps) {
   const categories = await getCategories();
   const brands = await getBrands();
   const blends = await getBlends();
+  const filter_parameters = await getFilterTypes();
 
   const menuFilters = {
     categories,
     brands,
     blends,
+    filter_parameters,
   };
 
   return (

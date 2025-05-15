@@ -31,7 +31,7 @@ export const GroupDropdown = ({
           variant === "dark" ? "text-secondary" : "text-primary",
         )}
       >
-        <p className={"capitalize"}>{title}</p>
+        <p className={"capitalize"}>{title.replaceAll("_", " ")}</p>
         <Image
           width={10}
           height={10}

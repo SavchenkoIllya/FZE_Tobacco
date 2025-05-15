@@ -34,6 +34,16 @@ export const getBlends = async () => {
   return blends.map((blend) => blend.blend as string);
 };
 
+export const getFilterTypes = async () => {
+  const blends = await db
+    .select({
+      filter_parameters: sql`DISTINCT ${productsTable.filter_parameters}`,
+    })
+    .from(productsTable);
+
+  return blends.map((blend) => blend.filter_parameters as string);
+};
+
 export const getProductFields = async () => {
   const fields = await db.execute(
     sql`SELECT column_name FROM information_schema.columns WHERE table_name = ${getTableName(productsTable)};`,
