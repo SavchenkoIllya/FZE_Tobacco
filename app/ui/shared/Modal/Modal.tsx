@@ -15,12 +15,13 @@ export const Modal = ({ children, open, onClose }: ModalProps) => {
 
   useEffect(() => {
     if (open) {
-      document.body.style.overflow = "hidden";
+      document.body.classList.add("overflow-hidden");
     } else {
-      document.body.style.overflow = "";
+      document.body.classList.remove("overflow-hidden");
     }
+
     return () => {
-      document.body.style.overflow = "";
+      document.body.classList.remove("overflow-hidden");
     };
   }, [open]);
 
@@ -40,9 +41,9 @@ export const Modal = ({ children, open, onClose }: ModalProps) => {
           e.stopPropagation();
         }}
         className={cn(
-          "max-md:w-full max-md:h-full max-md:rounded-none max-md:relative",
+          "max-md:w-full max-md:pb-20 max-md:h-full max-md:rounded-none max-md:relative",
           "bg-primary/40",
-          "w-fit h-fit rounded-4xl",
+          "w-fit h-fit overflow-auto rounded-4xl",
           "from-0% to-60%",
           "shadow-secondary/50 shadow-2xl",
         )}
