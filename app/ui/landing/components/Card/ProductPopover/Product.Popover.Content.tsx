@@ -8,19 +8,16 @@ export const ProductPopoverContent = ({
 }) => {
   return (
     <div className="flex flex-col lg:flex-row gap-6">
-      {/* Image section */}
       <div className="flex justify-center lg:justify-start">
         <ProductImage
           image_url={product?.image_url ?? undefined}
           title={product?.locales?.[0].title}
-          width={250}
+          width={550}
           height={250}
         />
       </div>
 
-      {/* Info section */}
       <div className="flex flex-col gap-4 w-full">
-        {/* Title & category */}
         <div className="border-b-2 border-accent pb-2">
           <h4 className="text-2xl font-bold text-black">
             {product?.locales?.[0].title}
@@ -28,7 +25,6 @@ export const ProductPopoverContent = ({
           <p className="text-lg text-secondary">{product?.category}</p>
         </div>
 
-        {/* Properties */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
           <ProductValueWithTitle
             title="Tobacco blend"
