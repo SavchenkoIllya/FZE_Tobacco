@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, ImgHTMLAttributes } from "react";
 
-export const Contact = ({
+export const ContactIcon = ({
   imgProps,
 }: {
   imgProps: DetailedHTMLProps<
@@ -8,9 +8,5 @@ export const Contact = ({
     HTMLImageElement
   >;
 }) => {
-  return (
-    <a>
-      <img {...imgProps} />
-    </a>
-  );
+  return <img {...imgProps} />;
 };

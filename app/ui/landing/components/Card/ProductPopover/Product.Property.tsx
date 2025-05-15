@@ -7,7 +7,7 @@ type PropertyValidIcons =
   | "tar"
   | "tobacco_length";
 
-type ProductPropertyProps = {
+export type ProductPropertyProps = {
   text?: string;
   icon: PropertyValidIcons;
 };

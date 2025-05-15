@@ -39,7 +39,7 @@ export const Input = ({
         type="text"
         placeholder={placeholder}
         onChange={handleInputChange}
-        className="bg-transparent outline-none flex-1"
+        className="bg-transparent outline-none flex-1 w-full"
         defaultValue={defaultValue}
         {...props}
       />

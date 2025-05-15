@@ -32,7 +32,9 @@ export function Header() {
             <img src="/logo.svg" alt="Tobacco & cigarettes trading logo" />
           </div>
           <div className={"flex gap-4"}>
-            <ContactsList wrapperClasses="hidden md:flex gap-4" />
+            <div className={"hidden md:block"}>
+              <ContactsList showFull={false} />
+            </div>
             <LanguageSwitch />
           </div>
         </div>
