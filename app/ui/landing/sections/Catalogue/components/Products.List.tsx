@@ -9,7 +9,6 @@ export async function ProductsList({
 }: Readonly<{
   filters: ProductFilters;
 }>) {
-  console.log(filters);
   const products = await getFilteredProductsWithTranslations(filters);
 
   return (
@@ -17,7 +16,7 @@ export async function ProductsList({
       <FilterLabelContainer />
       {!products.length && <p>Nothing to show</p>}
       <div
-        className={" flex flex-wrap justify-center md:justify-between gap-4"}
+        className={" flex flex-wrap justify-center md:justify-between gap-2"}
       >
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />

@@ -37,7 +37,11 @@ export const GroupDropdown = ({
           height={10}
           src={"/icons/chevron.svg"}
           alt={"chevron icon"}
-          className={cn(variant === "light" && "invert")}
+          className={cn(
+            "transition-all",
+            variant === "light" && "invert",
+            isOpen ? "rotate-0" : "rotate-90",
+          )}
         />
       </button>
       <div

@@ -1,7 +1,6 @@
 "use server";
 import { HomePageProps } from "@/app/[lang]/page";
 import {
-  getBlends,
   getBrands,
   getCategories,
   getFilterTypes,
@@ -27,13 +26,11 @@ export async function CatalogueSection(props: HomePageProps) {
 
   const categories = await getCategories();
   const brands = await getBrands();
-  const blends = await getBlends();
   const filter_parameters = await getFilterTypes();
 
   const menuFilters = {
     categories,
     brands,
-    blends,
     filter_parameters,
   };
 
