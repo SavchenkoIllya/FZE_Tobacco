@@ -6,6 +6,7 @@ const SECTIONS_DICTIONARY: { [K in LandingSections]?: string } = {
   [LandingSections.CATALOGUE]: "Catalogue",
   [LandingSections.CONTACTS]: "Contacts",
 };
+
 export const Navigation = ({
   variant = "flex-row",
   onNavigate,

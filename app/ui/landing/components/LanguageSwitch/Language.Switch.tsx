@@ -79,6 +79,7 @@ export const LanguageSwitch = () => {
               key={language.code}
               onClick={() => handleLanguageChange(language.code)}
               className={`
+              cursor-pointer
                 block w-full text-left px-4 py-2 text-sm text-white hover:bg-secondary/80
                 ${currentLang === language.code ? "bg-secondary" : ""}
               `}
