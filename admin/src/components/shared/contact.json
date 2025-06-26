@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_shared_contacts",
+  "info": {
+    "displayName": "Contact"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "whatsapp",
+        "telegram",
+        "email",
+        "phone",
+        "viber"
+      ]
+    }
+  },
+  "config": {}
+}
