@@ -1,2 +1,2 @@
-export * from "../../../../finest-tobacco-ig/app/utils/validation";
+export * from "./validation";
 export * from "./fetchApi";

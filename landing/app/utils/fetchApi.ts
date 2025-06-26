@@ -1,4 +1,5 @@
 "use server";
+
 type NextFetchRequestConfig = {
   revalidate?: number | false;
   tags?: string[];

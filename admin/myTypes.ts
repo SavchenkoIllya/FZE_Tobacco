@@ -58,17 +58,6 @@ export interface Category {
   name?: string;
 };
 
-export interface FeatureEnabled {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  name: string;
-  active: boolean;
-};
-
 export interface Global {
   id?: number;
   documentId?: string;
