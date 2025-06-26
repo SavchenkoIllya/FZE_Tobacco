@@ -1,38 +1,11 @@
 "use server";
-import { HomePageProps } from "@/app/[lang]/page";
-import {
-  getBrands,
-  getCategories,
-  getFilterTypes,
-  ProductFilters,
-} from "@/app/actions";
 import { LandingSections } from "@/app/lib";
 import { Loader, Menu, Search } from "@/app/ui";
 import { ProductsList } from "@/app/ui/landing/sections/Catalogue/components";
 import { SliderMenu } from "@/app/ui/landing/sections/Catalogue/components/Slider.Menu";
 import { Suspense } from "react";
 
-export async function CatalogueSection(props: HomePageProps) {
-  const searchParams = await props.searchParams;
-  const locale = await props.params.lang;
-
-  const filters: ProductFilters = {
-    category: searchParams?.categories ?? "",
-    filter_parameters: searchParams?.filter_parameters ?? "",
-    brand: searchParams?.brands ?? "",
-    query: searchParams?.query ?? "",
-    locale: locale ?? "en",
-  };
-
-  const categories = await getCategories();
-  const brands = await getBrands();
-  const filter_parameters = await getFilterTypes();
-
-  const menuFilters = {
-    categories,
-    brands,
-    filter_parameters,
-  };
+export async function CatalogueSection() {
 
   return (
     <section id={LandingSections.CATALOGUE} className="py-10 w-full bg-white">

@@ -1,6 +1,4 @@
 "use client";
-import { getProductById } from "@/app/actions";
-import { ProductsWithLocales } from "@/app/db/types";
 import { SearchParamsNames } from "@/app/lib";
 import { Modal, ProductPopoverContent, useUrlParams } from "@/app/ui";
 import { useEffect, useState } from "react";

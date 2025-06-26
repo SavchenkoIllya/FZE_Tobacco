@@ -1,6 +1,6 @@
 import { IncomingMessage } from "@/app/emailTeamplates";
 import { resend } from "@/app/lib/resendClient";
-import { MessageValidator } from "@/app/utils";
+import { MessageValidator } from "@/app/utils/validation";
 
 type FormResponse = {
   errors: Record<string, string[]>;
@@ -34,7 +34,7 @@ export async function sendEmail(
       from: "onboarding@resend.dev",
       to: "nfo@finest-tobacco.com",
       subject: "New message",
-      react: IncomingMessage({ content: data }),
+      react: IncomingMessage(),
     });
 
     return {

@@ -15,7 +15,7 @@ export type HomePageProps = Readonly<{
   params: { lang: string };
 }>;
 
-export default function Home(props: HomePageProps) {
+export default function Home() {
   return (
     <main className={"overflow-hidden"}>
       <AgeModal />
@@ -29,10 +29,10 @@ export default function Home(props: HomePageProps) {
         <Header />
         <Hero />
         <About />
-        <CatalogueSection
-          searchParams={props.searchParams}
-          params={props.params}
-        />
+        {/*<CatalogueSection*/}
+        {/*  searchParams={props.searchParams}*/}
+        {/*  params={props.params}*/}
+        {/*/>*/}
         <Production />
         <ContactsSection />
       </div>
