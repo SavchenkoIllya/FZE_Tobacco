@@ -1,0 +1,40 @@
+{
+  "name": "fze-trading",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "../node_modules/.bin/next dev",
+    "build": "../node_modules/.bin/next build",
+    "start": "../node_modules/.bin/next start",
+    "lint": "../node_modules/.bin/next lint",
+    "clean": "rm -rf ../node_modules",
+    "seed": "npx tsx app/db/scripts/seed.ts",
+    "bd:test": "npx tsx app/db/test/apiCalls.ts"
+  },
+  "dependencies": {
+    "@react-email/components": "^0.0.36",
+    "@react-google-maps/api": "^2.20.6",
+    "clsx": "^2.1.1",
+    "dotenv": "^16.5.0",
+    "next": "15.3.0",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "resend": "^4.4.1",
+    "tailwind-merge": "^3.2.0",
+    "use-debounce": "^10.0.4"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.0",
+    "prettier": "3.5.3",
+    "tailwindcss": "^4",
+    "tsx": "^4.19.3",
+    "typescript": "^5"
+  }
+}
