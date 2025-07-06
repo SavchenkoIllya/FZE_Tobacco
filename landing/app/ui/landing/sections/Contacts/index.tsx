@@ -9,16 +9,23 @@ export const ContactsSection = () => {
       id={LandingSections.CONTACTS}
       className={"relative flex flex-col justify-center items-center w-full"}
     >
-      <BackgroundImage
-        imageUrl={"/images/Pattern_left.png"}
-        size={{ width: "500px", height: "3600px" }}
-        position={{ left: "0", bottom: "0" }}
-      />
-      <BackgroundImage
-        imageUrl={"/images/Pattern_right.png"}
-        size={{ width: "500px", height: "1800px" }}
-        position={{ right: "0", bottom: "0" }}
-      />
+
+      <div className={"max-lg:hidden"}>
+        <BackgroundImage
+          imageUrl={"/images/Pattern_left.png"}
+          size={{ width: "500px", height: "3600px" }}
+          position={{ left: "0", bottom: "0" }}
+        />
+      </div>
+
+      <div className={"max-lg:hidden"}>
+        <BackgroundImage
+          imageUrl={"/images/Pattern_right.png"}
+          size={{ width: "500px", height: "3500px" }}
+          position={{ bottom: "-1000px", right: "-250px" }}
+        />
+      </div>
+
       <div className="-z-1 absolute w-[1250px] h-[500px] bg-gradient-to-b from-accent to-secondary opacity-30 rounded-full blur-3xl -bottom-[440px] animate-pulse [animation-duration:5s]" />
 
       <h1 className={"h1 mt-8"}>Contacts</h1>
@@ -33,7 +40,7 @@ export const ContactsSection = () => {
             className={"space-y-4 p-4 md:p-8"}
             onSubmit={(e) => e.preventDefault()}
           >
-            <div className={"flex flex-col md:flex-row items-center gap-2"}>
+            <div className={"flex flex-col lg:flex-row items-center gap-2"}>
               <Input
                 placeholder={"Name"}
                 variant={"black"}

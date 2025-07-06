@@ -10,7 +10,7 @@ export const SliderMenu = ({ menuFilters }: MenuFilterProps) => {
   };
 
   return (
-    <div className={"z-90"}>
+    <div>
       <Filter onClick={handleClick} />
       <Slider open={open}>
         <div className={"p-8"}>
