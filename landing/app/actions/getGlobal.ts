@@ -23,6 +23,6 @@ export async function getGlobal() {
   url.search = globalQuery;
 
   return fetchAPI(url.href, {
-    method: "GET",
+    method: "GET"
   });
 }

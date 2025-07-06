@@ -1,6 +1,6 @@
 "use client";
 import { LocalStorageNames } from "@/app/lib";
-import { cn, EXPIRATION_DAYS } from "@/app/ui";
+import {cn, EXPIRATION_DAYS, Modal} from "@/app/ui";
 import { useEffect, useLayoutEffect, useState } from "react";
 
 export const AgeModal = () => {
@@ -42,23 +42,16 @@ export const AgeModal = () => {
   };
 
   return (
-    <div
-      className={cn(
-        "fixed inset-0 backdrop-blur-3xl z-200",
-        open
-          ? "opacity-100 pointer-events-auto"
-          : "opacity-0 pointer-events-none",
-      )}
-    >
-      <div className={"flex h-full w-full justify-center items-center"}>
+      <Modal open={open} onClose={handleClose}>
         <div
-          className={cn(
-            "w-full h-full flex flex-col md:flex-row justify-center items-center gap-8",
-            "bg-primary/70",
-            "w-fit h-fit p-20 rounded-4xl",
-            "from-0% to-60%",
-            "shadow-secondary/50 shadow-2xl",
-          )}
+            className={cn(
+                "w-full h-full flex flex-col md:flex-row justify-center items-center gap-8",
+                "bg-secondary",
+                "w-fit h-fit p-20 rounded-4xl",
+                "from-0% to-60%",
+                "shadow-secondary/50 shadow-2xl",
+                "max-md:w-full max-md:h-full rounded-none",
+            )}
         >
           <div className={"max-w-2xl"}>
             <h1 className={"h1 !text-accent"}>Hello dear Visitor</h1>
@@ -86,7 +79,6 @@ export const AgeModal = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+  </Modal>
   );
 };
