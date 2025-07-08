@@ -1,9 +1,14 @@
 "use client";
+import { getMediaUrl } from "@/app/actions";
+import { HeaderSection, Locale } from "@/app/types";
 import { cn, LanguageSwitch } from "@/app/ui";
 import { ContactsList, SliderNavigation } from "@/app/ui/landing/components";
 import { useEffect, useState } from "react";
 
-export function Header() {
+export function Header({
+  headerData,
+  locales,
+}: Readonly<{ headerData: HeaderSection; locales?: Locale[] }>) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -25,16 +30,23 @@ export function Header() {
       )}
     >
       <div className="container m-auto relative z-10">
-        <div className="flex items-center justify-between mx-8 my-4">
+        <div className="flex items-center justify-between mx-8 my-4 min-h-[68px]">
           <SliderNavigation />
           <div>
-            <img src="/logo.svg" alt="Tobacco & cigarettes trading logo" />
+            {headerData?.logo && (
+              <img
+                src={getMediaUrl(headerData.logo.url)}
+                alt={headerData.logo.alternativeText}
+              />
+            )}
           </div>
           <div className={"flex gap-4"}>
             <div className={"hidden md:block"}>
-              <ContactsList showFull={false} />
+              {headerData?.contacts && (
+                <ContactsList contacts={headerData.contacts} />
+              )}
             </div>
-            <LanguageSwitch />
+            <LanguageSwitch locales={locales} />
           </div>
         </div>
       </div>

@@ -1,9 +1,8 @@
 "use client";
-
 import { LandingSections } from "@/app/lib";
 import { safeScroll } from "@/app/ui";
 
-export const ScrollButton = () => {
+export const ScrollButton = ({ text }: { text: string }) => {
   return (
     <button
       type="button"
@@ -12,7 +11,7 @@ export const ScrollButton = () => {
         safeScroll(LandingSections.CATALOGUE);
       }}
     >
-      Welcome to our business
+      {text}
     </button>
   );
 };

@@ -1,31 +1,18 @@
 "use client";
+import { Locale } from "@/app/types";
+import { cn } from "@/app/ui";
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-type Language = {
-  code: string;
-  name: string;
-};
-
-// TOOD: export languages
-const languages: Language[] = [
-  { code: "en", name: "EN" },
-  { code: "ru", name: "RU" },
-];
-
-export const LanguageSwitch = () => {
+export const LanguageSwitch = ({ locales }: { locales?: Locale[] }) => {
   const params = useParams();
   const router = useRouter();
-  const currentLang = (params?.lang as string) || "en";
+  const pathname = usePathname();
+  const { lang } = params;
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Находим текущий язык из списка
-  const currentLanguage =
-    languages.find((lang) => lang.code === currentLang) || languages[0];
-
-  // Закрываем выпадающий список при клике вне компонента
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -40,12 +27,17 @@ export const LanguageSwitch = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [open]);
 
   const handleLanguageChange = (langCode: string) => {
     setOpen(false);
-    router.push(`/${langCode}`);
+    const pathSegments = pathname.split("/").filter(Boolean);
+    pathSegments[0] = langCode;
+
+    router.push(pathSegments.join("/"));
   };
+
+  if (!locales) return null;
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -55,7 +47,7 @@ export const LanguageSwitch = () => {
         aria-expanded={open}
         aria-haspopup="true"
       >
-        <span>{currentLanguage.name}</span>
+        <span>{lang}</span>
         <Image
           width={10}
           height={10}
@@ -74,17 +66,16 @@ export const LanguageSwitch = () => {
         `}
       >
         <div className="">
-          {languages.map((language) => (
+          {locales.map((locale) => (
             <button
-              key={language.code}
-              onClick={() => handleLanguageChange(language.code)}
-              className={`
-              cursor-pointer
-                block w-full text-left px-4 py-2 text-sm text-white hover:bg-secondary/80
-                ${currentLang === language.code ? "bg-secondary" : ""}
-              `}
+              key={locale}
+              onClick={() => handleLanguageChange(locale)}
+              className={cn(
+                "cursor-pointer block w-full text-left px-4 py-2 text-sm text-white hover:bg-secondary/80",
+                lang === locale ? "bg-secondary" : "",
+              )}
             >
-              {language.name}
+              {locale}
             </button>
           ))}
         </div>

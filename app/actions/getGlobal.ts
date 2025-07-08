@@ -1,6 +1,5 @@
 "use server";
-import { fetchAPI } from "@/app/utils";
-import { getStrapiURL } from "@/app/utils/getStrapiUrl";
+import { getStrapiURL,fetchAPI } from "@/app/actions";
 import qs from "qs";
 
 const globalQuery = qs.stringify(
