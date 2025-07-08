@@ -1,6 +1,26 @@
-import { type BlocksContent } from "@strapi/blocks-react-renderer";
+export type Locale = "en" | "ru" | "ar";
 
-export type Locale = "en" | "de" | "sk" | "pl";
+export interface LocaleData {
+  id: number;
+  documentId: string;
+  name: string;
+  code: Locale;
+  isDefault: boolean;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+}
+
+export interface HeaderSection {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  logo: Media | null;
+  contacts?: Contact[] | null;
+}
 
 export interface Global {
   id?: number;
@@ -101,7 +121,7 @@ export interface Contact {
 export interface SharedLegalInfo {
   id?: number;
   title?: string;
-  full_address?: BlocksContent;
+  full_address?: string;
 }
 
 export interface SharedNavbar {

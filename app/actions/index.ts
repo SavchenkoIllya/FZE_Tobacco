@@ -1,3 +1,5 @@
-export * from "./sendEmail";
+export * from "./config";
 export * from "./getGlobal";
-export * from "./getFeatureEnabled";
+export * from "./getHeaderSection";
+export * from "./getLocales";
+export * from "./sendEmail";

@@ -1,7 +1,7 @@
 import { LandingSections } from "@/app/lib";
 import { ScrollButton } from "./components/ScrollButton";
 
-export const Hero = () => {
+export async function Hero() {
   return (
     <section
       id={LandingSections.HERO}
@@ -11,10 +11,10 @@ export const Hero = () => {
         <div className="grid grid-cols-12 h-full items-center">
           <div className="text-center md:text-left col-span-12 md:col-span-4 space-y-4">
             <h1 className={"h1"}>Certificated in Europe, Asia & Africa</h1>
-            <ScrollButton />
+            <ScrollButton text={"Welcome to our business"} />
           </div>
         </div>
       </div>
     </section>
   );
-};
+}
