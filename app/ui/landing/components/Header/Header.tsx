@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export function Header({
   headerData,
   locales,
-}: Readonly<{ headerData: HeaderSection; locales?: Locale[] }>) {
+}: Readonly<{ headerData?: HeaderSection; locales?: Locale[] }>) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -19,6 +19,8 @@ export function Header({
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (!headerData) return null;
 
   return (
     <header

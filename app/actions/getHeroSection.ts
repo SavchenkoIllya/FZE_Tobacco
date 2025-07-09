@@ -1,34 +1,30 @@
 "use server";
 import { ApiRoutes, fetchAPI, getStrapiURL } from "@/app/actions";
-import { HeaderSection, Locale } from "@/app/types";
+import { HeroSection, Locale } from "@/app/types";
 import qs from "qs";
 
-const getHeaderDataQuery = (lang: string | undefined) =>
+const getHeroSectionDataQuery = (lang: string | undefined) =>
   qs.stringify(
     {
       populate: {
-        logo: true,
-        contacts: {
-          populate: {
-            icon: true,
-          },
-        },
+        sections_meta: true,
+        link: true,
       },
       locale: lang ?? process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE,
     },
     { encodeValuesOnly: true },
   );
 
-export async function getHeaderData(lang?: Locale) {
+export async function getHeroSectionData(lang?: Locale) {
   const strapiURL = getStrapiURL();
-  const url = new URL(ApiRoutes.GET_HEADER_DATA, strapiURL);
+  const url = new URL(ApiRoutes.GET_HERO_SECTION_DATA, strapiURL);
 
-  url.search = getHeaderDataQuery(lang);
+  url.search = getHeroSectionDataQuery(lang);
 
   try {
     const res = await fetchAPI(url.href, {
       method: "GET",
-    }).then((res: { data: HeaderSection; meta: null }) => {
+    }).then((res: { data: HeroSection; meta: null }) => {
       return res.data;
     });
 

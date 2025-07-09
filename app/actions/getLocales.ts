@@ -18,7 +18,7 @@ export async function getLocales() {
     return res;
   } catch (e) {
     if (e instanceof Error) {
-      throw new Error(`Failed to fetch locales: ${e.message}`);
+      throw new Error(`Failed to fetch: ${e.message}`);
     } else {
       throw new Error("Unknown error occurred while fetching");
     }

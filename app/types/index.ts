@@ -1,3 +1,5 @@
+import { type BlocksContent } from "@strapi/blocks-react-renderer";
+
 export type Locale = "en" | "ru" | "ar";
 
 export interface LocaleData {
@@ -22,25 +24,39 @@ export interface HeaderSection {
   contacts?: Contact[] | null;
 }
 
-export interface Global {
+export interface HeroSection {
   id?: number;
   documentId?: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;
   publishedAt?: Date | string;
   locale?: string | null;
-  video_url?: string;
-  Header?: SharedHeader | null;
-  age_modal?: SharedAgeModal | null;
-  about_content: SharedAboutContent | null;
-  brands_section?: SharedBrandsSection | null;
-  additional_about_section?: SharedAdditionalAboutSection | null;
-  contacts_section?: SharedContactsSection | null;
-  map_location?: SharedMapLocation | null;
-  production_section?: SharedProductionSection | null;
-  catchphrase?: string;
-  catalogue?: SharedCatalogue | null;
-  footer_section?: SharedFooter | null;
+  sections_meta?: SectionsMeta | null;
+  title: string;
+  link?: SectionsMeta | null;
+  button_text?: string;
+}
+
+export interface SectionsMeta {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  name: string;
+}
+
+export interface AboutSection {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  sections_meta?: SectionsMeta | null;
+  title: string;
+  description: BlocksContent;
 }
 
 export interface ProductCard {
