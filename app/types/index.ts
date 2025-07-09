@@ -59,6 +59,32 @@ export interface AboutSection {
   description: BlocksContent;
 }
 
+export interface PillarSection {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  pillars_list?: SharedPillar[] | null;
+}
+
+export interface ProductionSection {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  sections_meta?: SectionsMeta | null;
+  title: string;
+  description: BlocksContent;
+  left_image: Media | null;
+  right_image: Media | null;
+  button_text: string;
+  button_url: string;
+}
+
 export interface ProductCard {
   id?: number;
   documentId?: string;

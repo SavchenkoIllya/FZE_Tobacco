@@ -1,5 +1,10 @@
-import { getHeaderData, getHeroSectionData } from "@/app/actions";
-import { getAboutSectionData } from "@/app/actions/getAboutSection";
+import {
+  getAboutSectionData,
+  getHeaderData,
+  getHeroSectionData,
+  getPillarsSectionData,
+  getProductionSectionData,
+} from "@/app/actions";
 import { CookieNames } from "@/app/lib";
 import { Locale } from "@/app/types";
 import {
@@ -33,10 +38,14 @@ export default async function Home(props: HomePageProps) {
   const headerData = await getHeaderData(lang);
   const heroData = await getHeroSectionData(lang);
   const aboutData = await getAboutSectionData(lang);
+  const pillarsData = await getPillarsSectionData(lang);
+  const productionData = await getProductionSectionData(lang);
 
   // console.log(headerData);
   // console.log(heroData);
   // console.log(aboutData);
+  // console.log(pillarsData);
+  // console.log(productionData);
 
   return (
     <main className={"overflow-hidden"}>
@@ -49,12 +58,12 @@ export default async function Home(props: HomePageProps) {
         <Header headerData={headerData} locales={availableLocales} />
         <Hero heroData={heroData} />
         <About aboutData={aboutData} />
-        <Pillars />
+        <Pillars pillarsData={pillarsData} />
         {/*<CatalogueSection*/}
         {/*  searchParams={props.searchParams}*/}
         {/*  params={props.params}*/}
         {/*/>*/}
-        <Production />
+        <Production productionData={productionData} />
         <ContactsSection />
       </div>
     </main>
