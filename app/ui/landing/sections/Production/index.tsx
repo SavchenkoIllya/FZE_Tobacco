@@ -1,41 +1,52 @@
-import { LandingSections } from "@/app/lib";
+import { getMediaUrl } from "@/app/actions";
+import { ProductionSection } from "@/app/types";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
-export const Production = () => {
+export const Production = ({
+  productionData,
+}: {
+  productionData?: ProductionSection;
+}) => {
+  if (!productionData) return null;
+
   return (
     <section
-      id={LandingSections.PRODUCTION}
+      id={productionData.sections_meta?.documentId}
       className="bg-primary w-full py-10"
     >
       <div className={"container mx-auto"}>
         <div className={"grid grid-cols-1 md:grid-cols-3 items-center"}>
           <div className={"hidden md:block"}>
-            <img
-              src="/images/Image1.png"
-              alt="Левая Фото"
-              className={"object-cover w-full h-full rounded-4xl"}
-            />
+            {productionData.left_image && (
+              <img
+                src={getMediaUrl(productionData.left_image.url)}
+                alt={productionData.left_image.alternativeText}
+                className={"object-cover w-full h-full rounded-4xl"}
+              />
+            )}
           </div>
 
           <div className="flex flex-col items-center justify-center text-center p-8">
             <h1 className="h1 !text-secondary">Let&#39;s grow up together!</h1>
             <p className="text-lg mb-6">
-              We are ISO certificaed and produce world class products that cater
-              to various consumers with different style and taste preferences.
-              Authenticity is our core philosophy and we believe in developing
-              genuine products which are passed on to generations to continue
-              our formidable legacy.
+              <BlocksRenderer content={productionData.description} />
             </p>
-            <button className={"button !bg-secondary !text-primary"}>
-              Click me
-            </button>
+            <a
+              href={productionData.button_url}
+              className={"button !bg-secondary !text-primary"}
+            >
+              {productionData.button_text}
+            </a>
           </div>
 
           <div className={"hidden md:block"}>
-            <img
-              src="/images/Image2.png"
-              alt="Правая Фото"
-              className={"object-cover w-full h-full rounded-4xl"}
-            />
+            {productionData.right_image && (
+              <img
+                src={getMediaUrl(productionData.right_image.url)}
+                alt={productionData.right_image.alternativeText}
+                className={"object-cover w-full h-full rounded-4xl"}
+              />
+            )}
           </div>
         </div>
       </div>
