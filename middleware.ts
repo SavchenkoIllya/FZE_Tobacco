@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
 
   const currentLocale = cookiesStore.get(CookieNames.USER_LANGUAGES);
 
-  const formattedPathname = pathname.split("/");
+  const formattedPathname = pathname.split("/").filter(Boolean);
 
   if (!availableLocales) {
     availableLocales = await getLocales();
@@ -26,23 +26,32 @@ export async function middleware(request: NextRequest) {
       return NextResponse.json({ error: "Server problems" }, { status: 500 });
     }
 
-    cookiesStore.set(
+    const response = NextResponse.next();
+    response.cookies.set(
       CookieNames.AVAILABLE_LANGUAGES,
       JSON.stringify(availableLocales),
     );
   }
 
   if (!currentLocale?.value) {
-    cookiesStore.set(CookieNames.USER_LANGUAGES, availableLocales[0]);
+    const response = NextResponse.next();
+    response.cookies.set(CookieNames.USER_LANGUAGES, availableLocales[0]);
   }
 
-  if (currentLocale?.value !== formattedPathname[1]) {
-    cookiesStore.set(CookieNames.USER_LANGUAGES, formattedPathname[1]);
-  }
+  const localeInPath = formattedPathname[0];
 
-  if (!availableStoredLocales?.value.includes(formattedPathname[1])) {
-    const newUrl = new URL(`/${availableLocales[0]}${pathname}`, request.url);
+  if (!localeInPath || !availableLocales.includes(localeInPath)) {
+    const targetLocale = currentLocale?.value || availableLocales[0];
+
+    const newUrl = new URL(`/${targetLocale}${pathname}`, request.url);
+
     return NextResponse.redirect(newUrl);
+  }
+
+  if (currentLocale?.value !== localeInPath) {
+    const response = NextResponse.next();
+    response.cookies.set(CookieNames.USER_LANGUAGES, localeInPath);
+    return response;
   }
 
   return NextResponse.next();

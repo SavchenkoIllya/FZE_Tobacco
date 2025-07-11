@@ -1,3 +1,4 @@
 export * from "./Card";
 export * from "./Product.Image";
-export * from "./ProductPopover"
+export * from "./Product.Property";
+export * from "./ProductPopover";

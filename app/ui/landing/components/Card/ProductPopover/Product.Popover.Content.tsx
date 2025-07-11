@@ -1,67 +1,57 @@
-import { ProductsWithLocales } from "@/app/db/types";
-import { ProductImage, ProductValueWithTitle } from "@/app/ui";
+import { Product } from "@/app/types";
+import { ProductImage } from "@/app/ui";
 
-export const ProductPopoverContent = ({
-  product,
-}: {
-  product: ProductsWithLocales["select"];
-}) => {
+export const ProductPopoverContent = ({ product }: { product: Product }) => {
   return (
     <div className="flex flex-col lg:flex-row gap-6">
       <div className="flex justify-center lg:justify-start">
         <ProductImage
-          image_url={product?.image_url ?? undefined}
-          title={product?.locales?.[0].title}
-          width={550}
-          height={250}
+          image_url={product?.image?.url ?? undefined}
+          title={product.title}
+          variant={"lg"}
         />
       </div>
 
       <div className="flex flex-col gap-4 w-full">
         <div className="border-b-2 border-accent pb-2">
-          <h4 className="text-2xl font-bold text-black">
-            {product?.locales?.[0].title}
-          </h4>
-          <p className="text-lg text-secondary">{product?.category}</p>
+          <h4 className="text-4xl font-bold text-primary">{product.title}</h4>
+          <p className="text-lg text-primary">{product?.category?.name}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-          <ProductValueWithTitle
-            title="Tobacco blend"
-            text={product?.locales?.[0].blend}
-            icon="leaf"
-          />
-          <ProductValueWithTitle
-            title="Diameter"
-            text={product?.diameter}
-            icon="diameter"
-          />
-          <ProductValueWithTitle
-            title="Cigarette length"
-            text={product?.cigarette_length}
-            icon="cigarette_length"
-          />
-          <ProductValueWithTitle
-            title="Nicotine"
-            text={product?.nicotine}
-            icon="nicotine"
-          />
-          <ProductValueWithTitle
-            title="Tobacco part length"
-            text={product?.tobacco_part_length}
-            icon="tobacco_length"
-          />
-          <ProductValueWithTitle title="Tar" text={product?.tar} icon="tar" />
-          <ProductValueWithTitle
-            title="Filter length"
-            text={product?.filter_length}
-            icon="filter_length"
-          />
-          <ProductValueWithTitle
-            title="Filter Parameters"
-            text={product?.filter_parameters}
-            icon="filter_length"
-          />
+          {/*<ProductValueWithTitle*/}
+          {/*  text={product?.blend}*/}
+          {/*  title={getProductDescriptionField("property", "blend")?.title}*/}
+          {/*  icon={getProductDescriptionField("property", "blend")?.icon}*/}
+          {/*/>*/}
+          {/*<ProductValueWithTitle*/}
+          {/*  text={product?.cigarette_length}*/}
+          {/*  title={*/}
+          {/*    getProductDescriptionField("property", "cigarette_length")?.title*/}
+          {/*  }*/}
+          {/*  icon={*/}
+          {/*    getProductDescriptionField("property", "cigarette_length")?.icon*/}
+          {/*  }*/}
+          {/*/>*/}
+          {/*<ProductValueWithTitle*/}
+          {/*  text={product?.nicotine}*/}
+          {/*  title={getProductDescriptionField("property", "nicotine")?.title}*/}
+          {/*  icon={getProductDescriptionField("property", "nicotine")?.icon}*/}
+          {/*/>*/}
+          {/*<ProductValueWithTitle*/}
+          {/*  text={product?.tar}*/}
+          {/*  title={getProductDescriptionField("property", "tar")?.title}*/}
+          {/*  icon={getProductDescriptionField("property", "tar")?.icon}*/}
+          {/*/>*/}
+          {/*<ProductValueWithTitle*/}
+          {/*  text={product?.filter_parameters}*/}
+          {/*  title={*/}
+          {/*    getProductDescriptionField("property", "filter_parameters")?.title*/}
+          {/*  }*/}
+          {/*  icon={*/}
+          {/*    getProductDescriptionField("property", "filter_parameters")?.icon*/}
+          {/*  }*/}
+          {/*/>*/}
         </div>
       </div>
     </div>

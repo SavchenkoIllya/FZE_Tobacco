@@ -28,9 +28,9 @@ export const Production = ({
 
           <div className="flex flex-col items-center justify-center text-center p-8">
             <h1 className="h1 !text-secondary">Let&#39;s grow up together!</h1>
-            <p className="text-lg mb-6">
+            <div className="text-lg mb-6">
               <BlocksRenderer content={productionData.description} />
-            </p>
+            </div>
             <a
               href={productionData.button_url}
               className={"button !bg-secondary !text-primary"}

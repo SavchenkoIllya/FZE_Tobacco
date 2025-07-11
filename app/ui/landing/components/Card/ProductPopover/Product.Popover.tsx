@@ -1,7 +1,5 @@
 "use client";
-import { SearchParamsNames } from "@/app/lib";
-import { Modal, ProductPopoverContent, useUrlParams } from "@/app/ui";
-import { useEffect, useState } from "react";
+import { Modal } from "@/app/ui";
 
 type ProductPopoverProps = {
   open: boolean;
@@ -9,40 +7,27 @@ type ProductPopoverProps = {
 };
 
 export const ProductPopover = ({ open, onClose }: ProductPopoverProps) => {
-  const { getParam } = useUrlParams(0);
-  const productId = getParam(SearchParamsNames.PRODUCT_ID) ?? "";
-  const [product, setProduct] = useState<ProductsWithLocales["select"] | null>(
-    null,
-  );
-
   const handleClose = () => {
     onClose();
   };
 
-  useEffect(() => {
-    const getProductByIdRequest = async () => {
-      const productResponse = await getProductById(Number(productId));
-      setProduct(productResponse);
-    };
-
-    void getProductByIdRequest();
-  }, [productId]);
-
-  if (!product) return null;
+  // if (!activeProduct) return null;
 
   return (
     <Modal open={open} onClose={handleClose}>
       <div className={"flex items-center md:items-end flex-col gap-8 m-20"}>
-        <ProductPopoverContent product={product} />
+        {/*<ProductPopoverContent product={activeProduct} />*/}
 
         <div
-          className={"max-md:fixed max-md:bottom-0 max-md:p-8 max-md:w-full"}
+          className={
+            "max-md:bg-secondary max-md:fixed max-md:bottom-0 max-md:p-8 max-md:w-full max-md:shadow-3xl"
+          }
         >
           <button
-            className={"button bg-black text-white hover:bg-black! !w-full"}
+            className={"button bg-primary text-white hover:bg-primary! !w-full"}
             onClick={handleClose}
           >
-            Close
+            {/*{close_text ?? "X"}*/}
           </button>
         </div>
       </div>

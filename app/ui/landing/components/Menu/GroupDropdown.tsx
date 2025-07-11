@@ -11,7 +11,7 @@ export const GroupDropdown = ({
   title: string;
   values: string[];
 } & Partial<VariantProp>) => {
-  const { getParam, setParam } = useUrlParams(0);
+  const { getParam, setParam, removeParam } = useUrlParams(0);
   const param = getParam(title);
 
   const [isOpen, setIsOpen] = useState(
@@ -53,7 +53,13 @@ export const GroupDropdown = ({
         )}
       >
         {values.map((item, idx) => {
+          const active = item.toLowerCase() === param?.toLowerCase();
           const handleSelectParam = () => {
+            if (active) {
+              removeParam(title);
+              return;
+            }
+
             setParam(title, item);
           };
           return (
@@ -62,7 +68,7 @@ export const GroupDropdown = ({
               className={cn(
                 "w-full text-left px-4 hover:text-accent focus:outline-none transition-all duration-200 cursor-pointer",
                 variant === "dark" ? "text-secondary" : "text-primary",
-                item.toLowerCase() === param?.toLowerCase() && "text-accent",
+                active && "text-accent",
               )}
               onClick={handleSelectParam}
             >

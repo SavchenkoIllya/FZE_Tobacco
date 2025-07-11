@@ -1,9 +1,10 @@
-import { ProductProperty, ProductPropertyProps } from "@/app/ui";
+import { ProductProperty } from "@/app/ui/landing/components/Card";
+import { Media } from "@/app/types";
 
 export interface ProductValueWithTitleProps {
-  title: string;
-  text: ProductPropertyProps["text"] | null;
-  icon: ProductPropertyProps["icon"];
+  title?: string | null;
+  text?: string | number;
+  icon?: Media | null;
 }
 
 export const ProductValueWithTitle = ({
@@ -11,9 +12,11 @@ export const ProductValueWithTitle = ({
   text,
   icon,
 }: ProductValueWithTitleProps) => {
+  if (!text) return null;
+
   return (
     <div>
-      <p className={"text-secondary text-xl font-bold"}>{title}</p>
+      {title && <p className={"text-xl font-bold text-primary"}>{title}</p>}
       <ProductProperty text={text ?? undefined} icon={icon} />
     </div>
   );

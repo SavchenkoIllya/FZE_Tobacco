@@ -4,12 +4,14 @@ import {
   getHeroSectionData,
   getPillarsSectionData,
   getProductionSectionData,
+  getProducts,
 } from "@/app/actions";
 import { CookieNames } from "@/app/lib";
 import { Locale } from "@/app/types";
 import {
   About,
   AgeModal,
+  CatalogueSection,
   // CatalogueSection,
   ContactsSection,
   Header,
@@ -22,11 +24,16 @@ import { cookies } from "next/headers";
 
 export type HomePageProps = Readonly<{
   params: { lang: Locale };
+  searchParams?: { [key: string]: string | undefined };
 }>;
 
-export default async function Home(props: HomePageProps) {
-  const { params } = await props;
-  const { lang } = await params;
+export default async function Home({ params, searchParams }: HomePageProps) {
+  const { lang } = params;
+  const query = (await searchParams?.query) ?? "";
+  const filterType = (await searchParams?.["filter-type"]) ?? "";
+  const brand = (await searchParams?.brand) ?? "";
+  const format = (await searchParams?.format) ?? "";
+
   const cookiesStore = await cookies();
   const availableStoredLocales = cookiesStore.get(
     CookieNames.AVAILABLE_LANGUAGES,
@@ -40,12 +47,13 @@ export default async function Home(props: HomePageProps) {
   const aboutData = await getAboutSectionData(lang);
   const pillarsData = await getPillarsSectionData(lang);
   const productionData = await getProductionSectionData(lang);
-
-  // console.log(headerData);
-  // console.log(heroData);
-  // console.log(aboutData);
-  // console.log(pillarsData);
-  // console.log(productionData);
+  const products = await getProducts({
+    lang,
+    query,
+    filterType,
+    brand,
+    format,
+  });
 
   return (
     <main className={"overflow-hidden"}>
@@ -59,10 +67,7 @@ export default async function Home(props: HomePageProps) {
         <Hero heroData={heroData} />
         <About aboutData={aboutData} />
         <Pillars pillarsData={pillarsData} />
-        {/*<CatalogueSection*/}
-        {/*  searchParams={props.searchParams}*/}
-        {/*  params={props.params}*/}
-        {/*/>*/}
+        <CatalogueSection products={products} />
         <Production productionData={productionData} />
         <ContactsSection />
       </div>

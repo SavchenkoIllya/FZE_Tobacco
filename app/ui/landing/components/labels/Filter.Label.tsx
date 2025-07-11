@@ -17,7 +17,7 @@ export const FilterLabel = ({
   return (
     <div className="flex items-center gap-2 rounded-full bg-black px-4 py-1 text-white text-sm font-medium capitalize">
       <span>
-        {title.replaceAll("_", " ")}: {value}
+        {title.replaceAll("-", " ")}: {value}
       </span>
       <button
         onClick={handleRemove}

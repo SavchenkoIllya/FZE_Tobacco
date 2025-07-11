@@ -5,4 +5,9 @@ export enum ApiRoutes {
   GET_ABOUT_SECTION_DATA = "/api/about-section",
   GET_PILLARS_SECTION_DATA = "/api/pillar-section",
   GET_PRODUCTION_SECTION_DATA = "/api/production-section",
+  GET_PRODUCTS = "/api/products",
+  GET_FORMATS = "/api/formats",
+  GET_BRANDS = "/api/brands",
+  GET_FILTER_TYPES = "/api/filter-types",
+  GET_PRODUCT_CARD = "/api/product-card",
 }

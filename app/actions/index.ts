@@ -1,11 +1,8 @@
 export * from "./config";
+export * from "./entities";
+export * from "./sections";
 
-export * from "./getAboutSection";
 export * from "./getGlobal";
-export * from "./getHeaderSection";
-export * from "./getHeroSection";
-export * from "./getLocales";
-export * from "./getPilarsSection";
-export * from "./getProductionSection";
+export * from "./getProductCard";
 
 export * from "./sendEmail";

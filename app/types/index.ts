@@ -108,13 +108,6 @@ export interface SharedDescriptionField {
     | "filter_parameters";
 }
 
-export interface SharedProductionSection {
-  id?: number;
-  title?: string;
-  description?: string;
-  catchphrase?: string;
-}
-
 export interface SharedFooter {
   id?: number;
   legal_info?: SharedLegalInfo | null;
@@ -278,15 +271,15 @@ export interface Product {
   publishedAt?: Date | string;
   locale?: string | null;
   title: string;
-  nicotine?: number;
-  tar?: number;
-  cigarette_length?: number;
   brand?: Brand | null;
   category?: Category | null;
   image?: Media | null;
   format?: Format | null;
   blend?: string;
-  filter_parameters?: string;
+  nicotine: string;
+  tar: string;
+  cigarette_length: string;
+  filter_type?: FilterType | null;
 }
 
 export interface Message {
@@ -310,9 +303,19 @@ export interface Brand {
   updatedAt?: Date | string;
   publishedAt?: Date | string;
   locale?: string | null;
-  name?: string;
+  name: string;
   description?: string;
   logo?: Media | null;
+}
+
+export interface FilterType {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  name: string;
 }
 
 export interface Category {

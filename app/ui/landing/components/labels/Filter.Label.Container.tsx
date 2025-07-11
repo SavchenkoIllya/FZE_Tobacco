@@ -1,5 +1,4 @@
 "use client";
-import { MenuFilterKeys, SearchParamsNames } from "@/app/lib";
 import { FilterLabel, useUrlParams } from "@/app/ui";
 
 export const FilterLabelContainer = () => {
@@ -8,17 +7,9 @@ export const FilterLabelContainer = () => {
 
   return (
     <div className={"w-full flex flex-wrap gap-2"}>
-      {[
-        SearchParamsNames.QUERY,
-        MenuFilterKeys.BRANDS,
-        MenuFilterKeys.CATEGORIES,
-        MenuFilterKeys.FILTER_PARAMS,
-      ].map(
-        (filter) =>
-          params[filter] && (
-            <FilterLabel key={filter} title={filter} value={params[filter]} />
-          ),
-      )}
+      {Object.keys(params).map((key) => (
+        <FilterLabel key={key} title={key} value={params[key]} />
+      ))}
     </div>
   );
 };

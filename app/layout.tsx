@@ -1,4 +1,4 @@
-import { getLocales } from "@/app/actions/getLocales";
+import { getLocales } from "@/app/actions/entities/getLocales";
 import { ReactNode } from "react";
 import "./globals.css";
 

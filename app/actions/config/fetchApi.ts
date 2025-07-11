@@ -1,6 +1,6 @@
 "use server";
 
-type NextFetchRequestConfig = {
+export type NextFetchRequestConfig = {
   revalidate?: number | false;
   tags?: string[];
 };
