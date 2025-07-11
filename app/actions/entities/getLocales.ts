@@ -11,8 +11,8 @@ export async function getLocales() {
       method: "GET",
     }).then((response: LocaleData[]) =>
       response
-        .sort((a, b) => Number(b.isDefault) - Number(a.isDefault))
-        .map((el) => el.code),
+        ?.sort((a, b) => Number(b.isDefault) - Number(a.isDefault))
+        ?.map((el) => el.code),
     );
 
     return res;
