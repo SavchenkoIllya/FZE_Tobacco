@@ -1,4 +1,4 @@
-import { getLocales } from "@/app/actions";
+// import { getLocales } from "@/app/actions";
 import { CookieNames } from "@/app/lib";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
@@ -20,7 +20,8 @@ export async function middleware(request: NextRequest) {
   const formattedPathname = pathname.split("/").filter(Boolean);
 
   if (!availableLocales) {
-    availableLocales = await getLocales();
+    // availableLocales = await getLocales();
+    availableLocales = undefined;
 
     if (!availableLocales) {
       return NextResponse.json({ error: "Server problems" }, { status: 500 });
