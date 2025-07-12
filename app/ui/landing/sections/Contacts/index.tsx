@@ -9,7 +9,6 @@ export const ContactsSection = () => {
       id={LandingSections.CONTACTS}
       className={"relative flex flex-col justify-center items-center w-full"}
     >
-
       <div className={"max-lg:hidden"}>
         <BackgroundImage
           imageUrl={"/images/Pattern_left.png"}
@@ -80,10 +79,7 @@ export const ContactsSection = () => {
       </div>
 
       <div className={"my-8"}>
-        <ContactsList
-          wrapperClasses={"flex gap-8 items-center"}
-          withSeparator
-        />
+        <ContactsList wrapperClasses={"flex gap-8 items-center"} />
       </div>
 
       <div className={"mb-8"}>
