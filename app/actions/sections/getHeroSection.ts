@@ -35,9 +35,9 @@ export async function getHeroSectionData(lang?: Locale) {
     return res;
   } catch (e) {
     if (e instanceof Error) {
-      console.error(`Failed to fetch: ${e.message}`);
+      throw new Error(`Failed to fetch: ${e.message}`);
     } else {
-      console.error("Unknown error occurred while fetching");
+      throw new Error("Unknown error occurred while fetching");
     }
   }
 }
