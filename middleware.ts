@@ -1,7 +1,7 @@
+import { getLocales } from "@/app/actions";
 import { CookieNames } from "@/app/lib";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { undefined } from "zod";
 
 export async function middleware(request: NextRequest) {
   const cookiesStore = await cookies();
@@ -20,8 +20,7 @@ export async function middleware(request: NextRequest) {
   const formattedPathname = pathname.split("/").filter(Boolean);
 
   if (!availableLocales) {
-    // availableLocales = await getLocales();
-    availableLocales = undefined;
+    availableLocales = await getLocales();
 
     if (!availableLocales) {
       return NextResponse.json({ error: "Server problems" }, { status: 500 });
@@ -42,7 +41,7 @@ export async function middleware(request: NextRequest) {
   const localeInPath = formattedPathname[0];
 
   if (!localeInPath || !availableLocales.includes(localeInPath)) {
-    const targetLocale = currentLocale?.value || availableLocales[0];
+    const targetLocale = currentLocale?.value ?? availableLocales[0];
 
     const newUrl = new URL(`/${targetLocale}${pathname}`, request.url);
 
