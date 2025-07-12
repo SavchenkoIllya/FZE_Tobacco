@@ -28,7 +28,7 @@ export type HomePageProps = Readonly<{
 }>;
 
 export default async function Home({ params, searchParams }: HomePageProps) {
-  const { lang } = params;
+  const { lang } = await params;
   const query = (await searchParams?.query) ?? "";
   const filterType = (await searchParams?.["filter-type"]) ?? "";
   const brand = (await searchParams?.brand) ?? "";
