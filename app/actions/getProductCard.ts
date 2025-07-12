@@ -41,9 +41,9 @@ export async function getProductCard(lang?: Locale) {
     return res;
   } catch (e) {
     if (e instanceof Error) {
-      throw new Error(`Failed to fetch: ${e.message}`);
+      console.error(`Failed to fetch: ${e.message}`);
     } else {
-      throw new Error("Unknown error occurred while fetching");
+      console.error("Unknown error occurred while fetching");
     }
   }
 }
