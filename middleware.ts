@@ -19,20 +19,20 @@ export async function middleware(request: NextRequest) {
 
   const formattedPathname = pathname.split("/").filter(Boolean);
 
-  if (!availableLocales) {
-    // availableLocales = await getLocales();
-    availableLocales = undefined;
-
-    if (!availableLocales) {
-      return NextResponse.json({ error: "Server problems" }, { status: 500 });
-    }
-
-    const response = NextResponse.next();
-    response.cookies.set(
-      CookieNames.AVAILABLE_LANGUAGES,
-      JSON.stringify(availableLocales),
-    );
-  }
+  // if (!availableLocales) {
+  //   // availableLocales = await getLocales();
+  //   availableLocales = undefined;
+  //
+  //   if (!availableLocales) {
+  //     return NextResponse.json({ error: "Server problems" }, { status: 500 });
+  //   }
+  //
+  //   const response = NextResponse.next();
+  //   response.cookies.set(
+  //     CookieNames.AVAILABLE_LANGUAGES,
+  //     JSON.stringify(availableLocales),
+  //   );
+  // }
 
   if (!currentLocale?.value) {
     const response = NextResponse.next();
