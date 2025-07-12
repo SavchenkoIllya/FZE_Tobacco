@@ -12,7 +12,7 @@ type QueryProps = {
 };
 
 const getProductsQuery = (props: QueryProps) => {
-  const filters: any[] = [];
+  const filters: unknown[] = [];
 
   if (props.query) {
     filters.push({
