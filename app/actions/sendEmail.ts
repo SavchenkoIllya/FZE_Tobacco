@@ -9,7 +9,7 @@ type FormResponse = {
   successMessage: string;
 };
 
-export const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
+const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 
 export async function sendEmail(
   _: unknown,
