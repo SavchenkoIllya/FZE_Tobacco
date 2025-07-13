@@ -1,5 +1,5 @@
 "use client";
-import { getProductCard } from "@/app/actions";
+import { getMediaUrl, getProductCard } from "@/app/actions";
 import { Locale, Product, ProductCard } from "@/app/types";
 import {
   getProductDescriptionField,
@@ -29,7 +29,9 @@ export const ProductPopoverContent = ({ product }: { product: Product }) => {
     <div className="flex flex-col lg:items-center lg:flex-row gap-6">
       <div className="flex justify-center lg:justify-start">
         <ProductImage
-          image_url={product?.image?.url ?? undefined}
+          image_url={
+            product?.image?.url ? getMediaUrl(product.image.url) : undefined
+          }
           title={product.title}
           variant={"lg"}
         />
