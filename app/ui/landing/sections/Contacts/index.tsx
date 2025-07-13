@@ -1,11 +1,18 @@
 "use client";
+import { sendEmail } from "@/app/actions";
 import { LandingSections } from "@/app/lib";
 import { Contact } from "@/app/types";
 import { BackgroundImage, ContactsList, Input, Textarea } from "@/app/ui";
 import { MapComponent } from "@/app/ui/landing/components/Map";
 import { FooterContacts } from "@/app/ui/landing/sections/Contacts/components";
+import { useActionState } from "react";
 
 export const ContactsSection = ({ contacts }: { contacts?: Contact[] }) => {
+  const [formState, formAction, isPending] = useActionState(
+    sendEmail,
+    undefined,
+  );
+
   return (
     <section
       id={LandingSections.CONTACTS}
