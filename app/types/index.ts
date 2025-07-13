@@ -105,7 +105,10 @@ export interface SharedDescriptionField {
     | "cigarette_length"
     | "nicotine"
     | "tar"
-    | "filter_parameters";
+    | "filter_type"
+    | "diameter"
+    | "filter_length"
+    | "tobacco_length";
 }
 
 export interface SharedFooter {
@@ -280,6 +283,9 @@ export interface Product {
   tar: string;
   cigarette_length: string;
   filter_type?: FilterType | null;
+  filter_length?: string;
+  tobacco_length?: string;
+  diameter?: string;
 }
 
 export interface Message {

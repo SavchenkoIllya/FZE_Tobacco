@@ -1,5 +1,5 @@
-import { ProductProperty } from "@/app/ui/landing/components/Card";
 import { Media } from "@/app/types";
+import { ProductProperty } from "@/app/ui/landing/components/Card";
 
 export interface ProductValueWithTitleProps {
   title?: string | null;
@@ -16,7 +16,7 @@ export const ProductValueWithTitle = ({
 
   return (
     <div>
-      {title && <p className={"text-xl font-bold text-primary"}>{title}</p>}
+      {title && <p className={"text-xl font-bold"}>{title}</p>}
       <ProductProperty text={text ?? undefined} icon={icon} />
     </div>
   );

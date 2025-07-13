@@ -18,6 +18,7 @@ import {
   Hero,
   Pillars,
   Production,
+  ProductPopover,
   ScrollIndicator,
 } from "@/app/ui";
 import { cookies } from "next/headers";
@@ -29,10 +30,12 @@ export type HomePageProps = Readonly<{
 
 export default async function Home({ params, searchParams }: HomePageProps) {
   const { lang } = await params;
-  const query = (await searchParams?.query) ?? "";
-  const filterType = (await searchParams?.["filter-type"]) ?? "";
-  const brand = (await searchParams?.brand) ?? "";
-  const format = (await searchParams?.format) ?? "";
+  const _searchParams = await searchParams;
+
+  const query = _searchParams?.query ?? "";
+  const filterType = _searchParams?.["filter-type"] ?? "";
+  const brand = _searchParams?.brand ?? "";
+  const format = _searchParams?.format ?? "";
 
   const cookiesStore = await cookies();
   const availableStoredLocales = cookiesStore.get(
@@ -58,6 +61,7 @@ export default async function Home({ params, searchParams }: HomePageProps) {
   return (
     <main className={"overflow-hidden"}>
       <AgeModal />
+      <ProductPopover lang={lang} />
       <ScrollIndicator />
       <div className={"relative "}>
         <div className="-z-1 absolute w-[500px] h-[1800px] bg-gradient-to-br from-accent to-secondary opacity-30 rounded-full blur-3xl -top-20 -left-90  animate-pulse [animation-duration:5s]" />
@@ -69,7 +73,7 @@ export default async function Home({ params, searchParams }: HomePageProps) {
         <Pillars pillarsData={pillarsData} />
         <CatalogueSection products={products} />
         <Production productionData={productionData} />
-        <ContactsSection />
+        <ContactsSection contacts={headerData?.contacts ?? undefined} />
       </div>
     </main>
   );

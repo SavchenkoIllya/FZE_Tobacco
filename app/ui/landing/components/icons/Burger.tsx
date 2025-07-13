@@ -8,7 +8,7 @@ interface BurgerProps {
 export const Burger = ({ open, onClick }: BurgerProps) => {
   return (
     <div>
-      <button onClick={onClick} className="relative group">
+      <button onClick={onClick} className="relative group cursor-pointer">
         <div className="relative flex overflow-hidden items-center justify-center w-[50px] h-[50px] transform transition-all ring-0 ring-opacity-30 duration-200">
           <div
             className={cn(

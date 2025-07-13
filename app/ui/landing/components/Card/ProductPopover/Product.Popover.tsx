@@ -1,22 +1,39 @@
 "use client";
-import { Modal } from "@/app/ui";
+import { getProductById } from "@/app/actions";
+import { Locale, Product } from "@/app/types";
+import { Modal, ProductPopoverContent, useUrlParams } from "@/app/ui";
+import { useEffect, useState } from "react";
 
 type ProductPopoverProps = {
-  open: boolean;
-  onClose: () => void;
+  lang: Locale;
 };
 
-export const ProductPopover = ({ open, onClose }: ProductPopoverProps) => {
+export const ProductPopover = ({ lang }: ProductPopoverProps) => {
+  const { getParam, removeParam } = useUrlParams();
+  const [product, setProduct] = useState<Product | null>(null);
+  const productDocumentId = getParam("productId");
+
   const handleClose = () => {
-    onClose();
+    removeParam("productId");
   };
 
-  // if (!activeProduct) return null;
+  useEffect(() => {
+    if (!productDocumentId) return;
+
+    const fetchProductById = async () => {
+      const res = await getProductById(lang, productDocumentId);
+      setProduct(res ?? null);
+    };
+
+    void fetchProductById();
+  }, [lang, productDocumentId]);
+
+  if (!productDocumentId || !product) return null;
 
   return (
-    <Modal open={open} onClose={handleClose}>
+    <Modal open={!!productDocumentId.length} onClose={handleClose}>
       <div className={"flex items-center md:items-end flex-col gap-8 m-20"}>
-        {/*<ProductPopoverContent product={activeProduct} />*/}
+        <ProductPopoverContent product={product} />
 
         <div
           className={

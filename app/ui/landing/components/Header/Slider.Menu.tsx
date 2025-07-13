@@ -1,8 +1,10 @@
 "use client";
-import { Burger, ContactsList, Navigation, Slider } from "@/app/ui";
+import { Contact } from "@/app/types";
+import { Burger, Navigation, Slider } from "@/app/ui";
+import { FooterContacts } from "@/app/ui/landing/sections/Contacts/components";
 import { useState } from "react";
 
-export const SliderNavigation = () => {
+export const SliderNavigation = ({ contacts }: { contacts?: Contact[] }) => {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -13,12 +15,12 @@ export const SliderNavigation = () => {
     <div className={"block md:hidden"}>
       <Burger open={open} onClick={handleClick} />
       <Slider open={open}>
-        <div className={"p-8"}>
-          <Burger open={open} onClick={handleClick} />
-          <div className="flex flex-col p-4 gap-20">
+        <div className={"p-8 h-full flex flex-col justify-between"}>
+          <div className={"flex flex-col gap-8"}>
+            <Burger open={open} onClick={handleClick} />
             <Navigation onNavigate={handleClick} variant="flex-col" />
-            <ContactsList wrapperClasses={"flex flex-col gap-4"} />
           </div>
+          <FooterContacts contacts={contacts} />
         </div>
       </Slider>
     </div>

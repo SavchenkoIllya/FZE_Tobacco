@@ -1,9 +1,11 @@
 "use client";
 import { LandingSections } from "@/app/lib";
+import { Contact } from "@/app/types";
 import { BackgroundImage, ContactsList, Input, Textarea } from "@/app/ui";
 import { MapComponent } from "@/app/ui/landing/components/Map";
+import { FooterContacts } from "@/app/ui/landing/sections/Contacts/components";
 
-export const ContactsSection = () => {
+export const ContactsSection = ({ contacts }: { contacts?: Contact[] }) => {
   return (
     <section
       id={LandingSections.CONTACTS}
@@ -82,8 +84,13 @@ export const ContactsSection = () => {
         <ContactsList wrapperClasses={"flex gap-8 items-center"} />
       </div>
 
-      <div className={"mb-8"}>
-        <h5 className={"h1 uppercase !text-sm"}>
+      <div
+        className={
+          "p-4 md:mb-8 w-full container rounded-2xl bg-secondary space-y-4"
+        }
+      >
+        <FooterContacts contacts={contacts} />
+        <h5 className={"h1 uppercase !text-sm md:text-center !leading-5"}>
           Copyright © 24 All rights reserved - VK Tobacco
         </h5>
       </div>
