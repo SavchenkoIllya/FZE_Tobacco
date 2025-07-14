@@ -1,32 +1,63 @@
 import { SharedPillar } from "@/app/types";
-import { InfoCard } from "@/app/ui";
+import { chunkArray, cn, InfoCard } from "@/app/ui";
 
 interface InfoGridProps {
   pillars_list: SharedPillar[];
 }
 
 export const InfoGrid = ({ pillars_list }: InfoGridProps) => {
-  const cards = pillars_list?.map((pillar) => (
-    <div
-      key={pillar.id}
-      className={`
-        w-[200px]
-        border-accent border-b-2 border-r-1
-        xl:[&:not(:nth-child(4n))]:border-r-1
-        xl:[&:nth-child(4n)]:border-r-0
-        xl:[&:not(:nth-child(4n+1))]:border-l-1
-        [&:nth-last-child(-n+2)]:border-b-0
-        xl:[&:nth-last-child(-n+4)]:border-b-0
-        even:border-r-0 xl:even:border-r-1
-      `}
-    >
-      <InfoCard text={pillar.label} title={pillar.title} />
-    </div>
-  ));
+  const mobileRows = chunkArray(pillars_list, 2);
+  const xlRows = chunkArray(pillars_list, 4);
 
   return (
-    <div className="grid grid-cols-2 xl:grid-cols-4 gap-0 border-accent mt-20">
-      {cards}
-    </div>
+    <>
+      <div className="block xl:hidden w-full">
+        {mobileRows.map((row, rowIdx) => (
+          <div
+            key={`mobile-row-${row[0].id}-${rowIdx}`}
+            className={cn(
+              "flex",
+              rowIdx !== mobileRows.length - 1 && "border-b border-accent",
+            )}
+          >
+            {row.map((pillar, colIdx) => (
+              <div
+                key={pillar.id}
+                className={cn(
+                  "w-1/2",
+                  colIdx !== row.length - 1 && "border-r border-accent",
+                )}
+              >
+                <InfoCard text={pillar.label} title={pillar.title} />
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <div className="hidden xl:block w-full">
+        {xlRows.map((row, rowIdx) => (
+          <div
+            key={`xl-row-${row[0].id}-${rowIdx}`}
+            className={cn(
+              "flex",
+              rowIdx !== xlRows.length - 1 && "border-b border-accent",
+            )}
+          >
+            {row.map((pillar, colIdx) => (
+              <div
+                key={pillar.id}
+                className={cn(
+                  "w-1/4",
+                  colIdx !== row.length - 1 && "border-r border-accent",
+                )}
+              >
+                <InfoCard text={pillar.label} title={pillar.title} />
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
