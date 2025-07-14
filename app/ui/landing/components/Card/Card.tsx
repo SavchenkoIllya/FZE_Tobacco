@@ -36,7 +36,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
   return (
     <button
       className={
-        "text-left flex flex-col cursor-pointer hover:bg-zinc-50 p-4 rounded-2xl transition-all w-60"
+        "text-left flex flex-col cursor-pointer hover:bg-zinc-50 p-4 rounded-2xl transition-all w-50 max-md:w-35"
       }
       onClick={handleOpenPopover}
       type={"button"}

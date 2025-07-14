@@ -11,7 +11,7 @@ export async function Hero({ heroData }: Readonly<{ heroData?: HeroSection }>) {
     >
       <div className={"container m-auto h-full"}>
         <div className="grid grid-cols-12 h-full items-center">
-          <div className="text-center md:text-left col-span-12 md:col-span-4 space-y-4">
+          <div className="text-center md:text-left max-md:self-end max-md:pb-[10rem] col-span-12 md:col-span-4 space-y-4">
             <h1 className={"h1"}>{heroData.title}</h1>
             {heroData.button_text && heroData.link?.name && (
               <ScrollButton

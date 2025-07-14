@@ -4,15 +4,12 @@ import {
   getHeroSectionData,
   getPillarsSectionData,
   getProductionSectionData,
-  getProducts,
 } from "@/app/actions";
 import { CookieNames } from "@/app/lib";
 import { Locale } from "@/app/types";
 import {
   About,
   AgeModal,
-  CatalogueSection,
-  // CatalogueSection,
   ContactsSection,
   Header,
   Hero,
@@ -21,6 +18,7 @@ import {
   ProductPopover,
   ScrollIndicator,
 } from "@/app/ui";
+import CatalogueSection from "@/app/ui/landing/sections/Catalogue";
 import { cookies } from "next/headers";
 
 export type HomePageProps = Readonly<{
@@ -50,13 +48,6 @@ export default async function Home({ params, searchParams }: HomePageProps) {
   const aboutData = await getAboutSectionData(lang);
   const pillarsData = await getPillarsSectionData(lang);
   const productionData = await getProductionSectionData(lang);
-  const products = await getProducts({
-    lang,
-    query,
-    filterType,
-    brand,
-    format,
-  });
 
   return (
     <main className={"overflow-hidden"}>
@@ -71,7 +62,13 @@ export default async function Home({ params, searchParams }: HomePageProps) {
         <Hero heroData={heroData} />
         <About aboutData={aboutData} />
         <Pillars pillarsData={pillarsData} />
-        <CatalogueSection products={products} />
+        <CatalogueSection
+          query={query}
+          filterType={filterType}
+          brand={brand}
+          format={format}
+          lang={lang}
+        />
         <Production productionData={productionData} />
         <ContactsSection contacts={headerData?.contacts ?? undefined} />
       </div>

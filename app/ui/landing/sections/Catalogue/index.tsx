@@ -1,20 +1,33 @@
-"use client";
+import { getProducts } from "@/app/actions";
 import { LandingSections } from "@/app/lib";
-import { Product } from "@/app/types";
+import { Locale } from "@/app/types";
 import { Menu, Search } from "@/app/ui";
 import {
   ProductsList,
   SliderMenu,
 } from "@/app/ui/landing/sections/Catalogue/components";
+import { Suspense } from "react";
 
-export const CatalogueSection = ({
-  // catalogue_data,
-  products,
-}: {
-  // catalogue_data: SharedCatalogue;
-  products?: Product[];
-}) => {
-  if (!products) return null;
+export default async function CatalogueSection({
+  lang,
+  query,
+  filterType,
+  brand,
+  format,
+}: Readonly<{
+  lang: Locale;
+  query?: string;
+  filterType?: string;
+  brand?: string;
+  format?: string;
+}>) {
+  const products = await getProducts({
+    lang,
+    query,
+    filterType,
+    brand,
+    format,
+  });
 
   return (
     <section id={LandingSections.CATALOGUE} className="bg-primary py-10 w-full">
@@ -32,10 +45,12 @@ export const CatalogueSection = ({
           </div>
 
           <div className="col-span-4 md:col-span-3 overflow-y-scroll scrollbar-hide">
-            <ProductsList products={products} />
+            <Suspense fallback={<p>Loading...</p>}>
+              <ProductsList products={products} />
+            </Suspense>
           </div>
         </div>
       </div>
     </section>
   );
-};
+}

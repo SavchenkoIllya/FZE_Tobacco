@@ -32,11 +32,12 @@ export function Header({
       )}
     >
       <div className="container m-auto relative z-10">
-        <div className="flex items-center justify-between mx-8 my-4 min-h-[68px] gap-8">
+        <div className="flex items-center justify-between mx-8 my-4 h-[40px] gap-8">
           <SliderNavigation contacts={headerData.contacts ?? undefined} />
           <div>
             {headerData?.logo && (
               <img
+                className={"object-contain max-h-[40px]"}
                 src={getMediaUrl(headerData.logo.url)}
                 alt={headerData.logo.alternativeText}
               />

@@ -1,6 +1,6 @@
 "use client";
 import { LocalStorageNames } from "@/app/lib";
-import {cn, EXPIRATION_DAYS, Modal} from "@/app/ui";
+import { cn, EXPIRATION_DAYS, Modal } from "@/app/ui";
 import { useEffect, useLayoutEffect, useState } from "react";
 
 export const AgeModal = () => {
@@ -42,43 +42,42 @@ export const AgeModal = () => {
   };
 
   return (
-      <Modal open={open} onClose={handleClose}>
-        <div
-            className={cn(
-                "w-full h-full flex flex-col md:flex-row justify-center items-center gap-8",
-                "bg-secondary",
-                "w-fit h-fit p-20 rounded-4xl",
-                "from-0% to-60%",
-                "shadow-secondary/50 shadow-2xl",
-                "max-md:w-full max-md:h-full rounded-none",
-            )}
-        >
-          <div className={"max-w-2xl"}>
-            <h1 className={"h1 !text-accent"}>Hello dear Visitor</h1>
-            <p>
-              You are about to visit site regarding tobacco and smoking content,
-              by clicking you are going to otsosat moyu valinu
-            </p>
-            <div className={"mt-4 flex justify-between"}>
-              <button
-                onClick={handleClose}
-                className={
-                  "button !bg-secondary !text-primary !hover:bg-secondary !w-full"
-                }
-              >
-                Go
-              </button>
-              <button
-                onClick={() => {
-                  window.close();
-                }}
-                className={"cursor-pointer hover:underline w-full"}
-              >
-                Cancel
-              </button>
-            </div>
+    <Modal open={open} onClose={handleClose}>
+      <div
+        className={cn(
+          "w-full h-full flex flex-col md:flex-row justify-center items-center gap-8",
+          "w-fit h-fit p-20 rounded-4xl",
+          "from-60% to-60%",
+          "shadow-secondary/50 shadow-2xl",
+          "max-md:w-full max-md:h-full rounded-none",
+        )}
+      >
+        <div className={"max-w-2xl"}>
+          <h1 className={"h1"}>Hello dear Visitor</h1>
+          <p className={"text-primary"}>
+            You are about to visit site regarding tobacco and smoking content,
+            by clicking you are going to otsosat moyu valinu
+          </p>
+          <div className={"mt-4 flex justify-between"}>
+            <button
+              onClick={handleClose}
+              className={
+                "button !bg-secondary !text-primary !hover:bg-secondary !w-full"
+              }
+            >
+              Go
+            </button>
+            <button
+              onClick={() => {
+                window.close();
+              }}
+              className={"cursor-pointer text-primary hover:underline w-full"}
+            >
+              Cancel
+            </button>
           </div>
         </div>
-  </Modal>
+      </div>
+    </Modal>
   );
 };
