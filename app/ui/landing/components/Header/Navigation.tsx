@@ -1,27 +1,23 @@
-import { LandingSections } from "@/app/lib";
+import { SectionsMeta } from "@/app/types";
 import { cn, NavigationItem } from "@/app/ui";
-
-const SECTIONS_DICTIONARY: { [K in LandingSections]?: string } = {
-  [LandingSections.ABOUT]: "About us",
-  [LandingSections.CATALOGUE]: "Catalogue",
-  [LandingSections.CONTACTS]: "Contacts",
-};
 
 export const Navigation = ({
   variant = "flex-row",
   onNavigate,
+  sections,
 }: {
   variant?: "flex-row" | "flex-col";
   onNavigate?: () => void;
+  sections: SectionsMeta[];
 }) => {
   return (
     <nav className={"text-white uppercase"}>
       <ul className={cn("flex gap-4", variant)}>
-        {Object.entries(SECTIONS_DICTIONARY).map(([section, label]) => (
+        {sections.map((section) => (
           <NavigationItem
-            key={section}
-            section={section as keyof typeof LandingSections}
-            label={label}
+            key={section.id}
+            section={section.name}
+            label={section.name}
             onNavigate={onNavigate}
           />
         ))}

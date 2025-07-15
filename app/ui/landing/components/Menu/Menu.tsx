@@ -1,11 +1,15 @@
 "use client";
 import { getBrands, getFilterTypes, getFormats } from "@/app/actions";
+import { MenuFilterKeys } from "@/app/lib";
 import { Brand, FilterType, Format, Locale } from "@/app/types";
 import { cn, GroupDropdown, VariantProp } from "@/app/ui";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export function Menu({ variant = "dark" }: Readonly<Partial<VariantProp>>) {
+export function Menu({
+  variant = "dark",
+  title,
+}: Partial<VariantProp> & { title?: string }) {
   const { lang } = useParams<{ lang: Locale }>();
   const [formats, setFormats] = useState<Format[] | null>(null);
   const [brands, setBrands] = useState<Brand[] | null>(null);
@@ -43,7 +47,7 @@ export function Menu({ variant = "dark" }: Readonly<Partial<VariantProp>>) {
             variant === "light" ? "!text-primary" : "!text-secondary",
           )}
         >
-          Filters
+          {title}
         </h3>
       </div>
       <div
@@ -53,21 +57,21 @@ export function Menu({ variant = "dark" }: Readonly<Partial<VariantProp>>) {
       >
         {formats && (
           <GroupDropdown
-            title={"Format"}
+            title={MenuFilterKeys.FORMAT}
             values={formats.map((format) => format.name)}
             variant={variant}
           />
         )}
         {brands && (
           <GroupDropdown
-            title={"Brand"}
+            title={MenuFilterKeys.BRAND}
             values={brands.map((brand) => brand.name)}
             variant={variant}
           />
         )}
         {filterTypes && (
           <GroupDropdown
-            title={"filter-type"}
+            title={MenuFilterKeys.FILTER_TYPE}
             values={filterTypes.map((type) => type.name)}
             variant={variant}
           />

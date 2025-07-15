@@ -1,6 +1,6 @@
 "use client";
-import { getProductById } from "@/app/actions";
-import { Locale, Product } from "@/app/types";
+import { getProductById, getProductCard } from "@/app/actions";
+import { Locale, Product, ProductCard as ProductCardT } from "@/app/types";
 import { Modal, ProductPopoverContent, useUrlParams } from "@/app/ui";
 import { useEffect, useState } from "react";
 
@@ -10,6 +10,7 @@ type ProductPopoverProps = {
 
 export const ProductPopover = ({ lang }: ProductPopoverProps) => {
   const { getParam, removeParam } = useUrlParams();
+  const [productCard, setProductCard] = useState<ProductCardT | null>(null);
   const [product, setProduct] = useState<Product | null>(null);
   const productDocumentId = getParam("productId");
 
@@ -24,8 +25,13 @@ export const ProductPopover = ({ lang }: ProductPopoverProps) => {
       const res = await getProductById(lang, productDocumentId);
       setProduct(res ?? null);
     };
+    const fetchProductCardData = async () => {
+      const res = await getProductCard(lang);
+      setProductCard(res ?? null);
+    };
 
     void fetchProductById();
+    void fetchProductCardData();
   }, [lang, productDocumentId]);
 
   if (!productDocumentId || !product) return null;
@@ -41,10 +47,12 @@ export const ProductPopover = ({ lang }: ProductPopoverProps) => {
           }
         >
           <button
-            className={"button bg-primary text-white hover:bg-primary! !w-full"}
+            className={
+              "button bg-secondary hover:bg-secondary! hover:scale-105 text-primary !w-full transition-all duration-200"
+            }
             onClick={handleClose}
           >
-            {/*{close_text ?? "X"}*/}
+            {productCard?.close_text ?? "X"}
           </button>
         </div>
       </div>

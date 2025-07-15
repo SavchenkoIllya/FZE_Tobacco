@@ -1,9 +1,10 @@
 "use client";
 import { LocalStorageNames } from "@/app/lib";
+import { AgeModal as AgeModalT } from "@/app/types";
 import { cn, EXPIRATION_DAYS, Modal } from "@/app/ui";
 import { useEffect, useLayoutEffect, useState } from "react";
 
-export const AgeModal = () => {
+export const AgeModal = ({ ageModalData }: { ageModalData: AgeModalT }) => {
   const [open, setOpen] = useState(false);
 
   useLayoutEffect(() => {
@@ -53,11 +54,8 @@ export const AgeModal = () => {
         )}
       >
         <div className={"max-w-2xl"}>
-          <h1 className={"h1"}>Hello dear Visitor</h1>
-          <p className={"text-primary"}>
-            You are about to visit site regarding tobacco and smoking content,
-            by clicking you are going to otsosat moyu valinu
-          </p>
+          <h1 className={"h1"}>{ageModalData.title}</h1>
+          <p className={"text-primary"}>{ageModalData.subtitle}</p>
           <div className={"mt-4 flex justify-between"}>
             <button
               onClick={handleClose}
@@ -65,7 +63,7 @@ export const AgeModal = () => {
                 "button !bg-secondary !text-primary !hover:bg-secondary !w-full"
               }
             >
-              Go
+              {ageModalData.confirm_button}
             </button>
             <button
               onClick={() => {
@@ -73,7 +71,7 @@ export const AgeModal = () => {
               }}
               className={"cursor-pointer text-primary hover:underline w-full"}
             >
-              Cancel
+              {ageModalData.close_button}
             </button>
           </div>
         </div>

@@ -1,13 +1,15 @@
 "use client";
 import { sendEmail } from "@/app/actions";
-import { LandingSections } from "@/app/lib";
-import { Contact } from "@/app/types";
-import { BackgroundImage, ContactsList, Input, Textarea } from "@/app/ui";
+import { ContactsSection as ContactsSectionT } from "@/app/types";
+import { Input, Textarea } from "@/app/ui";
 import { MapComponent } from "@/app/ui/landing/components/Map";
-import { FooterContacts } from "@/app/ui/landing/sections/Contacts/components";
 import { useActionState } from "react";
 
-export const ContactsSection = ({ contacts }: { contacts?: Contact[] }) => {
+export const ContactsSection = ({
+  contactsData,
+}: {
+  contactsData?: ContactsSectionT;
+}) => {
   const [formState, formAction, isPending] = useActionState(
     sendEmail,
     undefined,
@@ -15,28 +17,12 @@ export const ContactsSection = ({ contacts }: { contacts?: Contact[] }) => {
 
   return (
     <section
-      id={LandingSections.CONTACTS}
-      className={"relative flex flex-col justify-center items-center w-full"}
+      id={contactsData.sections_meta?.name}
+      className={"flex flex-col justify-center items-center w-full"}
     >
-      <div className={"max-lg:hidden"}>
-        <BackgroundImage
-          imageUrl={"/images/Pattern_left.png"}
-          size={{ width: "500px", height: "3600px" }}
-          position={{ left: "0", bottom: "0" }}
-        />
-      </div>
-
-      <div className={"max-lg:hidden"}>
-        <BackgroundImage
-          imageUrl={"/images/Pattern_right.png"}
-          size={{ width: "500px", height: "3500px" }}
-          position={{ bottom: "-1000px", right: "-250px" }}
-        />
-      </div>
-
       <div className="-z-1 absolute w-[1250px] h-[500px] bg-gradient-to-b from-accent to-secondary opacity-30 rounded-full blur-3xl -bottom-[440px] animate-pulse [animation-duration:5s]" />
 
-      <h1 className={"h1 mt-8"}>Contacts</h1>
+      <h1 className={"h1 mt-8"}>{contactsData?.title}</h1>
 
       <div className={"flex flex-col md:flex-row w-full max-w-6xl px-4"}>
         <div
@@ -44,10 +30,7 @@ export const ContactsSection = ({ contacts }: { contacts?: Contact[] }) => {
             "w-full md:flex-grow border-accent border-b-2 md:border-r-2 md:border-b-0"
           }
         >
-          <form
-            className={"space-y-4 p-4 md:p-8"}
-            onSubmit={(e) => e.preventDefault()}
-          >
+          <form className={"space-y-4 p-4 md:p-8"} onSubmit={formAction}>
             <div className={"flex flex-col lg:flex-row items-center gap-2"}>
               <Input
                 placeholder={"Name"}
@@ -72,6 +55,7 @@ export const ContactsSection = ({ contacts }: { contacts?: Contact[] }) => {
             <button
               type={"submit"}
               className={"button !w-full !bg-primary !text-secondary"}
+              disabled={isPending}
             >
               Contact us
             </button>
@@ -83,23 +67,8 @@ export const ContactsSection = ({ contacts }: { contacts?: Contact[] }) => {
             "w-full mt-8 md:mt-0 md:w-auto md:ml-6 flex-shrink-0 flex justify-center"
           }
         >
-          <MapComponent />
+          <MapComponent mapData={contactsData?.map} />
         </div>
-      </div>
-
-      <div className={"my-8"}>
-        <ContactsList wrapperClasses={"flex gap-8 items-center"} />
-      </div>
-
-      <div
-        className={
-          "p-4 md:mb-8 w-full container rounded-2xl bg-secondary space-y-4"
-        }
-      >
-        <FooterContacts contacts={contacts} />
-        <h5 className={"h1 uppercase !text-sm md:text-center !leading-5"}>
-          Copyright © 24 All rights reserved - VK Tobacco
-        </h5>
       </div>
     </section>
   );

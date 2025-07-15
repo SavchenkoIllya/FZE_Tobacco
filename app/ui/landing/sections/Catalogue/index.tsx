@@ -1,6 +1,5 @@
 import { getProducts } from "@/app/actions";
-import { LandingSections } from "@/app/lib";
-import { Locale } from "@/app/types";
+import { CatalogueSection as CatalogueSectionT, Locale } from "@/app/types";
 import { Menu, Search } from "@/app/ui";
 import {
   ProductsList,
@@ -14,7 +13,9 @@ export default async function CatalogueSection({
   filterType,
   brand,
   format,
+  catalogueData,
 }: Readonly<{
+  catalogueData?: CatalogueSectionT;
   lang: Locale;
   query?: string;
   filterType?: string;
@@ -30,17 +31,20 @@ export default async function CatalogueSection({
   });
 
   return (
-    <section id={LandingSections.CATALOGUE} className="bg-primary py-10 w-full">
+    <section
+      id={catalogueData?.sections_meta?.name}
+      className="bg-primary py-10 w-full"
+    >
       <div className="container mx-auto h-[80dvh]">
         <div className="justify-center md:justify-normal grid grid-cols-4 grid-rows-[auto_1fr] h-full">
           <div className="col-span-4 mx-4 md:col-start-3 md:col-span-2 mb-6">
-            <div className={"flex gap-2"}>
+            <div className="flex gap-2">
               <SliderMenu />
               <Search />
             </div>
           </div>
 
-          <div className="hidden md:block overflow-hidden">
+          <div className="hidden md:block md:col-span-1 overflow-hidden">
             <Menu />
           </div>
 

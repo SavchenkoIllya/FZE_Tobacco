@@ -1,16 +1,22 @@
 import {
   getAboutSectionData,
+  getAgeModalSectionData,
+  getCatalogueSectionData,
+  getContactsSectionData,
+  getFooterSectionData,
   getHeaderData,
   getHeroSectionData,
   getPillarsSectionData,
   getProductionSectionData,
+  getSectionsMeta,
 } from "@/app/actions";
-import { CookieNames } from "@/app/lib";
+import { CookieNames, MenuFilterKeys } from "@/app/lib";
 import { Locale } from "@/app/types";
 import {
   About,
   AgeModal,
   ContactsSection,
+  Footer,
   Header,
   Hero,
   Pillars,
@@ -30,10 +36,10 @@ export default async function Home({ params, searchParams }: HomePageProps) {
   const { lang } = await params;
   const _searchParams = await searchParams;
 
-  const query = _searchParams?.query ?? "";
-  const filterType = _searchParams?.["filter-type"] ?? "";
-  const brand = _searchParams?.brand ?? "";
-  const format = _searchParams?.format ?? "";
+  const query = _searchParams?.[MenuFilterKeys.QUERY] ?? "";
+  const filterType = _searchParams?.[MenuFilterKeys.FILTER_TYPE] ?? "";
+  const brand = _searchParams?.[MenuFilterKeys.BRAND] ?? "";
+  const format = _searchParams?.[MenuFilterKeys.FORMAT] ?? "";
 
   const cookiesStore = await cookies();
   const availableStoredLocales = cookiesStore.get(
@@ -48,21 +54,31 @@ export default async function Home({ params, searchParams }: HomePageProps) {
   const aboutData = await getAboutSectionData(lang);
   const pillarsData = await getPillarsSectionData(lang);
   const productionData = await getProductionSectionData(lang);
+  const ageModalData = await getAgeModalSectionData(lang);
+  const footerData = await getFooterSectionData(lang);
+  const contactsData = await getContactsSectionData(lang);
+  const catalogueData = await getCatalogueSectionData(lang);
+  const sectionsMeta = await getSectionsMeta(lang);
 
   return (
     <main className={"overflow-hidden"}>
-      <AgeModal />
+      {ageModalData && <AgeModal ageModalData={ageModalData} />}
       <ProductPopover lang={lang} />
-      <ScrollIndicator />
+      <ScrollIndicator sectionsData={sectionsMeta} />
       <div className={"relative "}>
         <div className="-z-1 absolute w-[500px] h-[1800px] bg-gradient-to-br from-accent to-secondary opacity-30 rounded-full blur-3xl -top-20 -left-90  animate-pulse [animation-duration:5s]" />
         <div className="-z-1 absolute w-[1250px] h-[500px] bg-gradient-to-br from-accent to-secondary opacity-30 rounded-full blur-3xl -top-70 -right-150 animate-pulse [animation-duration:5s]" />
 
-        <Header headerData={headerData} locales={availableLocales} />
+        <Header
+          headerData={headerData}
+          locales={availableLocales}
+          sectionsData={sectionsMeta}
+        />
         <Hero heroData={heroData} />
         <About aboutData={aboutData} />
         <Pillars pillarsData={pillarsData} />
         <CatalogueSection
+          catalogueData={catalogueData}
           query={query}
           filterType={filterType}
           brand={brand}
@@ -70,7 +86,11 @@ export default async function Home({ params, searchParams }: HomePageProps) {
           lang={lang}
         />
         <Production productionData={productionData} />
-        <ContactsSection contacts={headerData?.contacts ?? undefined} />
+        <ContactsSection contactsData={contactsData} />
+        <Footer
+          contacts={headerData?.contacts ?? undefined}
+          footerData={footerData}
+        />
       </div>
     </main>
   );

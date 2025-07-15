@@ -1,15 +1,32 @@
 "use client";
-import { Contact } from "@/app/types";
+import { Contact, SectionsMeta } from "@/app/types";
 import { Burger, Navigation, Slider } from "@/app/ui";
-import { FooterContacts } from "@/app/ui/landing/sections/Contacts/components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { FooterContacts } from "../../sections/Footer/components";
 
-export const SliderNavigation = ({ contacts }: { contacts?: Contact[] }) => {
+export const SliderNavigation = ({
+  contacts,
+  sectionsData,
+}: {
+  contacts?: Contact[];
+  sectionsData?: SectionsMeta[] | null;
+}) => {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(!open);
   };
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <div className={"block md:hidden"}>
@@ -18,7 +35,13 @@ export const SliderNavigation = ({ contacts }: { contacts?: Contact[] }) => {
         <div className={"p-8 h-full flex flex-col justify-between"}>
           <div className={"flex flex-col gap-8"}>
             <Burger open={open} onClick={handleClick} />
-            <Navigation onNavigate={handleClick} variant="flex-col" />
+            {sectionsData && (
+              <Navigation
+                sections={sectionsData}
+                onNavigate={handleClick}
+                variant="flex-col"
+              />
+            )}
           </div>
           <FooterContacts contacts={contacts} />
         </div>

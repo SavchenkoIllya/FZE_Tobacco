@@ -12,11 +12,11 @@ html {
 }
 
 .h1 {
-  @apply text-primary font-bold text-5xl max-md:text-3xl tracking-wider leading-[4.5rem] max-md:leading-[2rem];
+  @apply text-primary font-bold text-4xl max-md:text-3xl tracking-wider leading-[3.5rem] max-md:leading-[2rem];
 }
 
 .h2 {
-  @apply text-accent font-bold text-4xl max-md:text-2xl tracking-wider leading-[4.5rem] max-md:leading-[2rem];
+  @apply text-accent font-bold text-3xl max-md:text-2xl tracking-wider leading-[3rem] max-md:leading-[2rem];
 }
 
 .button {

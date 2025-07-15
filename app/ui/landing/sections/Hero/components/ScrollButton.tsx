@@ -11,7 +11,7 @@ export const ScrollButton = ({
   return (
     <button
       type="button"
-      className="button !bg-white"
+      className="button !bg-white max-md:m-4"
       onClick={() => {
         safeScroll(section);
       }}

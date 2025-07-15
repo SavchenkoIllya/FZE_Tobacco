@@ -4,3 +4,4 @@ export * from "./getFormats";
 export * from "./getLocales";
 export * from "./getProductById";
 export * from "./getProducts";
+export * from "./getSectionsMeta";

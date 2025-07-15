@@ -6,7 +6,7 @@ export function About({ aboutData }: Readonly<{ aboutData?: AboutSection }>) {
 
   return (
     <section
-      id={aboutData.sections_meta?.documentId}
+      id={aboutData.sections_meta?.name}
       className="grid grid-cols-12 gap-4 place-items-center md:px-4"
     >
       <div className="col-start-4 col-span-6 flex justify-center">

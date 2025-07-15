@@ -23,12 +23,12 @@ export const ProductCard = ({ product }: { product: Product }) => {
 
   useEffect(() => {
     if (!lang) return;
-    const fetchFilterTypes = async () => {
+    const fetchProductCardData = async () => {
       const res = await getProductCard(lang);
       setProductCard(res ?? null);
     };
 
-    void fetchFilterTypes();
+    void fetchProductCardData();
   }, [lang]);
 
   if (!productCard) return null;

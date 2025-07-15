@@ -1,5 +1,6 @@
 "use client";
 
+import { SharedMap } from "@/app/types";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import type { Libraries } from "@react-google-maps/api/dist/utils/make-load-script-url";
 
@@ -187,7 +188,9 @@ const center = {
 
 const libraries: Libraries = ["marker"];
 
-export const MapComponent = () => {
+export const MapComponent = ({ mapData }: { mapData?: SharedMap | null }) => {
+  if (!mapData) return null;
+
   return (
     <LoadScript
       googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}

@@ -24,6 +24,17 @@ export interface HeaderSection {
   contacts?: Contact[] | null;
 }
 
+export interface CatalogueSection {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  filter_text: string;
+  sections_meta?: SectionsMeta | null;
+}
+
 export interface HeroSection {
   id?: number;
   documentId?: string;
@@ -111,21 +122,6 @@ export interface SharedDescriptionField {
     | "tobacco_length";
 }
 
-export interface SharedFooter {
-  id?: number;
-  legal_info?: SharedLegalInfo | null;
-  contact_list?: SharedContactList | null;
-  document_list?: SharedDocumentsList | null;
-  copyrights?: string;
-}
-
-export interface SharedCatalogue {
-  id?: number;
-  title: string;
-  brands?: Brand[] | null;
-  formats?: Format[] | null;
-}
-
 export interface Format {
   id?: number;
   documentId?: string;
@@ -134,13 +130,6 @@ export interface Format {
   publishedAt?: Date | string;
   locale?: string | null;
   name: string;
-}
-
-export interface SharedHeader {
-  id?: number;
-  logo?: Media | null;
-  navbar?: SharedNavbar | null;
-  contacts?: Contact[] | null;
 }
 
 export interface Contact {
@@ -192,60 +181,34 @@ export interface UploadItem {
   updatedAt?: Date | string;
   publishedAt?: Date | string;
   locale?: string | null;
-  Document?: Media | null;
+  document?: Media | null;
   icon?: Media | null;
   title?: string;
 }
 
-export interface SharedAgeModal {
+export interface ContactsSection {
   id?: number;
-  heading: string;
-  main_text: string;
-  cancel_button: string;
-  confirm_button: string;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  title?: string;
+  form_inputs?: SharedInput[] | null;
+  map?: SharedMap | null;
+  sections_meta?: SectionsMeta | null;
 }
 
-export interface SharedAboutContent {
+export interface SharedMap {
   id?: number;
-  heading: string;
-  main_title: string;
-  secondary_title: string;
-  description: string;
-  pillars?: SharedPillar[] | null;
+  lng: number;
+  lat: number;
 }
 
 export interface SharedPillar {
   id?: number;
   title: string;
   label: string;
-}
-
-export interface SharedBrandsSection {
-  id?: number;
-  title: string;
-  subtitle?: string;
-  brands?: Brand[] | null;
-}
-
-export interface SharedAdditionalAboutSection {
-  id?: number;
-  title_main: string;
-  description_main: string;
-  title_secondary?: string;
-  description_secondary?: string;
-}
-
-export interface SharedContactsSection {
-  id?: number;
-  heading: string;
-  form_inputs: SharedInput[] | null;
-  send_button: string;
-}
-
-export interface SharedMapLocation {
-  id?: number;
-  lat: number;
-  lng: number;
 }
 
 export interface SharedInput {
@@ -264,6 +227,30 @@ export interface Subscriber {
   locale?: string | null;
   name: string;
   email: string;
+}
+
+export interface AgeModal {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  title: string;
+  subtitle?: string;
+  confirm_button: string;
+  close_button: string;
+}
+
+export interface FooterSection {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  copyrights?: string;
+  upload_items?: UploadItem[] | null;
 }
 
 export interface Product {

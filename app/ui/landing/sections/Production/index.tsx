@@ -11,7 +11,7 @@ export const Production = ({
 
   return (
     <section
-      id={productionData.sections_meta?.documentId}
+      id={productionData.sections_meta?.name}
       className="bg-primary w-full py-10"
     >
       <div className={"container mx-auto"}>

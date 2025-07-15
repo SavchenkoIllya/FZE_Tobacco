@@ -1,24 +1,28 @@
 "use client";
+import { SectionsMeta } from "@/app/types";
 import { cn, safeScroll, Tooltip } from "@/app/ui";
-import { sections } from "@/app/ui/landing";
 import { useEffect, useRef, useState } from "react";
 
-export function ScrollIndicator() {
+export function ScrollIndicator({
+  sectionsData,
+}: Readonly<{ sectionsData?: SectionsMeta[] }>) {
   const [active, setActive] = useState<string | null>(null);
   const activeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    if (!sectionsData || !sectionsData.length) return;
+
     const handleScroll = () => {
-      const sectionElements = sections
+      const sectionElements = sectionsData
         .map((section) => {
-          const element = document.getElementById(section.id);
+          const element = document.getElementById(section.name);
           if (!element) return null;
 
           const rect = element.getBoundingClientRect();
           const visiblePercentage = calculateVisiblePercentage(rect);
 
           return {
-            id: section.id,
+            name: section.name,
             visiblePercentage,
             top: rect.top,
             element,
@@ -36,21 +40,13 @@ export function ScrollIndicator() {
         return visibilityDiff;
       })[0];
 
-      let activeIndex = 0;
-      if (mostVisible) {
-        activeIndex = sections.findIndex(
-          (section) => section.id === mostVisible.id,
-        );
-        if (activeIndex < 0) return;
-      }
-
-      if (mostVisible && mostVisible.id !== active) {
+      if (mostVisible && mostVisible.name !== active) {
         if (activeTimeoutRef.current) {
           clearTimeout(activeTimeoutRef.current);
         }
 
         activeTimeoutRef.current = setTimeout(() => {
-          setActive(mostVisible.id);
+          setActive(mostVisible.name);
         }, 100);
       }
     };
@@ -76,7 +72,7 @@ export function ScrollIndicator() {
         clearTimeout(activeTimeoutRef.current);
       }
     };
-  }, [active]);
+  }, [active, sectionsData]);
 
   return (
     <div className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col items-center">
@@ -91,11 +87,11 @@ export function ScrollIndicator() {
           <defs>
             <mask id="line-mask" maskUnits="userSpaceOnUse">
               <rect x="0" y="0" width="4" height="320" fill="white" />
-              {sections.map((section, idx) => (
+              {sectionsData?.map((section, idx) => (
                 <circle
-                  key={section.id}
+                  key={section.name} // Используем name как key
                   cx="2"
-                  cy={(320 / (sections.length - 1)) * idx}
+                  cy={(320 / (sectionsData?.length - 1)) * idx}
                   r="8"
                   fill="black"
                 />
@@ -114,14 +110,14 @@ export function ScrollIndicator() {
           />
         </svg>
 
-        {sections.map((section, idx) => (
-          <Tooltip label={section.label} placement={"left"} key={section.id}>
+        {sectionsData?.map((section, idx) => (
+          <Tooltip label={section.name} placement={"left"} key={section.name}>
             <button
               className="relative z-10"
-              onClick={() => safeScroll(section.id)}
+              onClick={() => safeScroll(section.name)}
               style={{
                 position: "absolute",
-                top: `${(100 / (sections.length - 1)) * idx}%`,
+                top: `${(100 / (sectionsData?.length - 1)) * idx}%`,
                 transform: "translate(-50%, -50%)",
                 left: "50%",
               }}
@@ -129,13 +125,13 @@ export function ScrollIndicator() {
               <div
                 className={cn(
                   "w-3 h-3 rounded-full border cursor-pointer transition-all duration-300",
-                  active === section.id
+                  active === section.name
                     ? "bg-accent border-accent"
                     : "border-accent bg-transparent",
                 )}
                 style={{
                   boxShadow:
-                    active === section.id
+                    active === section.name
                       ? "0 0 8px 2px var(--accent)"
                       : "none",
                   transition:

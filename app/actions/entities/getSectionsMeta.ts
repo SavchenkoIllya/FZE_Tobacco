@@ -1,0 +1,39 @@
+"use server";
+import { ApiRoutes, fetchAPI, getStrapiURL } from "@/app/actions";
+import { Locale, SectionsMeta } from "@/app/types";
+import qs from "qs";
+
+const getSectionsMetaQuery = (lang: string | undefined) =>
+  qs.stringify(
+    {
+      locale: lang ?? process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE,
+    },
+    { encodeValuesOnly: true },
+  );
+
+export async function getSectionsMeta(lang?: Locale) {
+  const strapiURL = getStrapiURL();
+  const url = new URL(ApiRoutes.GET_SECTIONS_META, strapiURL);
+
+  url.search = getSectionsMetaQuery(lang);
+
+  try {
+    const res = await fetchAPI(url.href, {
+      method: "GET",
+    }).then((res: { data: SectionsMeta[]; meta: null }) => {
+      return res.data;
+    });
+
+    if (!res) {
+      return undefined;
+    }
+
+    return res;
+  } catch (e) {
+    if (e instanceof Error) {
+      throw new Error(`Failed to fetch: ${e.message}`);
+    } else {
+      throw new Error("Unknown error occurred while fetching");
+    }
+  }
+}
