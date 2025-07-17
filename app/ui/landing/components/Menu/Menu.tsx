@@ -1,40 +1,30 @@
 "use client";
-import { getBrands, getFilterTypes, getFormats } from "@/app/actions";
-import { MenuFilterKeys } from "@/app/lib";
-import { Brand, FilterType, Format, Locale } from "@/app/types";
-import { cn, GroupDropdown, VariantProp } from "@/app/ui";
+import { getCatalogueSectionData } from "@/app/actions";
+import { Locale, SharedFilterItem } from "@/app/types";
+import { cn, GroupDropdown, GroupDropdownProps, VariantProp } from "@/app/ui";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+
+export type MenuTitleProps = {
+  title?: string;
+};
 
 export function Menu({
   variant = "dark",
   title,
-}: Partial<VariantProp> & { title?: string }) {
+}: Partial<VariantProp> & MenuTitleProps) {
   const { lang } = useParams<{ lang: Locale }>();
-  const [formats, setFormats] = useState<Format[] | null>(null);
-  const [brands, setBrands] = useState<Brand[] | null>(null);
-  const [filterTypes, setFilterTypes] = useState<FilterType[] | null>(null);
+  const [menuItems, setMenuItems] = useState<SharedFilterItem[] | null>(null);
 
   useEffect(() => {
     if (!lang) return;
 
-    const fetchFormats = async () => {
-      const res = await getFormats(lang);
-      setFormats(res ?? null);
+    const fetchMenuItems = async () => {
+      const res = await getCatalogueSectionData(lang);
+      setMenuItems(res?.filter_items ?? null);
     };
 
-    const fetchBrands = async () => {
-      const res = await getBrands(lang);
-      setBrands(res ?? null);
-    };
-    const fetchFilterTypes = async () => {
-      const res = await getFilterTypes(lang);
-      setFilterTypes(res ?? null);
-    };
-
-    void fetchFormats();
-    void fetchBrands();
-    void fetchFilterTypes();
+    void fetchMenuItems();
   }, [lang]);
 
   return (
@@ -52,30 +42,48 @@ export function Menu({
       </div>
       <div
         className={
-          "flex flex-col p-8 pb-30 gap-2 overflow-y-scroll h-full scrollbar-hide"
+          "flex flex-col p-2 pt-4 pb-30 gap-2 overflow-y-scroll h-full scrollbar-hide"
         }
       >
-        {formats && (
-          <GroupDropdown
-            title={MenuFilterKeys.FORMAT}
-            values={formats.map((format) => format.name)}
-            variant={variant}
-          />
-        )}
-        {brands && (
-          <GroupDropdown
-            title={MenuFilterKeys.BRAND}
-            values={brands.map((brand) => brand.name)}
-            variant={variant}
-          />
-        )}
-        {filterTypes && (
-          <GroupDropdown
-            title={MenuFilterKeys.FILTER_TYPE}
-            values={filterTypes.map((type) => type.name)}
-            variant={variant}
-          />
-        )}
+        {menuItems?.map((menuItem) => {
+          const sharedProps: Pick<
+            GroupDropdownProps,
+            "filterKey" | "title" | "variant"
+          > = {
+            filterKey: menuItem.query_key,
+            title: menuItem.title,
+            variant,
+          };
+
+          switch (menuItem.query_key) {
+            case "format":
+              return (
+                <GroupDropdown
+                  {...sharedProps}
+                  key={menuItem.id}
+                  values={menuItem.categories?.map((item) => item.name) ?? []}
+                />
+              );
+
+            case "brand":
+              return (
+                <GroupDropdown
+                  {...sharedProps}
+                  key={menuItem.id}
+                  values={menuItem.brands?.map((item) => item.name) ?? []}
+                />
+              );
+
+            case "filter-type":
+              return (
+                <GroupDropdown
+                  {...sharedProps}
+                  key={menuItem.id}
+                  values={menuItem.filter_types?.map((item) => item.name) ?? []}
+                />
+              );
+          }
+        })}
       </div>
     </div>
   );

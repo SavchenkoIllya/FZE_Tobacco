@@ -3,7 +3,7 @@ import { FilterLabelContainer, ProductCard } from "@/app/ui";
 
 export const ProductsList = ({ products }: { products?: Product[] }) => {
   return (
-    <div className="p-2 md:p-8 flex flex-wrap gap-4 md:gap-8 justify-center">
+    <div className="p-2 md:px-4 flex flex-wrap gap-4 justify-center">
       <FilterLabelContainer />
       {(!products || !products.length) && <p>Nothing to show</p>}
       <div

@@ -1,6 +1,7 @@
 "use server";
 import { ApiRoutes, fetchAPI, getStrapiURL } from "@/app/actions";
-import { CatalogueSection, Locale } from "@/app/types";
+import { ApiCacheKeys } from "@/app/lib";
+import { CatalogueSection, FindOne, Locale } from "@/app/types";
 import qs from "qs";
 
 const getCatalogueSectionDataQuery = (lang: string | undefined) =>
@@ -8,6 +9,13 @@ const getCatalogueSectionDataQuery = (lang: string | undefined) =>
     {
       populate: {
         sections_meta: true,
+        filter_items: {
+          populate: {
+            brands: true,
+            categories: true,
+            filter_types: true,
+          },
+        },
       },
       locale: lang ?? process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE,
     },
@@ -23,7 +31,10 @@ export async function getCatalogueSectionData(lang?: Locale) {
   try {
     const res = await fetchAPI(url.href, {
       method: "GET",
-    }).then((res: { data: CatalogueSection; meta: null }) => {
+      next: {
+        tags: [ApiCacheKeys.CATALOGUE_SECTION, `${lang}`],
+      },
+    }).then((res: FindOne<CatalogueSection>) => {
       return res.data;
     });
 

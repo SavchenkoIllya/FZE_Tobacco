@@ -49,7 +49,7 @@ export const LanguageSwitch = ({ locales }: { locales?: Locale[] }) => {
         aria-expanded={open}
         aria-haspopup="true"
       >
-        <span>{lang}</span>
+        <span className={"capitalize"}>{lang}</span>
         <Image
           width={10}
           height={10}
@@ -85,7 +85,7 @@ export const LanguageSwitch = ({ locales }: { locales?: Locale[] }) => {
               key={locale}
               onClick={() => handleLocaleSelect(locale)}
               className={cn(
-                "cursor-pointer block w-full text-left px-4 py-2 text-sm text-white hover:bg-secondary/80",
+                "capitalize cursor-pointer block w-full text-left px-4 py-2 text-sm text-white hover:bg-secondary/80",
                 lang === locale && "bg-secondary",
               )}
             >

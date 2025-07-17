@@ -1,5 +1,6 @@
 "use server";
 import { ApiRoutes, fetchAPI, getStrapiURL } from "@/app/actions";
+import { ApiCacheKeys } from "@/app/lib";
 import { Locale, ProductCard } from "@/app/types";
 import qs from "qs";
 
@@ -28,7 +29,7 @@ export async function getProductCard(lang?: Locale) {
     const res = await fetchAPI(url.href, {
       method: "GET",
       next: {
-        tags: ["productCards", `${lang}`],
+        tags: [ApiCacheKeys.PRODUCT_CARDS, `${lang}`],
       },
     }).then((res: { data: ProductCard; meta: null }) => {
       return res.data;

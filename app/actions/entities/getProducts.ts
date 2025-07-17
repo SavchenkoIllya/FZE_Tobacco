@@ -42,7 +42,7 @@ const getProductsQuery = (props: QueryProps) => {
 
   if (props.format) {
     filters.push({
-      format: { name: { $containsi: props.format } },
+      category: { name: { $containsi: props.format } },
     });
   }
 

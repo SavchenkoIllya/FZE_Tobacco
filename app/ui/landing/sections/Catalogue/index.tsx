@@ -36,22 +36,24 @@ export default async function CatalogueSection({
       className="bg-primary py-10 w-full"
     >
       <div className="container mx-auto h-[80dvh]">
-        <div className="justify-center md:justify-normal grid grid-cols-4 grid-rows-[auto_1fr] h-full">
-          <div className="col-span-4 mx-4 md:col-start-3 md:col-span-2 mb-6">
-            <div className="flex gap-2">
-              <SliderMenu />
-              <Search placeholder={catalogueData?.search_placeholder} />
+        <div className=" justify-center md:justify-normal grid grid-cols-12 h-full gap-10">
+          <div className="max-xl:col-span-3 col-span-2 hidden md:block overflow-hidden">
+            <Menu title={catalogueData?.filter_text} />
+          </div>
+
+          <div className="max-md:col-span-12 col-span-9 xl:col-span-10 overflow-y-scroll scrollbar-hide">
+            <div className={"flex flex-col gap-2"}>
+              <div className="px-8 max-md:w-full gap-5 md:w-10/12  xl:w-1/2 self-end flex justify-between">
+                <SliderMenu
+                  title={catalogueData?.filter_text}
+                  close_text={catalogueData?.close_filter_text}
+                />
+                <Search placeholder={catalogueData?.search_placeholder} />
+              </div>
+              <Suspense fallback={<p>Loading...</p>}>
+                <ProductsList products={products} />
+              </Suspense>
             </div>
-          </div>
-
-          <div className="hidden md:block md:col-span-1 overflow-hidden">
-            <Menu />
-          </div>
-
-          <div className="col-span-4 md:col-span-3 overflow-y-scroll scrollbar-hide">
-            <Suspense fallback={<p>Loading...</p>}>
-              <ProductsList products={products} />
-            </Suspense>
           </div>
         </div>
       </div>

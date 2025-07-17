@@ -42,14 +42,18 @@ export const ProductCard = ({ product }: { product: Product }) => {
       type={"button"}
     >
       <div className={"border-b-2 border-accent"}>
-        <div className={"flex justify-center items-center p-4 overflow-hidden"}>
+        <div className={"flex justify-center items-center overflow-hidden"}>
           <ProductImage
             image_url={product?.image?.url ?? undefined}
             title={product?.title}
           />
         </div>
-        <h4 className={"h2 !text-xl !leading-6 truncate"}>{product?.title}</h4>
-        <p>{product.category?.name}</p>
+        <div className={"mt-2"}>
+          <h4 className={"h2 !text-xl !leading-6 truncate"}>
+            {product?.title}
+          </h4>
+          <p>{product.category?.name}</p>
+        </div>
       </div>
       <div className={"mt-4"}>
         <ProductProperty

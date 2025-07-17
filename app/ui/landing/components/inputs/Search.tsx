@@ -26,6 +26,7 @@ export const Search = ({ placeholder }: { placeholder?: string }) => {
       variant={"white"}
       icon={<Lookup />}
       inputProps={{ value: inputValue }}
+      wrapperClass={"min-h-auto"}
     />
   );
 };

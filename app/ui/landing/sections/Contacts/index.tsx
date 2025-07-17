@@ -18,11 +18,11 @@ export const ContactsSection = ({
   return (
     <section
       id={contactsData?.sections_meta?.name}
-      className={"flex flex-col justify-center items-center w-full"}
+      className={"flex flex-col justify-center items-center w-full py-10"}
     >
       <div className="-z-1 absolute w-[1250px] h-[500px] bg-gradient-to-b from-accent to-secondary opacity-30 rounded-full blur-3xl -bottom-[440px] animate-pulse [animation-duration:5s]" />
 
-      <h1 className={"h1 mt-8"}>{contactsData?.title}</h1>
+      <h1 className={"h1"}>{contactsData?.title}</h1>
 
       <div className={"flex flex-col md:flex-row w-full max-w-6xl px-4"}>
         <div

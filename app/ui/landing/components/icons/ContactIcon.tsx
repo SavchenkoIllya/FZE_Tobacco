@@ -67,7 +67,11 @@ export const ContactIcon = ({
       );
     default:
       return (
-        <a href={contact.link} className={linkStyle} target="_blank">
+        <a
+          href={`https://${contact.link}`}
+          className={linkStyle}
+          target="_blank"
+        >
           {contact.icon && (
             <img
               alt={contact.title}

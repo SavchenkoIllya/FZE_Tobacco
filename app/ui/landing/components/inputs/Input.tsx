@@ -16,7 +16,7 @@ interface SearchInputProps {
   type?: HTMLInputElement["type"];
   name?: string;
   error?: string[];
-  width?: string;
+  wrapperClass?: string;
   required?: boolean;
   inputProps?: DetailedHTMLProps<
     InputHTMLAttributes<HTMLInputElement>,
@@ -30,7 +30,7 @@ export const Input = ({
   icon,
   defaultValue,
   error,
-  width,
+  wrapperClass,
   onChange,
   inputProps,
   ...props
@@ -40,7 +40,9 @@ export const Input = ({
   };
 
   return (
-    <div className={cn("min-h-[66px] w-full flex flex-col gap-2", width)}>
+    <div
+      className={cn("min-h-[66px] w-full flex flex-col gap-2", wrapperClass)}
+    >
       <div
         className={cn(
           "border rounded-full border-primary flex px-4 py-2 gap-2 w-full",

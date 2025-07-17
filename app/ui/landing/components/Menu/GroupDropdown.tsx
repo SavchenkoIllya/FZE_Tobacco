@@ -3,16 +3,20 @@ import { cn, useUrlParams, VariantProp } from "@/app/ui";
 import Image from "next/image";
 import { useState } from "react";
 
+export type GroupDropdownProps = {
+  title: string;
+  filterKey: string;
+  values: string[];
+} & Partial<VariantProp>;
+
 export const GroupDropdown = ({
   title,
+  filterKey,
   values,
   variant = "dark",
-}: {
-  title: string;
-  values: string[];
-} & Partial<VariantProp>) => {
+}: GroupDropdownProps) => {
   const { getParam, setParam, removeParam } = useUrlParams(0);
-  const param = getParam(title);
+  const param = getParam(filterKey);
 
   const [isOpen, setIsOpen] = useState(
     values.some((el) => el.toLowerCase() === param),
@@ -31,7 +35,7 @@ export const GroupDropdown = ({
           variant === "dark" ? "text-secondary" : "text-primary",
         )}
       >
-        <p className={"capitalize"}>{title.replaceAll("_", " ")}</p>
+        <p className={"capitalize"}>{title}</p>
         <Image
           width={10}
           height={10}
@@ -56,11 +60,11 @@ export const GroupDropdown = ({
           const active = item.toLowerCase() === param?.toLowerCase();
           const handleSelectParam = () => {
             if (active) {
-              removeParam(title);
+              removeParam(filterKey);
               return;
             }
 
-            setParam(title, item);
+            setParam(filterKey, item);
           };
           return (
             <button
