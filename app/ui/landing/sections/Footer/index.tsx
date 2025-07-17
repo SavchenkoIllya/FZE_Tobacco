@@ -37,10 +37,16 @@ export const Footer = ({
       >
         <div className={"max-md:space-y-8 space-y-4"}>
           <div className={"space-y-2"}>
-            <FooterContacts contacts={contacts} />
+            <FooterContacts
+              contacts={contacts}
+              title={footerData?.contacts_title}
+            />
           </div>
           <div className={"space-y-2"}>
-            <FooterDocuments uploads={footerData?.upload_items} />
+            <FooterDocuments
+              uploads={footerData?.upload_items}
+              title={footerData?.documents_title}
+            />
           </div>
         </div>
         <h5 className={"h1 uppercase !text-sm md:text-center !leading-5"}>

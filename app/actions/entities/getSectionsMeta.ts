@@ -6,6 +6,7 @@ import qs from "qs";
 const getSectionsMetaQuery = (lang: string | undefined) =>
   qs.stringify(
     {
+      sort: ["order:asc"],
       locale: lang ?? process.env.NEXT_PUBLIC_DEFAULT_LANGUAGE,
     },
     { encodeValuesOnly: true },

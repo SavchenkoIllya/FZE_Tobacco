@@ -1,4 +1,5 @@
 "use server";
+import { getSubscribers, postMessage } from "@/app/actions/entities";
 import { IncomingMessage } from "@/app/emailTeamplates";
 import { MessageValidator } from "@/app/utils/validation";
 import { Resend } from "resend";
@@ -17,12 +18,11 @@ export async function sendEmail(
 ): Promise<FormResponse> {
   const entries = formData.entries();
   const payload = Object.fromEntries(entries);
+  const subscribers = await getSubscribers();
 
   const { success, data, error } = MessageValidator.safeParse(payload);
 
   if (!success) {
-    console.log(error?.flatten().fieldErrors);
-
     return {
       errors: error?.flatten().fieldErrors,
       values: {},
@@ -30,15 +30,21 @@ export async function sendEmail(
     };
   }
 
-  console.log(data);
+  if (!subscribers?.length) {
+    console.error("NO RECEIVERS");
+  }
 
   try {
-    await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: "nfo@finest-tobacco.com",
-      subject: "New message",
-      react: IncomingMessage(),
+    subscribers?.forEach(async (subscriber) => {
+      await resend.emails.send({
+        from: "onboarding@resend.dev",
+        to: subscriber.email,
+        subject: data?.name,
+        react: IncomingMessage({ data }),
+      });
     });
+
+    await postMessage(data);
 
     return {
       errors: {},

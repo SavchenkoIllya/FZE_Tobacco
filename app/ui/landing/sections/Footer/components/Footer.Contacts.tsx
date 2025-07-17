@@ -1,7 +1,13 @@
 import { Contact } from "@/app/types";
 import { ContactIcon } from "@/app/ui";
 
-export const FooterContacts = ({ contacts }: { contacts?: Contact[] }) => {
+export const FooterContacts = ({
+  contacts,
+  title,
+}: {
+  contacts?: Contact[];
+  title?: string;
+}) => {
   if (!contacts || contacts.length === 0) return null;
 
   return (
@@ -10,7 +16,7 @@ export const FooterContacts = ({ contacts }: { contacts?: Contact[] }) => {
         "flex max-md:flex-col max-md:gap-4 justify-center md:divide-x-2 divide-accent"
       }
     >
-      <h5 className={"md:hidden text-primary font-bold"}>Title Docs</h5>
+      <h5 className={"md:hidden text-primary font-bold"}>{title}</h5>
       {contacts.map((contact) => (
         <div key={contact.id} className={"md:px-8"}>
           <ContactIcon contact={contact} full />

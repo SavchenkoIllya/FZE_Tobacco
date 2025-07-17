@@ -1,111 +1,6 @@
-import { type BlocksContent } from "@strapi/blocks-react-renderer";
+import { BlocksContent } from "@strapi/blocks-react-renderer";
 
 export type Locale = "en" | "ru" | "ar";
-
-export interface LocaleData {
-  id: number;
-  documentId: string;
-  name: string;
-  code: Locale;
-  isDefault: boolean;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-}
-
-export interface HeaderSection {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  logo: Media | null;
-  contacts?: Contact[] | null;
-}
-
-export interface CatalogueSection {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  filter_text: string;
-  sections_meta?: SectionsMeta | null;
-}
-
-export interface HeroSection {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  sections_meta?: SectionsMeta | null;
-  title: string;
-  link?: SectionsMeta | null;
-  button_text?: string;
-}
-
-export interface SectionsMeta {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  name: string;
-}
-
-export interface AboutSection {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  sections_meta?: SectionsMeta | null;
-  title: string;
-  description: BlocksContent;
-}
-
-export interface PillarSection {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  pillars_list?: SharedPillar[] | null;
-}
-
-export interface ProductionSection {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  sections_meta?: SectionsMeta | null;
-  title: string;
-  description: BlocksContent;
-  left_image: Media | null;
-  right_image: Media | null;
-  button_text: string;
-  button_url: string;
-}
-
-export interface ProductCard {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  description_fields?: SharedDescriptionField[] | null;
-  close_text: string;
-}
 
 export interface SharedDescriptionField {
   id?: number;
@@ -122,81 +17,12 @@ export interface SharedDescriptionField {
     | "tobacco_length";
 }
 
-export interface Format {
+export interface SharedInput {
   id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  name: string;
-}
-
-export interface Contact {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  type: "whatsapp" | "telegram" | "email" | "phone" | "viber";
-  link: string;
-  title: string;
-  icon: Media | null;
-}
-
-export interface SharedLegalInfo {
-  id?: number;
-  title?: string;
-  full_address?: string;
-}
-
-export interface SharedNavbar {
-  id?: number;
-  navitems?: SharedNavItem[] | null;
-}
-
-export interface SharedNavItem {
-  id?: number;
-  name: string;
-  section_id?: "about" | "brands" | "catalogue" | "contacts";
-}
-
-export interface SharedContactList {
-  id?: number;
-  title?: string;
-  contacts?: Contact[] | null;
-}
-
-export interface SharedDocumentsList {
-  id?: number;
-  title?: string;
-  upload_items?: UploadItem[] | null;
-}
-
-export interface UploadItem {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  document?: Media | null;
-  icon?: Media | null;
-  title?: string;
-}
-
-export interface ContactsSection {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  title?: string;
-  form_inputs?: SharedInput[] | null;
-  map?: SharedMap | null;
-  sections_meta?: SectionsMeta | null;
+  placeholder: string;
+  field_name: string;
+  type: "field" | "textarea";
+  required: boolean;
 }
 
 export interface SharedMap {
@@ -211,22 +37,16 @@ export interface SharedPillar {
   label: string;
 }
 
-export interface SharedInput {
-  id?: number;
-  placeholder: string;
-  field_name: string;
-  type: "field" | "textarea";
-}
-
-export interface Subscriber {
+export interface AboutSection {
   id?: number;
   documentId?: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;
   publishedAt?: Date | string;
   locale?: string | null;
-  name: string;
-  email: string;
+  sections_meta?: SectionsMeta | null;
+  title: string;
+  description: BlocksContent;
 }
 
 export interface AgeModal {
@@ -242,6 +62,76 @@ export interface AgeModal {
   close_button: string;
 }
 
+export interface Brand {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  name: string;
+  description?: string;
+  logo?: Media | null;
+}
+
+export interface CatalogueSection {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  filter_text: string;
+  sections_meta?: SectionsMeta | null;
+  search_placeholder?: string;
+}
+
+export interface Category {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  name?: string;
+}
+
+export interface Contact {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  type: "whatsapp" | "telegram" | "email" | "phone" | "viber" | "wechat";
+  link: string;
+  title: string;
+  icon: Media | null;
+}
+
+export interface ContactsSection {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  title?: string;
+  form_inputs?: SharedInput[] | null;
+  map?: SharedMap | null;
+  sections_meta?: SectionsMeta | null;
+}
+
+export interface FilterType {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  name: string;
+}
+
 export interface FooterSection {
   id?: number;
   documentId?: string;
@@ -251,6 +141,66 @@ export interface FooterSection {
   locale?: string | null;
   copyrights?: string;
   upload_items?: UploadItem[] | null;
+  contacts_title?: string;
+  documents_title?: string;
+}
+
+export interface Format {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  name: string;
+}
+
+export interface HeaderSection {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  logo: Media | null;
+  contacts?: Contact[] | null;
+}
+
+export interface HeroSection {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  sections_meta?: SectionsMeta | null;
+  title: string;
+  link?: SectionsMeta | null;
+  button_text?: string;
+}
+
+export interface Message {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  name: string;
+  phone?: string;
+  email?: string;
+  details?: string;
+  work_status?: "read" | "unread" | "pending" | "answered";
+}
+
+export interface PillarSection {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  pillars_list?: SharedPillar[] | null;
 }
 
 export interface Product {
@@ -275,7 +225,34 @@ export interface Product {
   diameter?: string;
 }
 
-export interface Message {
+export interface ProductCard {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  description_fields?: SharedDescriptionField[] | null;
+  close_text: string;
+}
+
+export interface ProductionSection {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+  locale?: string | null;
+  sections_meta?: SectionsMeta | null;
+  title: string;
+  description: BlocksContent;
+  left_image: Media | null;
+  right_image: Media | null;
+  button_text: string;
+  button_url: string;
+}
+
+export interface SectionsMeta {
   id?: number;
   documentId?: string;
   createdAt?: Date | string;
@@ -283,13 +260,10 @@ export interface Message {
   publishedAt?: Date | string;
   locale?: string | null;
   name: string;
-  phone?: string;
-  email?: string;
-  details?: string;
-  work_status?: "read" | "unread" | "pending" | "answered";
+  order: number;
 }
 
-export interface Brand {
+export interface Subscriber {
   id?: number;
   documentId?: string;
   createdAt?: Date | string;
@@ -297,28 +271,19 @@ export interface Brand {
   publishedAt?: Date | string;
   locale?: string | null;
   name: string;
-  description?: string;
-  logo?: Media | null;
+  email: string;
 }
 
-export interface FilterType {
+export interface UploadItem {
   id?: number;
   documentId?: string;
   createdAt?: Date | string;
   updatedAt?: Date | string;
   publishedAt?: Date | string;
   locale?: string | null;
-  name: string;
-}
-
-export interface Category {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  name?: string;
+  document?: Media | null;
+  icon?: Media | null;
+  title?: string;
 }
 
 export interface Media {
@@ -355,4 +320,50 @@ export interface MediaFormat {
   size: number;
   path: string;
   url: string;
+}
+
+export interface User {
+  id?: number;
+  username: string;
+  email: string;
+  provider?: string;
+  confirmed?: boolean;
+  blocked?: boolean;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  role: Role | null | number;
+}
+
+export interface Role {
+  id?: number;
+  documentId?: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  name: string;
+  description: string;
+  type: string;
+}
+
+export interface FindOne<T> {
+  data: T;
+  meta: {
+    pagination?: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}
+
+export interface FindMany<T> {
+  data: T[];
+  meta: {
+    pagination?: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
 }

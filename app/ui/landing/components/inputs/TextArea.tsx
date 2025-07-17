@@ -1,39 +1,47 @@
 "use client";
-import { ChangeEvent, ReactNode } from "react";
+import { cn, VARIANT_STYLES } from "@/app/ui";
+import { DetailedHTMLProps, TextareaHTMLAttributes } from "react";
 
 interface TextareaProps {
   variant?: "black" | "white";
-  onChange(value: string): void;
   placeholder?: string;
-  icon?: ReactNode;
+  inputProps?: DetailedHTMLProps<
+    TextareaHTMLAttributes<HTMLTextAreaElement>,
+    HTMLTextAreaElement
+  >;
+  error?: string[];
 }
 
 export const Textarea = ({
   variant = "white",
-  onChange,
   placeholder = "Enter text...",
-  icon,
+  inputProps,
+  error,
 }: TextareaProps) => {
   const baseStyles =
-    "flex items-start w-full border rounded-2xl px-4 py-2 gap-2"; // use items-start for textarea
-  const variantStyles =
-    variant === "black"
-      ? "bg-secondary text-primary border-primary placeholder-primary"
-      : "bg-primary text-secondary border-secondary placeholder-secondary";
-
-  const handleTextareaChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    onChange(e.target.value);
-  };
+    "flex items-start w-full border rounded-2xl px-4 py-2 gap-2";
 
   return (
-    <div className={`${baseStyles} ${variantStyles}`}>
-      <textarea
-        placeholder={placeholder}
-        onChange={handleTextareaChange}
-        className="bg-transparent outline-none flex-1 resize-none"
-        rows={4}
-      />
-      {icon}
+    <div className={"w-full flex flex-col gap-2"}>
+      <div
+        className={cn(
+          baseStyles,
+          VARIANT_STYLES[variant],
+          error && VARIANT_STYLES.error,
+        )}
+      >
+        <textarea
+          placeholder={placeholder}
+          className="bg-transparent outline-none flex-1 resize-none"
+          rows={4}
+          {...inputProps}
+        />
+      </div>
+      {error?.map((error, i) => (
+        <p key={error + i} className={"text-xs text-red-500"}>
+          {error}
+        </p>
+      ))}
     </div>
   );
 };

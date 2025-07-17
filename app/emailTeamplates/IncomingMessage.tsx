@@ -1,7 +1,8 @@
 import { Button, Html } from "@react-email/components";
 
-// TODO: make a teamplate
-export function IncomingMessage() {
+export function IncomingMessage({
+  data,
+}: Readonly<{ data: Record<string, unknown> }>) {
   return (
     <Html lang="en">
       <Button>Click me</Button>

@@ -15,4 +15,6 @@ export enum ApiRoutes {
   GET_FILTER_TYPES = "/api/filter-types",
   GET_PRODUCT_CARD = "/api/product-card",
   GET_SECTIONS_META = "/api/sections-metas",
+  POST_MESSAGE = "/api/messages",
+  GET_SUBSCRIBERS = "/api/subscribers",
 }

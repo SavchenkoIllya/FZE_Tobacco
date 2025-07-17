@@ -40,7 +40,7 @@ export default async function CatalogueSection({
           <div className="col-span-4 mx-4 md:col-start-3 md:col-span-2 mb-6">
             <div className="flex gap-2">
               <SliderMenu />
-              <Search />
+              <Search placeholder={catalogueData?.search_placeholder} />
             </div>
           </div>
 

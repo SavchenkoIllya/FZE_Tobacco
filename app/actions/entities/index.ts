@@ -5,3 +5,5 @@ export * from "./getLocales";
 export * from "./getProductById";
 export * from "./getProducts";
 export * from "./getSectionsMeta";
+export * from "./getSubscribers";
+export * from "./postMessage";
