@@ -18,10 +18,7 @@ const getProductsQuery = (props: QueryProps) => {
     filters.push({
       $or: [
         { title: { $containsi: props.query } },
-        { blend: { $containsi: props.query } },
         { filter_type: { name: { $containsi: props.query } } },
-        { tar: { $containsi: props.query } },
-        { nicotine: { $containsi: props.query } },
         { format: { name: { $containsi: props.query } } },
         { brand: { name: { $containsi: props.query } } },
       ],
