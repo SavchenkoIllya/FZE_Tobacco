@@ -74,6 +74,17 @@ export interface Brand {
   logo?: Media | null;
 }
 
+export interface LocaleData {
+  id: number;
+  documentId: string;
+  name: string;
+  code: Locale;
+  isDefault: boolean;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  publishedAt?: Date | string;
+}
+
 export interface CatalogueSection {
   id?: number;
   documentId?: string;

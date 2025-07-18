@@ -1,17 +1,15 @@
 "use client";
 import { getMediaUrl } from "@/app/actions";
-import { HeaderSection, Locale, SectionsMeta } from "@/app/types";
+import { HeaderSection, SectionsMeta } from "@/app/types";
 import { cn, LanguageSwitch } from "@/app/ui";
 import { ContactsList, SliderNavigation } from "@/app/ui/landing/components";
 import { useEffect, useState } from "react";
 
 export function Header({
   headerData,
-  locales,
   sectionsData,
 }: Readonly<{
   headerData?: HeaderSection;
-  locales?: Locale[];
   sectionsData?: SectionsMeta[] | null;
 }>) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,7 +56,7 @@ export function Header({
                 <ContactsList contacts={headerData.contacts} />
               )}
             </div>
-            <LanguageSwitch locales={locales} />
+            <LanguageSwitch />
           </div>
         </div>
       </div>

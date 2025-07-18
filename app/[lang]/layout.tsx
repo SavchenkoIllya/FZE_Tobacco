@@ -1,5 +1,9 @@
+import { getHeaderData, getLocales, getSectionsMeta } from "@/app/actions";
+import { Locale } from "@/app/types";
+import { Header } from "@/app/ui";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 
 const robotoSans = Roboto({
@@ -14,8 +18,26 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: ReactNode;
+  params: { lang: Locale };
 }>) {
-  return <div className={`${robotoSans.variable} antialiased`}>{children}</div>;
+  const { lang } = await params;
+  const sectionsMeta = await getSectionsMeta(lang);
+  const headerData = await getHeaderData(lang);
+  const locales = await getLocales();
+
+  if (!locales?.includes(lang)) {
+    redirect(`/${locales[0]}`);
+  }
+
+  return (
+    <div className={`${robotoSans.variable} antialiased`}>
+      <main className={"overflow-hidden"}>
+        <Header headerData={headerData} sectionsData={sectionsMeta} />
+        {children}
+      </main>
+    </div>
+  );
 }

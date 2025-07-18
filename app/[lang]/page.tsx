@@ -10,14 +10,13 @@ import {
   getProductionSectionData,
   getSectionsMeta,
 } from "@/app/actions";
-import { CookieNames, MenuFilterKeys } from "@/app/lib";
+import { MenuFilterKeys } from "@/app/lib";
 import { Locale } from "@/app/types";
 import {
   About,
   AgeModal,
   ContactsSection,
   Footer,
-  Header,
   Hero,
   Pillars,
   Production,
@@ -25,7 +24,6 @@ import {
   ScrollIndicator,
 } from "@/app/ui";
 import CatalogueSection from "@/app/ui/landing/sections/Catalogue";
-import { cookies } from "next/headers";
 
 export type HomePageProps = Readonly<{
   params: { lang: Locale };
@@ -41,14 +39,6 @@ export default async function Home({ params, searchParams }: HomePageProps) {
   const brand = _searchParams?.[MenuFilterKeys.BRAND] ?? "";
   const format = _searchParams?.[MenuFilterKeys.FORMAT] ?? "";
 
-  const cookiesStore = await cookies();
-  const availableStoredLocales = cookiesStore.get(
-    CookieNames.AVAILABLE_LANGUAGES,
-  );
-  const availableLocales = availableStoredLocales?.value
-    ? (JSON.parse(availableStoredLocales?.value) as Locale[])
-    : undefined;
-
   const headerData = await getHeaderData(lang);
   const heroData = await getHeroSectionData(lang);
   const aboutData = await getAboutSectionData(lang);
@@ -61,7 +51,7 @@ export default async function Home({ params, searchParams }: HomePageProps) {
   const sectionsMeta = await getSectionsMeta(lang);
 
   return (
-    <main className={"overflow-hidden"}>
+    <>
       {ageModalData && <AgeModal ageModalData={ageModalData} />}
       <ProductPopover lang={lang} />
       <ScrollIndicator sectionsData={sectionsMeta} />
@@ -69,11 +59,6 @@ export default async function Home({ params, searchParams }: HomePageProps) {
         <div className="-z-1 absolute w-[500px] h-[1800px] bg-gradient-to-br from-accent to-secondary opacity-30 rounded-full blur-3xl -top-20 -left-90  animate-pulse [animation-duration:5s]" />
         <div className="-z-1 absolute w-[1250px] h-[500px] bg-gradient-to-br from-accent to-secondary opacity-30 rounded-full blur-3xl -top-70 -right-150 animate-pulse [animation-duration:5s]" />
 
-        <Header
-          headerData={headerData}
-          locales={availableLocales}
-          sectionsData={sectionsMeta}
-        />
         <Hero heroData={heroData} />
         <About aboutData={aboutData} />
         <Pillars pillarsData={pillarsData} />
@@ -92,6 +77,6 @@ export default async function Home({ params, searchParams }: HomePageProps) {
           footerData={footerData}
         />
       </div>
-    </main>
+    </>
   );
 }

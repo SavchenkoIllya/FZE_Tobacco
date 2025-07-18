@@ -1,12 +1,12 @@
 "use client";
-import { setUserLocale } from "@/app/actions";
+import { getLocales, setUserLocale } from "@/app/actions";
 import { Locale } from "@/app/types";
 import { cn } from "@/app/ui";
 import Image from "next/image";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-export const LanguageSwitch = ({ locales }: { locales?: Locale[] }) => {
+export const LanguageSwitch = () => {
   const params = useParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -15,6 +15,18 @@ export const LanguageSwitch = ({ locales }: { locales?: Locale[] }) => {
   const [selectedLocale, setSelectedLocale] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [availableLocales, setAvailableLocales] = useState<Locale[] | null>(
+    null,
+  );
+
+  useEffect(() => {
+    const fetchAvailableLocales = async () => {
+      const res = await getLocales();
+      setAvailableLocales(res ?? null);
+    };
+
+    void fetchAvailableLocales();
+  }, []);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -39,7 +51,7 @@ export const LanguageSwitch = ({ locales }: { locales?: Locale[] }) => {
     }, 0);
   };
 
-  if (!locales) return null;
+  if (!availableLocales) return null;
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -79,7 +91,7 @@ export const LanguageSwitch = ({ locales }: { locales?: Locale[] }) => {
           }}
         >
           <input type="hidden" name="locale" value={selectedLocale} />
-          {locales.map((locale) => (
+          {availableLocales.map((locale) => (
             <button
               type="button"
               key={locale}
