@@ -47,9 +47,9 @@ export const AgeModal = ({ ageModalData }: { ageModalData: AgeModalT }) => {
       <div
         className={cn(
           "w-full h-full flex flex-col md:flex-row justify-center items-center gap-8",
-          "w-fit h-fit p-20 rounded-4xl",
+          "p-20 rounded-4xl",
           "from-60% to-60%",
-          "shadow-secondary/50 shadow-2xl",
+          "md:shadow-secondary/50 md:shadow-2xl",
           "max-md:w-full max-md:h-full rounded-none",
         )}
       >
