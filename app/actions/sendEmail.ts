@@ -1,8 +1,6 @@
 "use server";
-import { getSubscribers, postMessage } from "@/app/actions/entities";
-import { IncomingMessage } from "@/app/emailTeamplates";
+import { postMessage } from "@/app/actions/entities";
 import { MessageValidator } from "@/app/utils/validation";
-import { Resend } from "resend";
 
 type FormResponse = {
   errors: Record<string, string[]>;
@@ -10,15 +8,12 @@ type FormResponse = {
   successMessage: string;
 };
 
-const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
-
 export async function sendEmail(
   _: unknown,
   formData: FormData,
 ): Promise<FormResponse> {
   const entries = formData.entries();
   const payload = Object.fromEntries(entries);
-  const subscribers = await getSubscribers();
 
   const { success, data, error } = MessageValidator.safeParse(payload);
 
@@ -30,20 +25,7 @@ export async function sendEmail(
     };
   }
 
-  if (!subscribers?.length) {
-    console.error("NO RECEIVERS");
-  }
-
   try {
-    subscribers?.forEach(async (subscriber) => {
-      await resend.emails.send({
-        from: "onboarding@resend.dev",
-        to: subscriber.email,
-        subject: data?.name,
-        react: IncomingMessage({ data }),
-      });
-    });
-
     await postMessage(data);
 
     return {

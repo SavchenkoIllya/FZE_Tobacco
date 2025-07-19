@@ -13,7 +13,7 @@ export async function postMessage(data: {
   try {
     await fetchAPI(url.href, {
       method: "POST",
-      body: data,
+      body: { data },
     });
   } catch (e) {
     if (e instanceof Error) {
