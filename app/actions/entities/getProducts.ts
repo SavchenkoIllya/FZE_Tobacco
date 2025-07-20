@@ -42,7 +42,6 @@ const getProductsQuery = (props: QueryProps) => {
     ...(filters && { filters: { $and: filters } }),
     populate: {
       image: true,
-      format: true,
       category: true,
       filter_type: true,
       brand: true,
