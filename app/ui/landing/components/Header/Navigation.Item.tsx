@@ -1,4 +1,3 @@
-import { LandingSections } from "@/app/lib";
 import { safeScroll } from "@/app/ui";
 
 export const NavigationItem = ({
@@ -6,7 +5,7 @@ export const NavigationItem = ({
   label,
   section,
 }: {
-  section: keyof typeof LandingSections;
+  section: string;
   label: string;
   onNavigate?: () => void;
 }) => {

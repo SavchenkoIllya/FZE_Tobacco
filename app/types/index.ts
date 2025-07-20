@@ -167,16 +167,6 @@ export interface FooterSection {
   documents_title?: string;
 }
 
-export interface Format {
-  id?: number;
-  documentId?: string;
-  createdAt?: Date | string;
-  updatedAt?: Date | string;
-  publishedAt?: Date | string;
-  locale?: string | null;
-  name: string;
-}
-
 export interface HeaderSection {
   id?: number;
   documentId?: string;
@@ -236,7 +226,6 @@ export interface Product {
   brand?: Brand | null;
   category?: Category | null;
   image?: Media | null;
-  format?: Format | null;
   blend?: string;
   nicotine: string;
   tar: string;
