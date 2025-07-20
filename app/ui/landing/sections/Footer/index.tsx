@@ -13,7 +13,7 @@ export const Footer = ({
   footerData?: FooterSection;
 }) => {
   return (
-    <section className={"container mx-auto bg-transparent my-8"}>
+    <section className={"container mx-auto bg-transparent md:my-8"}>
       <div className={"max-lg:hidden"}>
         <BackgroundImage
           imageUrl={"/images/Pattern_left.png"}
@@ -32,7 +32,7 @@ export const Footer = ({
 
       <div
         className={
-          "p-4 md:mb-8 w-full container rounded-2xl bg-secondary space-y-8"
+          "p-4 md:mb-8 w-full container md:rounded-2xl bg-secondary space-y-8"
         }
       >
         <div className={"max-md:space-y-8 space-y-4"}>

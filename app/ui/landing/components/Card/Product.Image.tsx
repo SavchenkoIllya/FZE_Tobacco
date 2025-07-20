@@ -26,7 +26,7 @@ export const ProductImage = ({
       height={height}
       className={cn(
         "object-contain",
-        variant === "md" ? "h-[250px] max-md:h-[150px]" : "w-[500px] h-[500px]",
+        variant === "md" ? "h-[175px] max-md:h-[150px]" : "w-[500px] h-[500px]",
       )}
     />
   );

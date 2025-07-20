@@ -25,6 +25,8 @@ export const SliderMenu = ({
 
   return (
     <>
+      <Filter onClick={handleClick} />
+
       <Slider open={open} wrapperClassName={"z-100"}>
         <div className={"p-8"}>
           <Menu variant={"light"} title={title} />
@@ -39,9 +41,6 @@ export const SliderMenu = ({
           </button>
         </div>
       </Slider>
-      <div className={"z-50"}>
-        <Filter onClick={handleClick} />
-      </div>
     </>
   );
 };

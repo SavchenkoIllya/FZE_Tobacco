@@ -36,7 +36,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
   return (
     <button
       className={
-        "text-left flex flex-col cursor-pointer hover:bg-zinc-50 p-4 rounded-2xl transition-all w-50 max-md:w-35"
+        "text-left flex flex-col cursor-pointer hover:bg-zinc-50 p-2 rounded-2xl transition-all"
       }
       onClick={handleOpenPopover}
       type={"button"}
@@ -52,29 +52,36 @@ export const ProductCard = ({ product }: { product: Product }) => {
           <h4 className={"h2 !text-xl !leading-6 truncate"}>
             {product?.title}
           </h4>
-          <p>{product.category?.name}</p>
+          <p className={"leading-[1rem] mb-1"}>{product.category?.name}</p>
         </div>
       </div>
-      <div className={"mt-4"}>
-        <ProductProperty
-          text={product?.blend ?? undefined}
-          icon={
-            getProductDescriptionField(productCard, "property", "blend")?.icon
-          }
-        />
-        <ProductProperty
-          text={product.nicotine ?? undefined}
-          icon={
-            getProductDescriptionField(productCard, "property", "nicotine")
-              ?.icon
-          }
-        />
-        <ProductProperty
-          text={product.tar ?? undefined}
-          icon={
-            getProductDescriptionField(productCard, "property", "tar")?.icon
-          }
-        />
+      <div>
+        <div className={"hidden md:block"}>
+          <ProductProperty
+            text={product?.blend ?? undefined}
+            icon={
+              getProductDescriptionField(productCard, "property", "blend")?.icon
+            }
+          />
+        </div>
+        <div className={"flex max-md:gap-2 max-md:mt-1 md:flex-col"}>
+          <ProductProperty
+            text={product.nicotine ?? undefined}
+            icon={
+              getProductDescriptionField(productCard, "property", "nicotine")
+                ?.icon
+            }
+          />
+          <div className={"max-md:block hidden"}>
+            <p>/</p>
+          </div>
+          <ProductProperty
+            text={product.tar ?? undefined}
+            icon={
+              getProductDescriptionField(productCard, "property", "tar")?.icon
+            }
+          />
+        </div>
       </div>
     </button>
   );

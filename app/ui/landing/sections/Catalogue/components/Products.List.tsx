@@ -3,12 +3,12 @@ import { FilterLabelContainer, ProductCard } from "@/app/ui";
 
 export const ProductsList = ({ products }: { products?: Product[] }) => {
   return (
-    <div className="p-2 md:px-4 flex flex-wrap gap-4 justify-center">
+    <div className="max-md:mx-4 flex flex-col gap-4">
       <FilterLabelContainer />
-      {(!products || !products.length) && <p>Nothing to show</p>}
-      <div
-        className={" flex flex-wrap justify-center md:justify-between gap-2"}
-      >
+      {(!products || !products.length) && (
+        <p className={"text-center"}>Nothing to show</p>
+      )}
+      <div className={" grid grid-cols-2 gap-1 md:grid-cols-4 xl:grid-cols-5"}>
         {products?.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

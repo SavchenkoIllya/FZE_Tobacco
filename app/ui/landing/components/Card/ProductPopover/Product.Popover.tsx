@@ -49,7 +49,7 @@ export const ProductPopover = ({ lang }: ProductPopoverProps) => {
           <button
             onClick={handleClose}
             className={
-              "button max-md:bg-primary max-md:text-secondary bg-secondary text-primary !w-full"
+              "button max-md:bg-primary max-md:text-secondary bg-secondary hover:bg-secondary! text-primary !w-full"
             }
           >
             {productCard?.close_text ?? "X"}

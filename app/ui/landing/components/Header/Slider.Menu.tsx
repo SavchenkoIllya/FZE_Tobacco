@@ -30,22 +30,24 @@ export const SliderNavigation = ({
 
   return (
     <div className={"block md:hidden"}>
-      <Burger open={open} onClick={handleClick} />
-      <Slider open={open}>
-        <div className={"p-8 h-full flex flex-col justify-between"}>
-          <div className={"flex flex-col gap-8"}>
-            <Burger open={open} onClick={handleClick} />
-            {sectionsData && (
-              <Navigation
-                sections={sectionsData}
-                onNavigate={handleClick}
-                variant="flex-col"
-              />
-            )}
+      <div className={"contents max-h-[30px]"}>
+        <Burger open={open} onClick={handleClick} />
+        <Slider open={open}>
+          <div className={"p-8 h-full flex flex-col justify-between"}>
+            <div className={"flex flex-col gap-8"}>
+              <Burger open={open} onClick={handleClick} />
+              {sectionsData && (
+                <Navigation
+                  sections={sectionsData}
+                  onNavigate={handleClick}
+                  variant="flex-col"
+                />
+              )}
+            </div>
+            <FooterContacts contacts={contacts} />
           </div>
-          <FooterContacts contacts={contacts} />
-        </div>
-      </Slider>
+        </Slider>
+      </div>
     </div>
   );
 };
