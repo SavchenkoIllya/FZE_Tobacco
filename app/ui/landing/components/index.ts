@@ -13,5 +13,6 @@ export * from "./labels";
 export * from "./LanguageSwitch";
 export * from "./Loader";
 export * from "./Menu";
+export * from "./Message";
 export * from "./ScrollIndicator";
 export * from "./Slider";

@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
+import QueryProvider from "../ui/providers/QueryProvider";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",
@@ -36,7 +37,7 @@ export default async function RootLayout({
     <div className={`${robotoSans.variable} antialiased`}>
       <main className={"overflow-hidden"}>
         <Header headerData={headerData} sectionsData={sectionsMeta} />
-        {children}
+        <QueryProvider>{children}</QueryProvider>
       </main>
     </div>
   );

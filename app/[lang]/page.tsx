@@ -10,7 +10,6 @@ import {
   getProductionSectionData,
   getSectionsMeta,
 } from "@/app/actions";
-import { MenuFilterKeys } from "@/app/lib";
 import { Locale } from "@/app/types";
 import {
   About,
@@ -27,18 +26,10 @@ import CatalogueSection from "@/app/ui/landing/sections/Catalogue";
 
 export type HomePageProps = Readonly<{
   params: { lang: Locale };
-  searchParams?: { [key: string]: string | undefined };
 }>;
 
-export default async function Home({ params, searchParams }: HomePageProps) {
+export default async function Home({ params }: HomePageProps) {
   const { lang } = await params;
-  const _searchParams = await searchParams;
-
-  const query = _searchParams?.[MenuFilterKeys.QUERY] ?? "";
-  const filterType = _searchParams?.[MenuFilterKeys.FILTER_TYPE] ?? "";
-  const brand = _searchParams?.[MenuFilterKeys.BRAND] ?? "";
-  const format = _searchParams?.[MenuFilterKeys.FORMAT] ?? "";
-
   const headerData = await getHeaderData(lang);
   const heroData = await getHeroSectionData(lang);
   const aboutData = await getAboutSectionData(lang);
@@ -62,14 +53,7 @@ export default async function Home({ params, searchParams }: HomePageProps) {
         <Hero heroData={heroData} />
         <About aboutData={aboutData} />
         <Pillars pillarsData={pillarsData} />
-        <CatalogueSection
-          catalogueData={catalogueData}
-          query={query}
-          filterType={filterType}
-          brand={brand}
-          format={format}
-          lang={lang}
-        />
+        <CatalogueSection catalogueData={catalogueData} />
         <Production productionData={productionData} />
         <ContactsSection contactsData={contactsData} />
         <Footer

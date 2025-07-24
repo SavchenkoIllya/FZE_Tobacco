@@ -1,33 +1,38 @@
+"use client";
 import { getProducts } from "@/app/actions";
+import { ApiCacheKeys, MenuFilterKeys } from "@/app/lib";
 import { CatalogueSection as CatalogueSectionT, Locale } from "@/app/types";
-import { Menu, Search } from "@/app/ui";
+import { Menu, Message, Search, useUrlParams } from "@/app/ui";
 import {
   ProductsList,
+  ProductsListSkeleton,
   SliderMenu,
 } from "@/app/ui/landing/sections/Catalogue/components";
-import { Suspense } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useParams } from "next/navigation";
 
-export default async function CatalogueSection({
-  lang,
-  query,
-  filterType,
-  brand,
-  format,
+export default function CatalogueSection({
   catalogueData,
 }: Readonly<{
   catalogueData?: CatalogueSectionT;
-  lang: Locale;
-  query?: string;
-  filterType?: string;
-  brand?: string;
-  format?: string;
 }>) {
-  const products = await getProducts({
-    lang,
-    query,
-    filterType,
-    brand,
-    format,
+  const { lang } = useParams<{ lang: Locale }>();
+  const { getAllParams } = useUrlParams(0);
+  const params = getAllParams();
+  const query = params?.[MenuFilterKeys.QUERY] ?? "";
+  const filterType = params?.[MenuFilterKeys.FILTER_TYPE] ?? "";
+  const brand = params?.[MenuFilterKeys.BRAND] ?? "";
+  const format = params?.[MenuFilterKeys.FORMAT] ?? "";
+
+  const {
+    data: products,
+    error,
+    isLoading,
+    isError,
+    isSuccess,
+  } = useQuery({
+    queryKey: [ApiCacheKeys.PRODUCTS, lang, query, filterType, brand, format],
+    queryFn: () => getProducts({ lang, query, filterType, brand, format }),
   });
 
   return (
@@ -50,9 +55,9 @@ export default async function CatalogueSection({
                 />
                 <Search placeholder={catalogueData?.search_placeholder} />
               </div>
-              <Suspense fallback={<p>Loading...</p>}>
-                <ProductsList products={products} />
-              </Suspense>
+              {isLoading && <ProductsListSkeleton count={6} />}
+              {isError && <Message text={error.message} severity={"error"} />}
+              {isSuccess && <ProductsList products={products} />}
             </div>
           </div>
         </div>
